@@ -4,7 +4,10 @@ requirejs.config({
   // baseURl is relative to the HTML file path
   baseUrl: '../app/',
   paths: {
-    jquery: '../node_modules/jquery/dist/jquery'
+    jquery: '../node_modules/jquery/dist/jquery',
+    jszip: '../node_modules/jszip/dist/jszip',
+    'jszip-utils': '../node_modules/jszip-utils/dist/jszip-utils',
+    'file-saver': '../node_modules/file-saver/FileSaver'
   }
 });
 
