@@ -28,7 +28,8 @@ define(['jquery', 'index'],
         var name = 'test.scorm.zip';
         $downloadButton.prop('disabled', true);
         $msg.empty();
-        JClicRepoUtils.downloadJSON(url, name, console).then(
+        var downloader = JClicRepoUtils.downloadJSON(url, name, console);
+        downloader.then(
           // Success
           function () {
             $msg.html('Project downloaded!');
