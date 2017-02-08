@@ -1,9 +1,9 @@
 'use strict';
 
 define(
-  ['jquery', 'file-saver', './buildZip', './pathUtils'],
+  ['jquery', './FileSaver', './buildZip', './pathUtils'],
   function ($, FileSaver, buildZip, pathUtils) {
-    function downloadJSON(url, name, logger) {
+    var downloadJSON = function (url, name, logger) {
       return new Promise(function (resolve, reject) {
         // TODO: revise conditions
         if (!pathUtils.isURL(url) || !url.endsWith('/project.json')) {
@@ -16,13 +16,13 @@ define(
         $.ajax(url, { dataType: 'json' })
           .done(function (project) {
             logger.log('Project file loaded!');
-            buildZip(pathUtils.getBasePath(url), project, logger)
+            buildZip(pathUtils.getBasePath(url), project, logger, /jclic\.js\//g)
               .done(function (zip) {
                 zip.generateAsync({ type: 'blob' }).then(
                   // On success
                   function (blob) {
                     logger.log('ZIP file successfully generated!');
-                    
+
                     // TODO: Move FileSaver out of this module                    
                     FileSaver.saveAs(blob, name);
 
@@ -49,6 +49,5 @@ define(
           });
       });
     }
-
     return downloadJSON;
   });

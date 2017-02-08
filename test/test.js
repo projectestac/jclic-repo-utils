@@ -5,9 +5,9 @@ requirejs.config({
   baseUrl: '../app/',
   paths: {
     jquery: '../node_modules/jquery/dist/jquery',
+    //'file-saver': '../node_modules/file-saver/FileSaver',
     jszip: '../node_modules/jszip/dist/jszip',
-    'jszip-utils': '../node_modules/jszip-utils/dist/jszip-utils',
-    'file-saver': '../node_modules/file-saver/FileSaver'
+    'jszip-utils': '../node_modules/jszip-utils/dist/jszip-utils'
   }
 });
 
@@ -19,25 +19,34 @@ define(['jquery', 'index'],
     var base = "https://clic.xtec.cat/projects/guixanet/project.json";
     var filename = "guixanet.jclic.zip";
 
+    var logger = {
+      log: function(msg){
+        $('#msg').append($('<ul/>').html(msg));
+        console.log(msg);
+      },
+      clear: function(){
+        $('#msg').empty();
+      }
+    };
+
     $(function () {
       var $downloadButton = $('#download');
-      var $msg = $('#msg');
 
       $downloadButton.on('click', function () {
         var url = $('#projectPath').val();
         var name = 'test.scorm.zip';
         $downloadButton.prop('disabled', true);
-        $msg.empty();
-        var downloader = JClicRepoUtils.downloadJSON(url, name, console);
+        logger.clear();
+        var downloader = JClicRepoUtils.downloadJSON(url, name, logger);
         downloader.then(
           // Success
           function () {
-            $msg.html('Project downloaded!');
+            logger.log('Project downloaded!');
             $downloadButton.prop('disabled', false);
           },
           // Error
           function (err) {
-            $msg.html('ERROR: ' + err);
+            logger.log('ERROR: ' + err);
             $downloadButton.prop('disabled', false);
           });
       });
