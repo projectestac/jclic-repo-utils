@@ -11,44 +11,35 @@ requirejs.config({
   }
 });
 
-//require(['index']);
-
-define(['jquery', 'index'],
-  function ($, JClicRepoUtils) {
-
-    var base = "https://clic.xtec.cat/projects/guixanet/project.json";
-    var filename = "guixanet.jclic.zip";
-
-    var logger = {
-      log: function(msg){
+define(['jquery', 'index'], ($, JClicRepoUtils) => {
+  const logger = {
+    LOG_LEVELS: ['none', 'error', 'warn', 'info', 'debug', 'trace', 'all'],
+    LOG_LEVEL: 3, // info
+    log: (level, msg) => {
+      if (logger.LOG_LEVELS.indexOf(level) <= logger.LOG_LEVEL) {
         $('#msg').append($('<ul/>').html(msg));
-        console.log(msg);
-      },
-      clear: function(){
-        $('#msg').empty();
+        console.log(level + ': ' + msg);
       }
-    };
+      return msg;
+    },
+    clear: () => $('#msg').empty()
+  };
 
-    $(function () {
-      var $downloadButton = $('#download');
-
-      $downloadButton.on('click', function () {
-        var url = $('#projectPath').val();
-        var name = 'test.scorm.zip';
-        $downloadButton.prop('disabled', true);
-        logger.clear();
-        var downloader = JClicRepoUtils.downloadJSON(url, name, logger);
-        downloader.then(
-          // Success
-          function () {
-            logger.log('Project downloaded!');
-            $downloadButton.prop('disabled', false);
-          },
-          // Error
-          function (err) {
-            logger.log('ERROR: ' + err);
-            $downloadButton.prop('disabled', false);
-          });
-      });
+  $(() => {
+    const $downloadButton = $('#download');
+    $downloadButton.on('click', function () {
+      const url = $('#projectPath').val();
+      $downloadButton.prop('disabled', true);
+      logger.clear();
+      JClicRepoUtils.downloadJClicProject(url, '', true, logger).then(
+        () => { // Success
+          logger.log('info', 'Project downloaded!');
+          $downloadButton.prop('disabled', false);
+        },
+        (err) => { // Error
+          logger.log('error', err);
+          $downloadButton.prop('disabled', false);
+        });
     });
   });
+});
