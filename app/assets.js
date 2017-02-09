@@ -1,7 +1,7 @@
 'use strict';
+/* global define */
 
 define([], () => ({
-
   indexTemplate: '\
 <!DOCTYPE html>\n\
 <html>\n\
@@ -43,10 +43,12 @@ define([], () => ({
  </organizations>\n\
  <resources>\n\
   <resource identifier="RES_JClic-%%ID%%" type="webcontent" href="/index.html" adlcp:scormtype="sco">\n\
-  %%FILES%%\n\
+%%FILES%%\n\
   </resource>\n\
  </resources>\n\
 </manifest>',
+
+  jsTemplate: 'if(JClicObject){JClicObject.projectFiles["%%JCLICFILE%%"]=%%XMLPROJECT%%;}',
 
   favicon: 'AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAwAAAAAAAAAAAAAAAAAAA\
 AAAAAAAAAAAA////AACZ/wAAzGYAcum8AEy//wCv8/kAAMz/ACXWhABN36AAzP//AIDZ/wCa8tkA\
@@ -269,5 +271,4 @@ Q96Y/n3ghNsfaryX3qIIAWgQ8EhHgM8ADwF3oaOZVAM55Jmc7wHfd/tDoQb2pa0QAqiCgEeyAMdy\
 lRpmAAAAaElEQVSBO5HFcCeyuWREvsYc8Dbw6u7D7Q9tGHCvjkcIoEYCHskJHAOuBaZ3/TsNTCFv\
 2LEhzzTZdv13ElgCIsqxuOvf08AbSloYgQkIAQg6mqbNCyQQmIEQgKCjEQIQdDRCAIKO5v8DpUSK\
 ttN2dLAAAAAASUVORK5CYII='
-
 }));

@@ -1,13 +1,27 @@
 'use strict';
+/* global define*/
 
 define(
   ['jszip', 'jszip-utils', 'jquery'],
   (JSZip, JSZipUtils, $) => {
-    return (baseURL, files, objects, logger, avoidDir) => {
-
-      var zip = new JSZip();
-      var handlers = [];
+    return (baseURL, files, objects, promises, logger, avoidDir) => {
+      const zip = new JSZip();
       avoidDir = avoidDir || '';
+      const handlers = [];
+
+      if (promises)
+        promises.forEach(promise => {
+          handlers.push(new Promise((resolve, reject) => {
+            promise.then(
+              obj => { // success
+                logger.log('info', `Adding ${obj.name} to zip file`);
+                zip.file(obj.name.replace(avoidDir, ''), obj.content, obj.options || {});
+                resolve(zip);
+              },
+              err => reject(err)
+            );
+          }));
+        });
 
       if (files)
         files.forEach(file => {
@@ -26,7 +40,7 @@ define(
         });
 
       if (objects)
-        objects.forEach(obj => handlers.push(new Promise((resolve, reject) => {
+        objects.forEach(obj => handlers.push(new Promise((resolve /*, reject*/) => {
           logger.log('info', `Adding ${obj.name} to zip file`);
           zip.file(obj.name.replace(avoidDir, ''), obj.content, obj.options || {});
           resolve(zip);

@@ -1,4 +1,5 @@
 'use strict';
+/* global define */
 
 define(['jquery', './FileSaver', './buildZip', './pathUtils', './assets'],
   ($, FileSaver, buildZip, pathUtils, assets) =>
@@ -13,13 +14,13 @@ define(['jquery', './FileSaver', './buildZip', './pathUtils', './assets'],
 
         if (!zipFileName) {
           const parts = jsonUrl.split('/');
-          zipFileName = parts[parts.length - 2] + (asScorm ? '.scorm' : '') + '.zip';
+          zipFileName = parts[parts.length - 2] + (asScorm ? '.scorm' : '.jclic') + '.zip';
         }
 
         // Download 'project.json'
         logger.log('info', `Downloading ${jsonUrl}`);
         $.ajax(jsonUrl, { dataType: 'json' })
-          .done(function (project) {
+          .done(project => {
 
             // Process 'project.json'
             logger.log('info', `Project "${project.title}" loaded`);
@@ -27,6 +28,8 @@ define(['jquery', './FileSaver', './buildZip', './pathUtils', './assets'],
             const avoidDir = /jclic\.js\//g;
             let files = project.files;
             const objects = [];
+            const promises = [];
+            const basePath = pathUtils.getBasePath(jsonUrl);
 
             // Check if some important files must be added to the result in odre to have a valid SCORM file
             if (asScorm) {
@@ -46,11 +49,32 @@ define(['jquery', './FileSaver', './buildZip', './pathUtils', './assets'],
                 });
                 prj.files.push('index.html');
 
+                const jsFile = `${prj.mainFile}.js`;
+                promises.push(
+                  new Promise((resolve, reject) => {
+                    $.ajax(basePath + project.mainFile, { dataType: 'text' })
+                      .done((prjText) => {
+                        resolve({
+                          name: jsFile,
+                          content: assets.jsTemplate
+                            .replace(/%%JCLICFILE%%/, prj.mainFile)
+                            .replace(/%%XMLPROJECT%%/, JSON.stringify(prjText))
+                        });
+                      })
+                      .fail((jqXHR, textStatus) => reject(logger.log('error', `Error reading file: ${jqXHR.statusText} ${textStatus}`)));
+                  }));
+                prj.files.push(jsFile);
+                var p = files.indexOf(jsFile);
+                if (p < 0)
+                  p = files.indexOf(`jclic.js/${jsFile}`);
+                if (p >= 0)
+                  files.splice(p, 1);
+
                 if (!prj.files.includes('favicon.ico')) {
                   objects.push({
                     name: 'favicon.ico',
-                    content: Uint8Array.from(atob(assets.favicon), c => c.charCodeAt(0)),
-                    options: { binary: true }
+                    content: assets.favicon,
+                    options: { base64: true }
                   });
                   prj.files.push('favicon.ico');
                 }
@@ -58,8 +82,8 @@ define(['jquery', './FileSaver', './buildZip', './pathUtils', './assets'],
                 if (!prj.files.includes('icon-72.png')) {
                   objects.push({
                     name: 'icon-72.png',
-                    content: Uint8Array.from(atob(assets.icon72), c => c.charCodeAt(0)),
-                    options: { binary: true }
+                    content: assets.icon72,
+                    options: { base64: true }
                   });
                   prj.files.push('icon-72.png');
                 }
@@ -67,8 +91,8 @@ define(['jquery', './FileSaver', './buildZip', './pathUtils', './assets'],
                 if (!prj.files.includes('icon-192.png')) {
                   objects.push({
                     name: 'icon-192.png',
-                    content: Uint8Array.from(atob(assets.icon192), c => c.charCodeAt(0)),
-                    options: { binary: true }
+                    content: assets.icon192,
+                    options: { base64: true }
                   });
                   prj.files.push('icon-192.png');
                 }
@@ -82,7 +106,7 @@ define(['jquery', './FileSaver', './buildZip', './pathUtils', './assets'],
                   content: assets.imsmanifestTemplate
                     .replace(/%%ID%%/g, Math.round(0x10000 + Math.random() * 0x10000).toString(16).toUpperCase().substring(1))
                     .replace(/%%TITLE%%/g, pathUtils.xmlStr(prj.title))
-                    .replace(/%%FILES%%/g, prj.files.map(v => `<file href="${pathUtils.xmlStr(v)}"/>`).join('\n'))
+                    .replace(/%%FILES%%/g, prj.files.map(v => `   <file href="${pathUtils.xmlStr(v)}"/>`).join('\n'))
                 });
               }
 
@@ -99,7 +123,7 @@ define(['jquery', './FileSaver', './buildZip', './pathUtils', './assets'],
             }
 
             // The real work starts here: download files and add them to a 'zip' object
-            buildZip(pathUtils.getBasePath(jsonUrl), files, objects, logger, avoidDir)
+            buildZip(basePath, files, objects, promises, logger, avoidDir)
               .done(zip => {
                 zip.generateAsync({ type: 'blob' }).then(
                   // On success

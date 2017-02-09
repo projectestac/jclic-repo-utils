@@ -1,4 +1,5 @@
 'use strict';
+/* global define */
 
 (function () {
   // Mock `define` when called from a JavaScript environment without native AMD support (like Node.js)
@@ -11,7 +12,7 @@
     };
   }
 
-  let JClicRepoUtils = {};
+  const JClicRepoUtils = {};
 
   define(['./downloadJClicProject', './buildZip', './pathUtils', './assets'],
     function (downloadJClicProject, buildZip, pathUtils, assets) {

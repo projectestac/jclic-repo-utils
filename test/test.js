@@ -1,4 +1,4 @@
-/* global requirejs */
+/* global define, requirejs */
 
 requirejs.config({
   // baseURl is relative to the HTML file path

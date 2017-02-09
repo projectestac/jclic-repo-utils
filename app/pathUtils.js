@@ -1,4 +1,5 @@
 'use strict';
+/* global define */
 
 define([], () => ({
 
@@ -37,16 +38,6 @@ define([], () => ({
       return file;
     else
       return file.substr(path.length);
-  },
-
-  /**
-   * Gets the complete path of a relative or absolute URL, using the provided `basePath`
-   * @param {string} basePath - The base URL
-   * @param {string} path - The filename
-   * @returns {string}
-   */
-  getPath: (basePath, path) => {
-    return isURL(path) ? path : basePath + path;
   },
 
   /** 
