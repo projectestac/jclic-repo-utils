@@ -2,6 +2,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program",
+      "program": "${workspaceRoot}/cli/checkProjectFolders.js",
+      "cwd": "${workspaceRoot}"
+    },
+    {
       "name": "Launch Chrome against localhost",
       "type": "chrome",
       "request": "launch",

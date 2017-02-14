@@ -1,5 +1,4 @@
-'use strict';
-/* global define */
+/* global define:true */
 
 (function () {
   // Mock `define` when called from a JavaScript environment without native AMD support (like Node.js)
@@ -25,6 +24,6 @@
 
   // Export JClicRepoUtils as a result
   if (typeof module !== "undefined" && typeof module.exports !== 'undefined') {
-    module.exports = JClicRepoUtils;
+    exports = module.exports = JClicRepoUtils;
   }
 })();
