@@ -36,7 +36,13 @@ if (args.length < 3) {
 const paths = args.slice(2);
 
 const processProject = (fullPath) => {
-  const prj = require(fullPath);
+  let prj = {};
+  try {
+    prj = require(fullPath);
+  } catch (err) {
+    console.log(`----\nERROR: ${err}\nReading file: ${fullPath}\n----`);
+    return;
+  }
   console.log(`Processing "${prj.title}" (${fullPath})`);
   const prjBase = path.dirname(fullPath);
   const mainBase = path.dirname(prj.mainFile);
@@ -95,8 +101,9 @@ const processProject = (fullPath) => {
 const writeFile = (fullPath, content, encoding, updated = false) => {
   fs.writeFile(fullPath, content, encoding || 'utf8', err => {
     if (err)
-      throw err;
-    console.log(`${updated ? 'Updated' : 'Created'} file: ${fullPath}`);
+      console.log(`----\nERROR: ${err}\nWriting file: ${fullPath}\n----`);
+    else
+      console.log(`${updated ? 'Updated' : 'Created'} file: ${fullPath}`);
   });
 };
 
@@ -104,7 +111,7 @@ const iterateDir = (dir) => {
   console.log('Scanning ' + dir);
   fs.readdir(dir, (err, list) => {
     if (err)
-      throw err;
+      console.log(`----\nERROR: ${err}\nScaning directory: ${dir}\n----`);
     else if (list.includes('project.json'))
       processProject(path.join(dir, 'project.json'));
     else
@@ -112,8 +119,8 @@ const iterateDir = (dir) => {
         const fullPath = path.join(dir, file);
         fs.lstat(fullPath, (err, stats) => {
           if (err)
-            throw err;
-          if (stats.isDirectory())
+            console.log(`----\nERROR: ${err}\nReading file: ${fullPath}\n----`);
+          else if (stats.isDirectory())
             iterateDir(fullPath);
         });
       });
