@@ -1,0 +1,124 @@
+#!/usr/bin/env node
+
+/**
+ * checkFolders.js
+ * JClic repo utils command-line interface.
+ * 
+ * Scans the given folder for `project.json` files and creates missing 'index.html'
+ * and 'imsmanifest.xml' files if needed.
+ * 
+ */
+
+'use strict';
+
+const MockBrowser = require('mock-browser').mocks.MockBrowser;
+const mock = new MockBrowser();
+global.window = mock.getWindow();
+global.navigator = mock.getNavigator();
+
+const fs = require('fs');
+const path = require('path');
+const app = require('../app');
+
+const usage = [
+  'Usage: checkProjectFolders.js path/to/project/folder ...',
+  'Scans the folders for "project.json" files, creating',
+  '"index.html" and "imsmanifest.xml" files when needed.'
+].join('\n');
+
+const args = process.argv;
+
+if (args.length < 3) {
+  console.error(usage);
+  process.exit(1);
+}
+
+const paths = args.slice(2);
+
+const processProject = (fullPath) => {
+  const prj = require(fullPath);
+  console.log(`Processing "${prj.title}" (${fullPath})`);
+  const prjBase = path.dirname(fullPath);
+  const mainBase = path.dirname(prj.mainFile);
+  const mainFile = path.parse(prj.mainFile).base;
+  let modified = false;
+
+  // Check if project has 'index.html'
+  const indexFile = path.join(prjBase, mainBase, 'index.html');
+  if (!fs.existsSync(indexFile)) {
+    writeFile(indexFile, app.assets.indexTemplate
+      .replace(/%%TITLE%%/g, app.utils.xmlStr(prj.title))
+      .replace(/%%MAINFILE%%/g, mainFile));
+    app.utils.pushUnique(prj.files, path.join(mainBase, 'index.html'));
+    modified = true;
+  }
+
+  // Check if project has a .jclic.js file (for 'file:' usage)
+  const jsFile = path.join(prjBase, mainBase, `${mainFile}.js`);
+  if (!fs.existsSync(jsFile)) {
+    const jclicFile = fs.readFileSync(path.join(prjBase, mainBase, mainFile), 'utf8');
+    writeFile(jsFile, app.assets.jsTemplate
+      .replace(/%%JCLICFILE%%/, mainFile)
+      .replace(/%%XMLPROJECT%%/, JSON.stringify(jclicFile)));
+    app.utils.pushUnique(prj.files, path.join(mainBase, `${mainFile}.js`));
+    modified = true;
+  }
+
+  // Check if project has stock icons
+  ['favicon.ico', 'icon-72.png', 'icon-192.png'].forEach(icon => {
+    const icoFile = path.join(prjBase, mainBase, icon);
+    if (!fs.existsSync(icoFile)) {
+      writeFile(icoFile, app.assets[icon], 'base64');
+      app.utils.pushUnique(prj.files, path.join(mainBase, icon));
+      modified = true;
+    }
+  });
+
+  // Check if project has 'imsmanifest.xml'
+  const manifestFile = path.join(prjBase, mainBase, 'imsmanifest.xml');
+  if (!fs.existsSync(manifestFile)) {
+    app.utils.pushUnique(prj.files, path.join(mainBase, 'imsmanifest.xml'));
+    const avoidDir = mainBase === '' ? '' : mainBase + '/';
+    const files = prj.files.map(v => v.replace(avoidDir, ''));
+    writeFile(manifestFile, app.assets.imsmanifestTemplate
+      .replace(/%%ID%%/g, app.utils.getRandomHex())
+      .replace(/%%TITLE%%/g, app.utils.xmlStr(prj.title))
+      .replace(/%%FILES%%/g, files.map(v => `   <file href="${app.utils.xmlStr(v)}"/>`).join('\n')));
+    modified = true;
+  }
+
+  // Update 'project.json' if modified
+  if (modified)
+    writeFile(fullPath, JSON.stringify(prj, null, 2), 'utf8', true);
+};
+
+const writeFile = (fullPath, content, encoding, updated = false) => {
+  fs.writeFile(fullPath, content, encoding || 'utf8', err => {
+    if (err)
+      throw err;
+    console.log(`${updated ? 'Updated' : 'Created'} file: ${fullPath}`);
+  });
+};
+
+const iterateDir = (dir) => {
+  console.log('Scanning ' + dir);
+  fs.readdir(dir, (err, list) => {
+    if (err)
+      throw err;
+    else if (list.includes('project.json'))
+      processProject(path.join(dir, 'project.json'));
+    else
+      list.forEach(file => {
+        const fullPath = path.join(dir, file);
+        fs.lstat(fullPath, (err, stats) => {
+          if (err)
+            throw err;
+          if (stats.isDirectory())
+            iterateDir(fullPath);
+        });
+      });
+  });
+};
+
+// iterate over each path provided
+paths.forEach(iterateDir);

@@ -1,5 +1,5 @@
 'use strict';
-/* global define */
+if (typeof define !== 'function') { var define = require('amdefine')(module) }
 
 define([], () => ({
 
@@ -46,11 +46,24 @@ define([], () => ({
    * @param {string} str - The string to be prepared
    * @returns {string}
    */
-  xmlStr: (str) => {
-    return str
-      .replace(/\&/g, '&amp;')
-      .replace(/\</g, '&lt;')
-      .replace(/\>/g, '&gt;')
-      .replace(/\"/g, '&quot;');
+  xmlStr: (str) => (str || '')
+    .replace(/\&/g, '&amp;')
+    .replace(/\</g, '&lt;')
+    .replace(/\>/g, '&gt;')
+    .replace(/\"/g, '&quot;'),
+
+  /**
+   * Gets a random expression with four hexadecimal digits
+   */
+  getRandomHex: () => Math.round(0x10000 + Math.random() * 0x10000).toString(16).toUpperCase().substring(1),
+
+  /**
+   * Pushes a value into an array only if not exists on it
+   */
+  pushUnique: (arr, value) => {
+    if (arr !== null && typeof value !== 'undefined' && value !== null && arr.indexOf(value) < 0)
+      arr.push(value);
+    return arr;
   }
+
 }));

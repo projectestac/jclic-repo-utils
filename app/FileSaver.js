@@ -8,10 +8,11 @@
  *   See https://github.com/eligrey/FileSaver.js/blob/master/LICENSE.md
  */
 
-/*global self define */
+/*global self */
 /*jslint bitwise: true, indent: 4, laxbreak: true, laxcomma: true, smarttabs: true, plusplus: true */
 
 // Modified to meet AMD requirements
+if (typeof define !== 'function') { var define = require('amdefine')(module) }
 
 define([], function () {
 

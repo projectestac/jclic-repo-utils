@@ -1,5 +1,5 @@
 'use strict';
-/* global define*/
+if (typeof define !== 'function') { var define = require('amdefine')(module) }
 
 define(
   ['jszip', 'jszip-utils', 'jquery'],

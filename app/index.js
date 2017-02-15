@@ -1,23 +1,15 @@
-/* global define:true */
+'use strict';
+if (typeof define !== 'function') { var define = require('amdefine')(module) }
 
 (function () {
-  // Mock `define` when called from a JavaScript environment without native AMD support (like Node.js)
-  if (typeof define === 'undefined') {
-    define = (deps, callback) => {
-      const argsArray = [];
-      for (let p = 0; p < deps.length; p++)
-        argsArray.push(require(deps[p]));
-      return callback.apply(null, argsArray);
-    };
-  }
 
   const JClicRepoUtils = {};
 
-  define(['./downloadJClicProject', './buildZip', './pathUtils', './assets'],
-    function (downloadJClicProject, buildZip, pathUtils, assets) {
+  define(['./downloadJClicProject', './buildZip', './utils', './assets'],
+    function (downloadJClicProject, buildZip, utils, assets) {
       JClicRepoUtils.downloadJClicProject = downloadJClicProject;
       JClicRepoUtils.buildZip = buildZip;
-      JClicRepoUtils.pathUtils = pathUtils;
+      JClicRepoUtils.utils = utils;
       JClicRepoUtils.assets = assets;
       return JClicRepoUtils;
     });

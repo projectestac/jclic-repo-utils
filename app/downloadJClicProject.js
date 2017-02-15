@@ -1,13 +1,13 @@
 'use strict';
-/* global define */
+if (typeof define !== 'function') { var define = require('amdefine')(module) }
 
-define(['jquery', './FileSaver', './buildZip', './pathUtils', './assets'],
-  ($, FileSaver, buildZip, pathUtils, assets) =>
+define(['jquery', './FileSaver', './buildZip', './utils', './assets'],
+  ($, FileSaver, buildZip, utils, assets) =>
     (jsonUrl, zipFileName, asScorm, logger) =>
       new Promise((resolve, reject) => {
 
         // Check URL
-        if (!pathUtils.isURL(jsonUrl) || !jsonUrl.endsWith('/project.json')) {
+        if (!utils.isURL(jsonUrl) || !jsonUrl.endsWith('/project.json')) {
           reject(logger.log('error', `Bad URL: ${jsonUrl}`));
           return;
         }
@@ -29,7 +29,7 @@ define(['jquery', './FileSaver', './buildZip', './pathUtils', './assets'],
             let files = project.files;
             const objects = [];
             const promises = [];
-            const basePath = pathUtils.getBasePath(jsonUrl);
+            const basePath = utils.getBasePath(jsonUrl);
 
             // Check if some important files must be added to the result in odre to have a valid SCORM file
             if (asScorm) {
@@ -44,7 +44,7 @@ define(['jquery', './FileSaver', './buildZip', './pathUtils', './assets'],
                 objects.push({
                   name: 'index.html',
                   content: assets.indexTemplate
-                    .replace(/%%TITLE%%/g, pathUtils.xmlStr(prj.title))
+                    .replace(/%%TITLE%%/g, utils.xmlStr(prj.title))
                     .replace(/%%MAINFILE%%/g, prj.mainFile)
                 });
                 prj.files.push('index.html');
@@ -73,7 +73,7 @@ define(['jquery', './FileSaver', './buildZip', './pathUtils', './assets'],
                 if (!prj.files.includes('favicon.ico')) {
                   objects.push({
                     name: 'favicon.ico',
-                    content: assets.favicon,
+                    content: assets['favicon.ico'],
                     options: { base64: true }
                   });
                   prj.files.push('favicon.ico');
@@ -82,7 +82,7 @@ define(['jquery', './FileSaver', './buildZip', './pathUtils', './assets'],
                 if (!prj.files.includes('icon-72.png')) {
                   objects.push({
                     name: 'icon-72.png',
-                    content: assets.icon72,
+                    content: assets['icon-72.png'],
                     options: { base64: true }
                   });
                   prj.files.push('icon-72.png');
@@ -91,7 +91,7 @@ define(['jquery', './FileSaver', './buildZip', './pathUtils', './assets'],
                 if (!prj.files.includes('icon-192.png')) {
                   objects.push({
                     name: 'icon-192.png',
-                    content: assets.icon192,
+                    content: assets['icon-192.png'],
                     options: { base64: true }
                   });
                   prj.files.push('icon-192.png');
@@ -104,9 +104,9 @@ define(['jquery', './FileSaver', './buildZip', './pathUtils', './assets'],
                 objects.push({
                   name: 'imsmanifest.xml',
                   content: assets.imsmanifestTemplate
-                    .replace(/%%ID%%/g, Math.round(0x10000 + Math.random() * 0x10000).toString(16).toUpperCase().substring(1))
-                    .replace(/%%TITLE%%/g, pathUtils.xmlStr(prj.title))
-                    .replace(/%%FILES%%/g, prj.files.map(v => `   <file href="${pathUtils.xmlStr(v)}"/>`).join('\n'))
+                    .replace(/%%ID%%/g, utils.getRandomHex())
+                    .replace(/%%TITLE%%/g, utils.xmlStr(prj.title))
+                    .replace(/%%FILES%%/g, prj.files.map(v => `   <file href="${utils.xmlStr(v)}"/>`).join('\n'))
                 });
               }
 
