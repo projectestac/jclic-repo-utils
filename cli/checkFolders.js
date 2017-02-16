@@ -99,32 +99,29 @@ const processProject = (fullPath) => {
 };
 
 const writeFile = (fullPath, content, encoding, updated = false) => {
-  fs.writeFile(fullPath, content, encoding || 'utf8', err => {
-    if (err)
-      console.log(`----\nERROR: ${err}\nWriting file: ${fullPath}\n----`);
-    else
-      console.log(`${updated ? 'Updated' : 'Created'} file: ${fullPath}`);
-  });
+  try {
+    fs.writeFileSync(fullPath, content, encoding || 'utf8');
+  } catch (err) {
+    console.log(`----\nERROR: ${err}\nWriting file: ${fullPath}\n----`);
+    return;
+  }
+  console.log(`${updated ? 'Updated' : 'Created'} file: ${fullPath}`);
 };
 
 const iterateDir = (dir) => {
-  console.log('Scanning ' + dir);
-  fs.readdir(dir, (err, list) => {
-    if (err)
-      console.log(`----\nERROR: ${err}\nScaning directory: ${dir}\n----`);
-    else if (list.includes('project.json'))
+  try {
+    const list = fs.readdirSync(dir);
+    if (list.includes('project.json'))
       processProject(path.join(dir, 'project.json'));
     else
       list.forEach(file => {
         const fullPath = path.join(dir, file);
-        fs.lstat(fullPath, (err, stats) => {
-          if (err)
-            console.log(`----\nERROR: ${err}\nReading file: ${fullPath}\n----`);
-          else if (stats.isDirectory())
-            iterateDir(fullPath);
-        });
+        if (fs.lstatSync(fullPath).isDirectory())
+          iterateDir(fullPath);
       });
-  });
+  } catch (err) {
+    console.log(`----\nERROR: ${err}\nScaning directory: ${dir}\n----`);
+  }
 };
 
 // iterate over each path provided
