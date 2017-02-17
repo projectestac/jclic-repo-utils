@@ -64,6 +64,13 @@ define([], () => ({
     if (arr !== null && typeof value !== 'undefined' && value !== null && arr.indexOf(value) < 0)
       arr.push(value);
     return arr;
+  },
+
+  /**
+   * Builds a RegExp object escaping the provided expression
+   */
+  buildRegExp: (s, options) => {
+    return new RegExp(s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), options);
   }
 
 }));

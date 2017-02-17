@@ -46,6 +46,7 @@ const processProject = (fullPath) => {
   console.log(`Processing "${prj.title}" (${fullPath})`);
   const prjBase = path.dirname(fullPath);
   const mainBase = path.dirname(prj.mainFile);
+  const mainPrefix = mainBase === '' ? '' : mainBase + '/';
   const mainFile = path.parse(prj.mainFile).base;
   let modified = false;
 
@@ -59,16 +60,20 @@ const processProject = (fullPath) => {
     modified = true;
   }
 
-  // Check if project has a .jclic.js file (for 'file:' usage)
-  const jsFile = path.join(prjBase, mainBase, `${mainFile}.js`);
-  if (!fs.existsSync(jsFile)) {
-    const jclicFile = fs.readFileSync(path.join(prjBase, mainBase, mainFile), 'utf8');
-    writeFile(jsFile, app.assets.jsTemplate
-      .replace(/%%JCLICFILE%%/, mainFile)
-      .replace(/%%XMLPROJECT%%/, JSON.stringify(jclicFile)));
-    app.utils.pushUnique(prj.files, path.join(mainBase, `${mainFile}.js`));
-    modified = true;
-  }
+  // Check if all '.jclic' files have an quivalent '.jclic.js' script
+  prj.files.filter(f => f.endsWith('.jclic') && f.startsWith(mainPrefix)).forEach(file => {
+    const prjFile = file.substring(mainPrefix.length);
+    const prjFileJs = prjFile + '.js';
+    const jsFile = path.join(prjBase, mainBase, prjFileJs);
+    if (!fs.existsSync(jsFile)) {
+      const jclicFile = fs.readFileSync(path.join(prjBase, mainBase, prjFile), 'utf8');
+      writeFile(jsFile, app.assets.jsTemplate
+        .replace(/%%JCLICFILE%%/, prjFile)
+        .replace(/%%XMLPROJECT%%/, JSON.stringify(jclicFile)));
+      app.utils.pushUnique(prj.files, path.join(mainBase, prjFileJs));
+      modified = true;
+    }
+  });
 
   // Check if project has stock icons
   ['favicon.ico', 'icon-72.png', 'icon-192.png'].forEach(icon => {

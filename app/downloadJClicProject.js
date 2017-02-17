@@ -24,8 +24,11 @@ define(['jquery', './FileSaver', './buildZip', './utils', './assets'],
 
             // Process 'project.json'
             logger.log('info', `Project "${project.title}" loaded`);
+            if (!project.mainFile)
+              return reject(logger.log('error', `Invalid project file: ${jsonUrl}`));
 
-            const avoidDir = /jclic\.js\//g;
+            //const avoidDir = /jclic\.js\//g;
+            const avoidDir = utils.buildRegExp(utils.getBasePath(project.mainFile), 'g');
             let files = project.files;
             const objects = [];
             const promises = [];
@@ -38,77 +41,6 @@ define(['jquery', './FileSaver', './buildZip', './utils', './assets'],
               const prj = JSON.parse(JSON.stringify(project).replace(avoidDir, ''));
               // Remove 'project.json' from the list of files to be copied
               files = project.files.filter(f => f !== 'project.json');
-
-              // Add index.html and icons if needed
-              if (!prj.files.includes('index.html')) {
-                objects.push({
-                  name: 'index.html',
-                  content: assets.indexTemplate
-                    .replace(/%%TITLE%%/g, utils.xmlStr(prj.title))
-                    .replace(/%%MAINFILE%%/g, prj.mainFile)
-                });
-                prj.files.push('index.html');
-
-                const jsFile = `${prj.mainFile}.js`;
-                promises.push(
-                  new Promise((resolve, reject) => {
-                    $.ajax(basePath + project.mainFile, { dataType: 'text' })
-                      .done((prjText) => {
-                        resolve({
-                          name: jsFile,
-                          content: assets.jsTemplate
-                            .replace(/%%JCLICFILE%%/, prj.mainFile)
-                            .replace(/%%XMLPROJECT%%/, JSON.stringify(prjText))
-                        });
-                      })
-                      .fail((jqXHR, textStatus) => reject(logger.log('error', `Error reading file: ${jqXHR.statusText} ${textStatus}`)));
-                  }));
-                prj.files.push(jsFile);
-                var p = files.indexOf(jsFile);
-                if (p < 0)
-                  p = files.indexOf(`jclic.js/${jsFile}`);
-                if (p >= 0)
-                  files.splice(p, 1);
-
-                if (!prj.files.includes('favicon.ico')) {
-                  objects.push({
-                    name: 'favicon.ico',
-                    content: assets['favicon.ico'],
-                    options: { base64: true }
-                  });
-                  prj.files.push('favicon.ico');
-                }
-
-                if (!prj.files.includes('icon-72.png')) {
-                  objects.push({
-                    name: 'icon-72.png',
-                    content: assets['icon-72.png'],
-                    options: { base64: true }
-                  });
-                  prj.files.push('icon-72.png');
-                }
-
-                if (!prj.files.includes('icon-192.png')) {
-                  objects.push({
-                    name: 'icon-192.png',
-                    content: assets['icon-192.png'],
-                    options: { base64: true }
-                  });
-                  prj.files.push('icon-192.png');
-                }
-              }
-
-              // Add imsmanifest.xml if needed
-              if (!prj.files.includes('imsmanifest.xml')) {
-                prj.files.push('imsmanifest.xml');
-                objects.push({
-                  name: 'imsmanifest.xml',
-                  content: assets.imsmanifestTemplate
-                    .replace(/%%ID%%/g, utils.getRandomHex())
-                    .replace(/%%TITLE%%/g, utils.xmlStr(prj.title))
-                    .replace(/%%FILES%%/g, prj.files.map(v => `   <file href="${utils.xmlStr(v)}"/>`).join('\n'))
-                });
-              }
 
               // Add the modified 'project.json' to the array of objects to be placed into the ZIP file
               delete prj.zipFile;
