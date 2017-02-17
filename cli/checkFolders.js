@@ -50,6 +50,15 @@ const processProject = (fullPath) => {
   const mainFile = path.parse(prj.mainFile).base;
   let modified = false;
 
+  // Check if project has 'files'
+  if (!prj.files) {
+    prj.files = [];
+    listFiles(prjBase, '', prj.files, false);
+    if (mainBase !== '')
+      listFiles(prjBase, mainBase, prj.files, true);
+    modified = true;
+  }
+
   // Check if project has 'index.html'
   const indexFile = path.join(prjBase, mainBase, 'index.html');
   if (!fs.existsSync(indexFile)) {
@@ -128,6 +137,23 @@ const iterateDir = (dir) => {
     console.log(`----\nERROR: ${err}\nScaning directory: ${dir}\n----`);
   }
 };
+
+const listFiles = (base, dir, files, recurse = false) => {
+  try {
+    const fullPath = path.join(base, dir);
+    const list = fs.readdirSync(fullPath);
+    list.forEach(file => {
+      const fName = path.join(dir, file);
+      const lstat = fs.lstatSync(path.join(base, fName));
+      if (!lstat.isDirectory())
+        files.push(fName);
+      else if (recurse)
+        listFiles(base, fName, files, recurse);
+    });
+  } catch (err) {
+    console.log(`----\nERROR: ${err}\nScaning directory: ${dir}\n----`);
+  }
+}
 
 // iterate over each path provided
 paths.forEach(iterateDir);
