@@ -1,8 +1,8 @@
 'use strict';
 if (typeof define !== 'function') { var define = require('amdefine')(module) }
 
-define(['jquery', './FileSaver', './buildZip', './utils', './assets'],
-  ($, FileSaver, buildZip, utils, assets) =>
+define(['jquery', './FileSaver', './buildZip', './utils'],
+  ($, FileSaver, buildZip, utils) =>
     (jsonUrl, zipFileName, asScorm, logger) =>
       new Promise((resolve, reject) => {
 
