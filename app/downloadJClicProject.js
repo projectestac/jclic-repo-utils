@@ -56,8 +56,10 @@ define(['jquery', './FileSaver', './buildZip', './utils'],
 
             // The real work starts here: download files and add them to a 'zip' object
             buildZip(basePath, files, objects, promises, logger, avoidDir)
-              .done(zip => {
-                zip.generateAsync({ type: 'blob' }).then(
+              .then(
+              // resolve returns an array with the same "zip" object repeated multiple times
+              zip => {
+                zip[0].generateAsync({ type: 'blob' }).then(
                   // On success
                   blob => {
                     logger.log('info', 'ZIP file successfully generated!');
@@ -68,8 +70,9 @@ define(['jquery', './FileSaver', './buildZip', './utils'],
                   // On error
                   err => reject(logger.log('error', `Error generating ZIP file: ${err}`))
                 );
-              })
-              .fail(err => reject(logger.log('error', `Error collecting files: ${err}`)));
+              },
+              // reject - returns an error code
+              err => reject(logger.log('error', `Error collecting files: ${err}`)));
           })
           .fail((jqXHR, textStatus) => reject(logger.log('error', `Error reading main project file: ${jqXHR.statusText} ${textStatus}`)));
       })

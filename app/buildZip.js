@@ -2,8 +2,8 @@
 if (typeof define !== 'function') { var define = require('amdefine')(module) }
 
 define(
-  ['jszip', 'jszip-utils', 'jquery'],
-  (JSZip, JSZipUtils, $) => {
+  ['jszip', 'jszip-utils'],
+  (JSZip, JSZipUtils) => {
     return (baseURL, files, objects, promises, logger, avoidDir) => {
       const zip = new JSZip();
       avoidDir = avoidDir || '';
@@ -47,6 +47,6 @@ define(
         })));
 
       // Returns a promise
-      return $.when.apply($, handlers);
+      return Promise.all(handlers);
     };
   });
