@@ -11,19 +11,14 @@
 
 'use strict';
 
-const MockBrowser = require('mock-browser').mocks.MockBrowser;
-const mock = new MockBrowser();
-global.window = mock.getWindow();
-global.navigator = mock.getNavigator();
-
 const fs = require('fs');
 const path = require('path');
 const app = require('../app');
 
 const usage = [
-  'Usage: checkProjectFolders.js path/to/project/folder ...',
+  'Usage: node checkProjectFolders.js path/to/project/folder ...',
   'Scans the folders for "project.json" files, creating',
-  '"index.html" and "imsmanifest.xml" files when needed.'
+  '"index.html", "imsmanifest.xml" and icon files when needed.'
 ].join('\n');
 
 const args = process.argv;
