@@ -20,7 +20,7 @@ const usage = [
 const processDirectory = (dir, done) => {
   const projectFile = dir + '/project.json'
   // Load project data
-  const prj = require(projectFile)
+  const prj = JSON.parse(fs.readFileSync(projectFile))
   // `projectBase` usually will be "jclic.js" in the clicZone repository
   const projectBase = path.dirname(prj.mainFile)
   // Read all files inside the project root dir
