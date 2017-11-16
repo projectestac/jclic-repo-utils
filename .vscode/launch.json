@@ -5,9 +5,9 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceRoot}/cli/checkFolders.js",
+      "program": "${workspaceRoot}/cli/scanRelated.js",
       "cwd": "${workspaceRoot}",
-      "args": ["/dades/zonaClic/test/"]
+      "args": ["/dades/zonaClic/projects"]
     },
     {
       "name": "Launch Chrome against localhost",

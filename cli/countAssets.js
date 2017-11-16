@@ -39,7 +39,7 @@ const checkProject = (file, results) => {
   results.push(result)
 }
 
-// Iterates a directory lloking for .jclic files
+// Iterates a directory looking for .jclic files
 const iterateTree = (dir, results) => {
   fs.readdirSync(dir).forEach(file => {
     file = path.resolve(dir, file);
