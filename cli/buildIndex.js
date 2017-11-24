@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 /**
- * scanRelated.js
+ * buildIndex.js
  * Scans the provided path for files with name "project.json"
- * and builds a list of related projects
+ * and builds an index file named "projects.json"
  * 
  */
 
@@ -11,13 +11,12 @@
 const fs = require('fs')
 const path = require('path')
 
-const projects = {};
-
+const projects = [];
 
 const usage = [
-  'Usage: node scanRelated.js path/to/projects ...',
-  'Scans the provided folder for "project.json" files, detecting',
-  'related projects.'
+  'Usage: node buildIndex.js path/to/projects ...',
+  'Scans the provided folder for "project.json" files, building',
+  'the index file "projects.json"'
 ].join('\n');
 
 const args = process.argv;
@@ -34,7 +33,7 @@ const iterateTree = (dir) => {
   var absPath = path.resolve(basePath, dir)
   const files = fs.readdirSync(absPath);
   if (files.indexOf('project.json') >= 0)
-    checkProject(dir)
+    registerProject(dir)
   else
     files.forEach(f => {
       const file = path.resolve(absPath, f)
@@ -44,23 +43,21 @@ const iterateTree = (dir) => {
     })
 }
 
-const checkProject = (dir) => {
+const registerProject = (dir) => {
   const prj = JSON.parse(fs.readFileSync(path.resolve(basePath, dir, 'project.json')))
-  const id = prj.clicZoneId
-  if (id) {
-    const result = {
-      path: dir,
-      title: prj.title,
-      lang: prj.langCodes.join(', ')
-    }
-    if (typeof (projects[id]) === 'undefined')
-      projects[id] = []
-    projects[id].push(result)
-  } else {
-    console.log(`WARNING: Project ${dir} without ID`)
-  }
-  if (!prj.langCodes.every(lang => { return lang.length === 2 || lang.length === 3 }))
-    console.log(`WARNING: Unknown lang code in ${dir}`)
+  projects.push({
+    path: dir,
+    title: prj.title,
+    author: prj.author,
+    date: prj.date,
+    langCodes: prj.langCodes,
+    levelCodes: prj.levelCodes,
+    areaCodes: prj.areaCodes,
+    mainFile: prj.mainFile,
+    cover: prj.cover,
+    thumbnail: prj.thumbnail,
+    id: prj.clicZoneId || prj.orderId || 0,
+  })
 }
 
 const checkProjectNames = (projects) => {
@@ -81,7 +78,20 @@ const checkProjectNames = (projects) => {
 }
 
 iterateTree('')
-console.log(`${Object.keys(projects).length} projects scanned`)
-checkProjectNames(projects)
-fs.writeFileSync('related.json', JSON.stringify(projects))
-
+console.log(`${Object.keys(projects).length} projects detected`)
+var maxId = projects.reduce((max, prj) => Math.max(max, prj.id), 0)
+projects.map(prj => { if (prj.id === 0) prj.id = ++maxId })
+projects.sort((a, b) => {
+  var result = a.id > b.id ? -1 : a === b ? 0 : 1;
+  if (result === 0)
+    result = (a.langCodes.join('') + a.title) > (b.langCodes.join('') + b.title) ? -1 : 1
+  return result
+})
+const ws = fs.createWriteStream('projects.json');
+ws.write('[\n');
+projects.forEach((prj, index) => {
+  delete prj.id
+  ws.write(`${JSON.stringify(prj)}${index === projects.length - 1 ? '' : ','}\n`)
+})
+ws.write(']');
+ws.end();
