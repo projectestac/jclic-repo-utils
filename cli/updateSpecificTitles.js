@@ -2,11 +2,66 @@
 const upd = require('./updateTitle')
 
 const titles = {
+  "galioc/g0100_a": "Galí: Aranès - Com s'escriu? Com se pronóncie? (iniciació)",
+  "galioc/g0100_b": "Galí: Aranès - Com s'escriu? Com se pronóncie? (aprofundiment)",
+  "galioc/g0200_a": "Galí: Aranès - Qui Sò? Com Sò? (iniciació)",
+  "galioc/g0200_b": "Galí: Aranès - Qui Sò? Com Sò? (aprofundiment)",
+  "galioc/g0300_a": "Galí: Aranès - Quina ora ei? Quin dia èm? Qué m'agrade? (iniciació)",
+  "galioc/g0300_b": "Galí: Aranès - Quina ora ei? Quin dia èm? Qué m'agrade? (aprofundiment)",
+  "galioc/g0400_a": "Galí: Aranès - Qué mimgi? A on viui? (iniciació)",
+  "galioc/g0400_b": "Galí: Aranès - Qué mimgi? A on viui? (aprofundiment)",
+  "galioc/g0500_a": "Galí: Aranès - Qué hèsqui? Qué crompi? Tà on vau? (iniciació)",
+  "galioc/g0500_b": "Galí: Aranès - Qué hèsqui? Qué crompi? Tà on vau? (aprofundiment)",
+  "galioc/g0600_a": "Galí: Aranès - Morfosintaxi (iniciació)",
+  "galioc/g0600_b": "Galí: Aranès - Morfosintaxi (aprofundiment)",
+}
+const gali1 = {
+  "aventura/nivell1/08cia": "Aventura't amb l'ortografia - Nivell 1 - g/j (1)",
+  "aventura/nivell1/08cib": "Aventura't amb l'ortografia - Nivell 1 - g/j (2)",
+  "galial/g0100_a": "Galí: Català de l'Alguer - Com s'escriu? Com se pronuncia? (iniciació)",
+  "galial/g0100_b": "Galí: Català de l'Alguer - Com s'escriu? Com se pronuncia? (aprofundiment)",
+  "galial/g0200_a": "Galí: Català de l'Alguer - Qui só? Com só? (iniciació)",
+  "galial/g0200_b": "Galí: Català de l'Alguer - Qui só? Com só? (aprofundiment)",
+  "galial/g0300_a": "Galí: Català de l'Alguer - Qui hora és? Qui dia és? Qui cosa m'agrada? (iniciació)",
+  "galial/g0300_b": "Galí: Català de l'Alguer - Qui hora és? Qui dia és? Qui cosa m'agrada? (aprofundiment)",
+  "galial/g0400_a": "Galí: Català de l'Alguer - Qui cosa menj? On viv? (iniciació)",
+  "galial/g0400_b": "Galí: Català de l'Alguer - Qui cosa menj? On viv? (aprofundiment)",
+  "galial/g0500_a": "Galí: Català de l'Alguer - Qui cosa faç? Qui cosa compr? On vaig? (iniciació)",
+  "galial/g0500_b": "Galí: Català de l'Alguer - Qui cosa faç? Qui cosa compr? On vaig? (aprofundiment)",
+  "galial/g0600_a": "Galí: Català de l'Alguer - Morfosintaxi (iniciació)",
+  "galial/g0600_b": "Galí: Català de l'Alguer - Morfosintaxi (aprofundiment)",
+  "galicent/g0100_a": "Galí: Català central - Com s'escriu? Com es pronuncia? (iniciació)",
+  "galicent/g0100_b": "Galí: Català central - Com s'escriu? Com es pronuncia? (aprofundiment)",
+  "galicent/g0200_a": "Galí: Català central - Qui sóc? Com sóc? (iniciació)",
+  "galicent/g0200_b": "Galí: Català central - Qui sóc? Com sóc? (aprofundiment)",
+  "galicent/g0300_a": "Galí: Català central - Quina hora és? Quin dia som? Què m'agrada? (iniciació)",
+  "galicent/g0300_b": "Galí: Català central - Quina hora és? Quin dia som? Què m'agrada? (aprofundiment)",
+  "galicent/g0400_a": "Galí: Català central - Què menjo? On visc? (iniciació)",
+  "galicent/g0400_b": "Galí: Català central - Què menjo? On visc? (aprofundiment)",
+  "galicent/g0500_a": "Galí: Català central - Què faig? Què compro? On vaig? (iniciació)",
+  "galicent/g0500_b": "Galí: Català central - Què faig? Què compro? On vaig? (aprofundiment)",
+  "galicent/g0600_a": "Galí: Català central - Morfosintaxi (iniciació)",
+  "galicent/g0600_b": "Galí: Català central - Morfosintaxi (aprofundiment)",
+  "galino/g0100_a": "Galí: Català nord-occidental - Com s'escriu? Com es pronuncia? (iniciació)",
+  "galino/g0100_b": "Galí: Català nord-occidental - Com s'escriu? Com es pronuncia? (aprofundiment)",
+  "galino/g0200_a": "Galí: Català nord-occidental - Qui sóc? Com sóc? (iniciació)",
+  "galino/g0200_b": "Galí: Català nord-occidental - Qui sóc? Com sóc? (aprofundiment)",
+  "galino/g0300_a": "Galí: Català nord-occidental - Quina hora és? Quin dia som? Què m'agrada? (iniciació)",
+  "galino/g0300_b": "Galí: Català nord-occidental - Quina hora és? Quin dia som? Què m'agrada? (aprofundiment)",
+  "galino/g0400_a": "Galí: Català nord-occidental - Què menjo? On visc? (iniciació)",
+  "galino/g0400_b": "Galí: Català nord-occidental - Què menjo? On visc? (aprofundiment)",
+  "galino/g0500_a": "Galí: Català nord-occidental - Què faig? Què compro? On vaig? (iniciació)",
+  "galino/g0500_b": "Galí: Català nord-occidental - Què faig? Què compro? On vaig? (aprofundiment)",
+  "galino/g0600_a": "Galí: Català nord-occidental - Morfosintaxi (iniciació)",
+  "galino/g0600_b": "Galí: Català nord-occidental - Morfosintaxi (aprofundiment)",
+}
+
+const titles2 = {
   "domineus": "Superdominoa",
   "etapas": "Las etapas de la historia",
   "geoclici": "Geoclic (italiano)",
   "paseo": "Un paseo por JClic",
-  "geoclic": "Geoclic (català)",  
+  "geoclic": "Geoclic (català)",
 }
 
 const titlesMain = {
@@ -255,7 +310,7 @@ const titlesMain = {
   "carta_es": "La carta de la Tierra",
 }
 
-for(const prj in titles){
+for (const prj in titles) {
   console.log(`Updating ${prj} title to ${titles[prj]}`)
   upd('/dades/driveClic/Public/projects', prj, titles[prj])
 }

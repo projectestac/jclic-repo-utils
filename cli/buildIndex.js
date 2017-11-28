@@ -82,7 +82,7 @@ console.log(`${Object.keys(projects).length} projects detected`)
 var maxId = projects.reduce((max, prj) => Math.max(max, prj.id), 0)
 projects.map(prj => { if (prj.id === 0) prj.id = ++maxId })
 projects.sort((a, b) => {
-  var result = a.id > b.id ? -1 : a === b ? 0 : 1;
+  var result = a.id > b.id ? -1 : a.id === b.id ? 0 : 1;
   if (result === 0)
     result = (a.langCodes.join('') + a.title) > (b.langCodes.join('') + b.title) ? -1 : 1
   return result
