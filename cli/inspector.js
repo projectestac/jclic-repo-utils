@@ -1,6 +1,8 @@
 /* global module:true */
 
 const fs = require('fs')
+const stopWords = Object.values(require('./stopwords.json')).reduce((acc, val) => acc.concat(val), []).sort()
+const stopWordsLength = stopWords.length
 
 // Use mock-browser as a browser simulator
 const MockBrowser = require('mock-browser').mocks.MockBrowser
@@ -17,6 +19,7 @@ global.DOMParser = require('xmldom').DOMParser
 require('amdefine/intercept')
 
 const JClic = require('jclic')
+
 
 class Inspector {
 
@@ -98,14 +101,31 @@ class Inspector {
     texts.forEach(txArray => {
       txArray.forEach(txt => {
         txt.split(/[\s.;,_<>"'+\-=%?¡!:/\\()*0-9\u2022]/).forEach(word => {
-          if (word.length > 1)
-            result.push(word.toLowerCase())
+          console.log(`"${word}"`)
+          word = word.trim().toLowerCase()
+          if (word.length > 1 && !Inspector.isStopWord(word))
+            result.push(word)
         })
       })
     })
     return result.sort().filter((v, n, arr) => n > 0 && v !== arr[n - 1] ? true : false)
   }
 
+  static isStopWord(word) {
+    let
+      firstIndex = 0,
+      lastIndex = stopWordsLength - 1,
+      middleIndex = Math.floor((lastIndex + firstIndex) / 2)
+    while (stopWords[middleIndex] != word && firstIndex < lastIndex) {
+      if (word < stopWords[middleIndex])
+        lastIndex = middleIndex - 1    
+      else if (word > stopWords[middleIndex])
+        firstIndex = middleIndex + 1    
+      middleIndex = Math.floor((lastIndex + firstIndex) / 2)
+    }
+    return stopWords[middleIndex] === word
+  }
+  
 }
 
 module.exports = Inspector
