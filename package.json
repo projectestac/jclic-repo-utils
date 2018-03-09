@@ -37,6 +37,7 @@
     "mock-browser": "^0.92.14",
     "recursive-readdir": "^2.2.2",
     "requirejs": "^2.3.5",
+    "sorted-array": "^2.0.2",
     "xmldom": "^0.1.27"
   },
   "devDependencies": {
