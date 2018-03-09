@@ -90,7 +90,7 @@ class Inspector {
 
   getAllWords() {
     return this.getAllActivityText()
-      .split(/[\s.…|;,_<>"“”«»'´’‘~+\-–—=%¿?¡!:/\\()\[\]{}$£*0-9\u2022]/)
+      .split(/[\s.…|;,_<>"“”«»'´’‘~+\-–—―=%¿?¡!:/\\()\[\]{}$£*0-9\u2022]/)
       .map(word => {
         word = word.trim().toLowerCase()
         return (word.length > 1 && stopWords.search(word) === -1) ? word : null
