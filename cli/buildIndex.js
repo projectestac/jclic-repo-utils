@@ -26,7 +26,7 @@ if (args.length < 3) {
   process.exit(1)
 }
 
-const basePath = args[2]
+const basePath = path.resolve(args[2])
 
 // Iterates a directory looking for 'project.json' files
 const iterateTree = (dir) => {

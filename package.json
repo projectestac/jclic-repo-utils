@@ -29,6 +29,7 @@
     "amdefine": "^1.0.1",
     "animated-gif-detector": "^1.2.0",
     "file-saver": "^1.3.3",
+    "get-folder-size": "^1.0.1",
     "glob": "^7.1.2",
     "jclic": "^1.1.4",
     "jquery": "^3.3.1",

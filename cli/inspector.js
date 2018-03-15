@@ -40,6 +40,14 @@ class Inspector {
     return result
   }
 
+  getNumActivities() {
+    return Object.keys(this.project._activities).length
+  }
+
+  getNumMedia() {
+    return Object.keys(this.project.mediaBag.elements).length
+  }
+
   getProjectProperties() {
     return {
       file: this.path,

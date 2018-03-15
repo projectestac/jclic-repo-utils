@@ -99,6 +99,22 @@ class Inspector {
       .filter((v, n, arr) => v !== null && n > 0 && v !== arr[n - 1] ? true : false)
   }
 
+  static getNumActivities($doc) {
+    return $doc.find('activities > activity').length
+  }
+
+  getAllActivities() {
+    return this.$docs.reduce((n, $doc) => n + Inspector.getNumActivities($doc), 0)
+  }
+
+  static getNumMedia($doc) {
+    return $doc.find('mediaBag > media').length
+  }
+
+  getAllMedia() {
+    return this.$docs.reduce((n, $doc) => n + Inspector.getNumMedia($doc), 0)
+  }
+  
 }
 
 module.exports = Inspector
