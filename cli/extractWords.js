@@ -6,7 +6,7 @@ const Inspector = require('./inspector-jquery.js')
 const file = (process.argv && process.argv.length > 2) ? path.resolve(process.cwd(), process.argv[2]) : null
 
 if (!file) {
-  console.log('Usage: extractWords [filename.jclic]')
+  console.log('Usage:\n  extractWords jclic_file')
 } else {
   const inspector = new Inspector()
   inspector.addProjectFromFile(file)

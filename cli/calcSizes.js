@@ -13,7 +13,7 @@ const getThisFolderSize = require('./getThisFolderSize.js')
 const base = (process.argv && process.argv.length > 2) ? path.resolve(process.cwd(), process.argv[2]) : null
 
 if (!base || !fs.statSync(base).isDirectory()) {
-  console.log('Usage: calcSizes.js [folder]')
+  console.log('Usage:\n  calcSizes.js path_to_projects')
   process.exit(-1)
 }
 
@@ -25,6 +25,7 @@ recursive(base, [(file, stats) => !stats.isDirectory() && !file.endsWith('projec
       .then(data => JSON.parse(data))
       .then(project => {
         console.log(`Processing ${projectFile} ...`)
+        const currentData = { activities: project.activities, mediaFiles: project.mediaFiles, totalSize: project.totalSize }
         const prjBase = path.dirname(projectFile)
         const pathToScan = path.dirname(path.resolve(prjBase, project.mainFile))
         const inspector = new Inspector()
@@ -45,14 +46,20 @@ recursive(base, [(file, stats) => !stats.isDirectory() && !file.endsWith('projec
             delete project.files
             project.files = files
             // Accumulate totals
-            numProjects ++
+            numProjects++
             totalSize += project.totalSize
             totalActivities += project.activities
             totalMedia += project.mediaFiles
             // Write project.json
-            return writeFile(projectFile, JSON.stringify(project, null, 2))
+            if (project.activities !== currentData.activities || project.mediaFiles !== currentData.mediaFiles || project.totalSize !== currentData.totalSize)
+              return writeFile(projectFile, JSON.stringify(project, null, 2))
+                .then(() => console.log(`File ${projectFile} successfully updated!`))
+                .catch(err => `Error updating "${projectFile}": ${err}`)
+            else
+              console.log(`No changes in ${projectFile}`)
           })
       })
+      .catch(err => `Error processing file "${projectFile}": ${err}`)
     )))
   .then(() => console.log(`done!\n${numProjects} projects processed\n${totalActivities} activities\n${totalMedia} media files\n${(totalSize / (1024 * 1024)).toFixed(2)} MB`))
   .catch(err => console.log(`ERROR: ${err}`))

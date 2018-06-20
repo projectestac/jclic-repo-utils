@@ -15,7 +15,8 @@ const projects = {};
 
 
 const usage = [
-  'Usage: node scanRelated.js path/to/projects ...',
+  'Usage:',
+  '  scanRelated.js path_to_projects',
   'Scans the provided folder for "project.json" files, detecting',
   'related projects.'
 ].join('\n');

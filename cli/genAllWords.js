@@ -10,7 +10,7 @@ const FILE_NAME = "all-words.txt"
 const base = (process.argv && process.argv.length > 2) ? path.resolve(process.cwd(), process.argv[2]) : null
 
 if (!base || !fs.statSync(base).isDirectory()) {
-  console.log('Usage: extractWords [folder]')
+  console.log('Usage:\n  extractWords path_to_projects')
 } else {
   recursive(base,
     [(file, stats) => !stats.isDirectory() && !(path.basename(file) === 'project.json')])

@@ -16,7 +16,9 @@ const path = require('path')
 const app = require('../app')
 
 const usage = [
-  'Usage: node checkProjectFolders.js path/to/project/folder ...',
+  'Usage:',
+  '  node checkProjectFolders.js path_to_projects...',
+  '',
   'Scans the folders for "project.json" files, creating',
   '"index.html", "imsmanifest.xml" and icon files when needed.'
 ].join('\n');

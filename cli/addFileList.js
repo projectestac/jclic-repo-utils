@@ -11,7 +11,9 @@ const fs = require('fs')
 const path = require('path')
 
 const usage = [
-  'Usage: node addFileList.js [path/to/projects]',
+  'Usage:',
+  '  addFileList.js path_to_projects',
+  '',
   'Search for "project.json" files on the specified path',
   'and updates its "files" field with the list of assets that are found in the folders: "." (root), "./jclic.js" and subfolders of "./jclic.js"',
 ].join('\n');

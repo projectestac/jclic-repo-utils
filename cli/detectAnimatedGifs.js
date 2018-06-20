@@ -23,9 +23,11 @@ var path = require('path')
 var animated = require('animated-gif-detector')
 
 const usage = [
-  'Usage: node detectAnimatedGifs.js [path/to/project/folder...]',
+  'Usage:',
+  '  detectAnimatedGifs.js path_to_project_folder...',
+  '',
   'Searches for animated GIF files located in the specified folder(s).',
-  'Results are printed out on the console.'
+  'Results are printed out to the console.'
 ].join('\n');
 
 // Logs the file name only when it's an animated GIF

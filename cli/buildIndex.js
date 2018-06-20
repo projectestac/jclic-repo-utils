@@ -14,7 +14,9 @@ const path = require('path')
 const projects = [];
 
 const usage = [
-  'Usage: node buildIndex.js path/to/projects ...',
+  'Usage:',
+  '  buildIndex.js path_to_projects',
+  '',
   'Scans the provided folder for "project.json" files, building',
   'the index file "projects.json"'
 ].join('\n');

@@ -57,7 +57,7 @@ if (process.argv && process.argv.length > 5) {
   if (errMsg)
     errHandler(errMsg)
 } else
-  errHandler(`Usage:\nexport-project [jclicSrcDir] [exportSrcDir] [exportBase] [projectName]`)
+  errHandler(`Usage:\n  export-project jclic_project_folder exported_folder output_folder project_name`)
 
 const
   jclicDir = path.resolve(exportBase, JCLIC_FOLDER),
@@ -77,11 +77,13 @@ ncp(jclicSrc, jclicDir, errHandler)
     const moved = [PROJECT_FILE]
     const promises = []
     if (project.cover) {
-      promises.push(rename(path.resolve(jclicJsDir, project.cover), path.resolve(exportBase, project.cover)))
+      //promises.push(rename(path.resolve(jclicJsDir, project.cover), path.resolve(exportBase, project.cover)))
+      promises.push(ncp(path.resolve(jclicJsDir, project.cover), path.resolve(exportBase, project.cover), errHandler))
       moved.push(project.cover)
     }
     if (project.thumbnail) {
-      promises.push(rename(path.resolve(jclicJsDir, project.thumbnail), path.resolve(exportBase, project.thumbnail)))
+      //promises.push(rename(path.resolve(jclicJsDir, project.thumbnail), path.resolve(exportBase, project.thumbnail)))
+      promises.push(ncp(path.resolve(jclicJsDir, project.thumbnail), path.resolve(exportBase, project.thumbnail), errHandler))
       moved.push(project.thumbnail)
     }
     project.mainFile = `${JS_FOLDER}/${project.mainFile}`

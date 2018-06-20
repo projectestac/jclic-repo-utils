@@ -12,9 +12,11 @@ const path = require('path')
 const xmldom = require('xmldom')
 
 const usage = [
-  'Usage: node countAssets.js [path/to/projects]',
+  'Usage:',
+  '  countAssets.js path_to_projects',
+  '',
   'Scans the provided path for JClic project files (XML files with extension ".jclic")',
-  'and counts its number of activities, sequences and media files.',
+  'counting the number of activities, sequences and media files used in each project.',
 ].join('\n');
 
 const domParser = new xmldom.DOMParser()

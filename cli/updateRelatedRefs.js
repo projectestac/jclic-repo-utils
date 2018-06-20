@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 
 const fs = require('fs')
 const path = require('path')
@@ -8,7 +9,9 @@ const diccionari = JSON.parse(fs.readFileSync('diccionari.json'))
 const languages = ['ca', 'es', 'en']
 
 const usage = [
-  'Usage: node updateRelatedRefs.js path/to/projects',
+  'Usage:',
+  '  updateRelatedRefs.js path_to_projects',
+  '',
   'Scans the provided folder for "project.json" files, updating',
   'the `related` field based on the contents of "related.json"'
 ].join('\n');

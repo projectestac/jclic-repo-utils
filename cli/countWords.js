@@ -8,10 +8,10 @@ const SortedArray = require('sorted-array')
 const FILE_NAME = "all-words.txt"
 
 const base = (process.argv && process.argv.length > 2) ? path.resolve(process.cwd(), process.argv[2]) : null
-const csvBase = (process.argv && process.argv.length > 3) ? path.resolve(process.cwd(), process.argv[3]) : null
+const csvBase = path.resolve(process.cwd(), process.argv && process.argv.length > 3 ? process.argv[3] : 'words')
 
 if (!base || !fs.statSync(base).isDirectory())
-  console.log('Usage: countWords [folder] [csv-base]')
+  console.log('Usage:\n  countWords path_to_projects [csv_file_name]')
 else
   recursive(base,
     [(file, stats) => !stats.isDirectory() && !(path.basename(file) === 'project.json')])
