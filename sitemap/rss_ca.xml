@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<rdf:RDF
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns="http://purl.org/rss/1.0/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:syn="http://purl.org/rss/1.0/modules/syndication/"
+ xmlns:admin="http://webns.net/mvcb/"
+ xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/"
+>
+<channel rdf:about="https://clic.xtec.cat">
+<title>zonaClic</title>
+<link>http://clic.xtec.cat/ca/</link>
+<description>Informació i recursos sobre el Clic i el JClic, i projecte de cooperació en el desenvolupament d'aplicacions educatives multimèdia.</description>
+<dc:language>ca</dc:language>
+<dc:date>2017-04-21T00:00:00+01:00</dc:date>
+<dc:creator>clic@xtec.cat</dc:creator>
+<items>
+ <rdf:Seq>
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_ca.jsp#4031" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_ca.jsp#4032" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_ca.jsp#4030" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_ca.jsp#4033" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_ca.jsp#4034" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_ca.jsp#4029" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_ca.jsp#4028" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_ca.jsp#4026" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_ca.jsp#4027" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_ca.jsp#4025" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_ca.jsp#4024" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_ca.jsp#4023" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_ca.jsp#4022" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_ca.jsp#4020" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_ca.jsp#4014" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_ca.jsp#4015" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_ca.jsp#4017" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_ca.jsp#4019" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_ca.jsp#4018" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_ca.jsp#4016" />
+ </rdf:Seq>
+</items>
+<image rdf:resource="http://clic.xtec.cat/img/logo_zona.gif" />
+<textinput rdf:resource="https://clic.xtec.catca/cercar/index.htm" />
+</channel>
+
+<image rdf:about="http://clic.xtec.cat/img/logo_zona.gif">
+<title>zonaClic</title>
+<url>http://clic.xtec.cat/img/logo_zona.gif</url>
+<link>http://clic.xtec.cat/</link>
+</image>
+
+<item rdf:about="https://clic.xtec.cat/db/news_ca.jsp#4031">
+<title>Parts of the plant</title>
+<link>https://clic.xtec.cat/db/act_ca.jsp?id=4031</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/plant_en.png&quot;&gt;&lt;/div&gt;En aquesta activitat es treballa el vocabulari en anglès relacionat amb les part de la planta. Hi trobarem activitats de relacionar, d&#39;ordenar i àudios, per exercitar la oïda.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Jose A. Muñoz Romero&lt;br&gt;&lt;strong&gt;Àrea:&lt;/strong&gt; Ciències experimentals&lt;br&gt;&lt;strong&gt;Nivell:&lt;/strong&gt; Primària (6-12)&lt;br&gt;&lt;strong&gt;Data:&lt;/strong&gt; 21/04/17&lt;br&gt;&lt;strong&gt;Observacions:&lt;/strong&gt; nou&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; anglès&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-04-21T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_ca.jsp#4032">
+<title>Canvi d'unitats</title>
+<link>https://clic.xtec.cat/db/act_ca.jsp?id=4032</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/unitats.png&quot;&gt;&lt;/div&gt;Paquet d&#39;activitats per treballar el canvi d&#39;unitats i problemes de moviment. Aquestes activitats estan pensades per al nivell de 2on d&#39;ESO.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Pedro Miguel Gómez&lt;br&gt;&lt;strong&gt;Àrea:&lt;/strong&gt; Matemàtiques&lt;br&gt;&lt;strong&gt;Nivell:&lt;/strong&gt; Secundària (12-16)&lt;br&gt;&lt;strong&gt;Data:&lt;/strong&gt; 21/04/17&lt;br&gt;&lt;strong&gt;Observacions:&lt;/strong&gt; nou&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; català&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-04-21T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_ca.jsp#4030">
+<title>Comandante Hussi</title>
+<link>https://clic.xtec.cat/db/act_ca.jsp?id=4030</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/hussi.png&quot;&gt;&lt;/div&gt;El propòsit d&#39;aquesta seqüència d&#39;activitats és l&#39;alfabetització literària del 9è grau d&#39;escola primària (Brasil), a partir de la obra  Comandante Hussi, Jorge Araújo. S&#39;organitza mitjançant la metodologia per a la lectura literària proposat per Rildo Cosson (2014), titulat &quot;Sequência didática expandida&quot;.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Ana Beatriz Albino&lt;br&gt;&lt;strong&gt;Àrea:&lt;/strong&gt; Llengües&lt;br&gt;&lt;strong&gt;Nivell:&lt;/strong&gt; Secundària (12-16)&lt;br&gt;&lt;strong&gt;Data:&lt;/strong&gt; 21/04/17&lt;br&gt;&lt;strong&gt;Observacions:&lt;/strong&gt; nou&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; portuguès&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-04-21T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_ca.jsp#4033">
+<title>Verbes essentiels</title>
+<link>https://clic.xtec.cat/db/act_ca.jsp?id=4033</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/essent.png&quot;&gt;&lt;/div&gt;Conjunt d&#39;activitats per repassar els verbs essencials en francès, les seves conjugacions i temps verbals. A les activitats de traducció es disposa d&#39;àudio per ajudar a exercitar l&#39;oïda.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Paloma Garrido&lt;br&gt;&lt;strong&gt;Àrea:&lt;/strong&gt; Llengües&lt;br&gt;&lt;strong&gt;Nivell:&lt;/strong&gt; Secundària (12-16)&lt;br&gt;&lt;strong&gt;Data:&lt;/strong&gt; 21/04/17&lt;br&gt;&lt;strong&gt;Observacions:&lt;/strong&gt; nou&lt;br&gt;&lt;strong&gt;Idiomes:&lt;/strong&gt; espanyol, francès&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-04-21T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_ca.jsp#4034">
+<title>La vaca</title>
+<link>https://clic.xtec.cat/db/act_ca.jsp?id=4034</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/vaca.png&quot;&gt;&lt;/div&gt;Aquest projecte mostra les característiques principals de la vaca: parts de la vaca, la família de la vaca, els llocs on viu, el so i els productes que ens dona.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Rita Massaguer&lt;br&gt;&lt;strong&gt;Àrea:&lt;/strong&gt; Ciències experimentals&lt;br&gt;&lt;strong&gt;Nivell:&lt;/strong&gt; Infantil (3-6)&lt;br&gt;&lt;strong&gt;Data:&lt;/strong&gt; 21/04/17&lt;br&gt;&lt;strong&gt;Observacions:&lt;/strong&gt; nou&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; català&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-04-21T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_ca.jsp#4029">
+<title>Paisaje y relieve</title>
+<link>https://clic.xtec.cat/db/act_ca.jsp?id=4029</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/paisaje.png&quot;&gt;&lt;/div&gt;Mitjançant aquesta bateria d&#39;activitats es pretén que els/les alumnes realitzin un repàs dels continguts que pertanyen al tema del paisatge. Aquesta activitat tracta per separat els tipus de paisatge i els de relleu. S&#39;enfoca aquest treball intercalant activitats de repàs, d&#39;identificació i d&#39;altres de caràcter lúdic.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Francisco José Mora Cruzado&lt;br&gt;&lt;strong&gt;Àrea:&lt;/strong&gt; Ciències experimentals&lt;br&gt;&lt;strong&gt;Nivell:&lt;/strong&gt; Primària (6-12)&lt;br&gt;&lt;strong&gt;Data:&lt;/strong&gt; 21/04/17&lt;br&gt;&lt;strong&gt;Observacions:&lt;/strong&gt; nou&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; espanyol&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-04-21T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_ca.jsp#4028">
+<title>Comarca de Ordes</title>
+<link>https://clic.xtec.cat/db/act_ca.jsp?id=4028</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/ordes.png&quot;&gt;&lt;/div&gt;Conjunt d&#39;activitats sobre la comarca d&#39;Ordes, província de La Corunya. Trobem activitats sobre el relleu, la hidrografia, el clima, els municipis que la integren i la població. També hi ha activitats sobre el municipi d&#39;ordes, on està ubicat el CEIP Mesón do Vento.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Xan Ferreiro Boquete&lt;br&gt;&lt;strong&gt;Àrea:&lt;/strong&gt; Ciències experimentals&lt;br&gt;&lt;strong&gt;Nivell:&lt;/strong&gt; Primària (6-12)&lt;br&gt;&lt;strong&gt;Data:&lt;/strong&gt; 20/04/17&lt;br&gt;&lt;strong&gt;Observacions:&lt;/strong&gt; nou&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; gallec&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-04-20T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_ca.jsp#4026">
+<title>Juguemos con las letras</title>
+<link>https://clic.xtec.cat/db/act_ca.jsp?id=4026</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/letras.png&quot;&gt;&lt;/div&gt;És un paquet d&#39;activitats amb el que els infants practicaran la lectura de paraules i frases compostes per les cinc vocals i les consonants d, j, l, m, n, ñ, p, s i t. Està dividit en quatre blocs amb activitats molt variades i amenes per a infants de 5, 6 i 7 anys.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Anne Schuchardt&lt;br&gt;&lt;strong&gt;Àrea:&lt;/strong&gt; Llengües&lt;br&gt;&lt;strong&gt;Nivells:&lt;/strong&gt; Infantil (3-6), Primària (6-12)&lt;br&gt;&lt;strong&gt;Data:&lt;/strong&gt; 20/04/17&lt;br&gt;&lt;strong&gt;Observacions:&lt;/strong&gt; nou&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; espanyol&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-04-20T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_ca.jsp#4027">
+<title>Materials</title>
+<link>https://clic.xtec.cat/db/act_ca.jsp?id=4027</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/materia6.png&quot;&gt;&lt;/div&gt;Recull d&#39;activitats per treballar els continguts relacionats amb el tema dels materials: tipologia dels materials, el seu origen, les seves propietats, els residus que generen i el reciclatge.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Elena Jiménez Martín&lt;br&gt;&lt;strong&gt;Àrea:&lt;/strong&gt; Ciències experimentals&lt;br&gt;&lt;strong&gt;Nivell:&lt;/strong&gt; Primària (6-12)&lt;br&gt;&lt;strong&gt;Data:&lt;/strong&gt; 20/04/17&lt;br&gt;&lt;strong&gt;Observacions:&lt;/strong&gt; nou&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; català&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-04-20T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_ca.jsp#4025">
+<title>Ler é divertido</title>
+<link>https://clic.xtec.cat/db/act_ca.jsp?id=4025</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/leolua.png&quot;&gt;&lt;/div&gt;Activitats d&#39;animació a la lectura basades en els texts &quot;A que sabe a lúa&quot;, &quot;Os oficios de Xan&quot;, &quot;A cabana na árbore&quot; i &quot;Otto é un rinoceronte&quot;. Es treballa els personatges i les històries segons els capítols del conte.
+Ens trobem amb activitats de tot tipus, des de puzles, associacions o sopes de lletres, fins activitats de text.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Carmen Martínez López&lt;br&gt;&lt;strong&gt;Àrea:&lt;/strong&gt; Llengües&lt;br&gt;&lt;strong&gt;Nivells:&lt;/strong&gt; Infantil (3-6), Primària (6-12)&lt;br&gt;&lt;strong&gt;Data:&lt;/strong&gt; 18/04/17&lt;br&gt;&lt;strong&gt;Observacions:&lt;/strong&gt; nou&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; gallec&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-04-18T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_ca.jsp#4024">
+<title>La geografia del món</title>
+<link>https://clic.xtec.cat/db/act_ca.jsp?id=4024</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/geo_mon.png&quot;&gt;&lt;/div&gt;Paquet de 8 activitats per practicar i conèixer aspectes de la geografia del món, mitjançant unitats de relleu, d&#39;accidents geogràfics, de rius i vessants, de països i les seves capitals i banderes, de monuments naturals, paisatges i construccions...&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Josep Mª Fortià&lt;br&gt;&lt;strong&gt;Àrea:&lt;/strong&gt; Ciències experimentals&lt;br&gt;&lt;strong&gt;Nivells:&lt;/strong&gt; Primària (6-12), Secundària (12-16), Batxillerat (16-18)&lt;br&gt;&lt;strong&gt;Data:&lt;/strong&gt; 31/03/17&lt;br&gt;&lt;strong&gt;Observacions:&lt;/strong&gt; nou&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; català&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-03-31T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_ca.jsp#4023">
+<title>Animals everywhere</title>
+<link>https://clic.xtec.cat/db/act_ca.jsp?id=4023</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/anim_en.png&quot;&gt;&lt;/div&gt;Conjunt d&#39;activitats que pretenen:
+&lt;ul&gt;
+&lt;li&gt;Identificar diferents animals i les parts del cos dels mateixos.
+&lt;li&gt;Descriure l&#39;aparença dels animals.
+&lt;li&gt;Identificar els sons que emet cada animal.
+&lt;li&gt;Utilitzar el verb &quot;to have&quot;.
+&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Tina Merino&lt;br&gt;&lt;strong&gt;Àrea:&lt;/strong&gt; Llengües&lt;br&gt;&lt;strong&gt;Nivell:&lt;/strong&gt; Primària (6-12)&lt;br&gt;&lt;strong&gt;Data:&lt;/strong&gt; 30/03/17&lt;br&gt;&lt;strong&gt;Observacions:&lt;/strong&gt; nou&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; anglès&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-03-30T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_ca.jsp#4022">
+<title>Joan Miró - Colors i formes</title>
+<link>https://clic.xtec.cat/db/act_ca.jsp?id=4022</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/jmiro2.png&quot;&gt;&lt;/div&gt;Activitats relacionades amb els colors i les formes que predominen en les obres més simbòliques de l&#39;artista, que podem trobar al museu de Joan Miró situat a Barcelona. També inclou una activitat dirigida a l&#39;educació emocional.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Ainara Guil Carmona&lt;br&gt;&lt;strong&gt;Àrea:&lt;/strong&gt; Diversos&lt;br&gt;&lt;strong&gt;Nivell:&lt;/strong&gt; Infantil (3-6)&lt;br&gt;&lt;strong&gt;Data:&lt;/strong&gt; 30/03/17&lt;br&gt;&lt;strong&gt;Observacions:&lt;/strong&gt; nou&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; català&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-03-30T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_ca.jsp#4020">
+<title>España física</title>
+<link>https://clic.xtec.cat/db/act_ca.jsp?id=4020</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/espfisi2.png&quot;&gt;&lt;/div&gt;Activitats sobre el relleu, climes i rius d&#39;Espanya, basats en el text de &quot;Coneixement del Medi&quot; - Projecte Món Aigua. Editorial Alhucemas-Edelvives de 6è de nivell de Primària.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Antonio González jiménez&lt;br&gt;&lt;strong&gt;Àrea:&lt;/strong&gt; Ciències experimentals&lt;br&gt;&lt;strong&gt;Nivell:&lt;/strong&gt; Primària (6-12)&lt;br&gt;&lt;strong&gt;Data:&lt;/strong&gt; 30/03/17&lt;br&gt;&lt;strong&gt;Observacions:&lt;/strong&gt; nou&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; espanyol&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-03-30T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_ca.jsp#4014">
+<title>A biblioteca</title>
+<link>https://clic.xtec.cat/db/act_ca.jsp?id=4014</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/bibliot.png&quot;&gt;&lt;/div&gt;Conjunt d&#39;activitats per a comprendre com estan organitzats els llibres en una biblioteca segons la CDU (Classificació Decimal Universal).&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Emilio González Acuña&lt;br&gt;&lt;strong&gt;Àrea:&lt;/strong&gt; Diversos&lt;br&gt;&lt;strong&gt;Nivell:&lt;/strong&gt; Secundària (12-16)&lt;br&gt;&lt;strong&gt;Data:&lt;/strong&gt; 28/03/17&lt;br&gt;&lt;strong&gt;Observacions:&lt;/strong&gt; nou&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; gallec&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-03-28T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_ca.jsp#4015">
+<title>Proves de càlcul mental</title>
+<link>https://clic.xtec.cat/db/act_ca.jsp?id=4015</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/calc_men.png&quot;&gt;&lt;/div&gt;És un paquet d&#39;activitats destinat a treballar la rapidesa en el càlcul mental dels algoritmes de la suma, la resta, la multiplicació i la divisió. Cada activitat consta de 60 operacions que s&#39;han de realitzar en un màxim de 2 minuts i mig. Les operacions s&#39;han extret i digitalitzat d&#39;&quot;El Quinzet&quot;.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Jordi Santallúsia Plensa&lt;br&gt;&lt;strong&gt;Àrea:&lt;/strong&gt; Matemàtiques&lt;br&gt;&lt;strong&gt;Nivell:&lt;/strong&gt; Primària (6-12)&lt;br&gt;&lt;strong&gt;Data:&lt;/strong&gt; 28/03/17&lt;br&gt;&lt;strong&gt;Observacions:&lt;/strong&gt; nou&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; català&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-03-28T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_ca.jsp#4017">
+<title>L'època medieval</title>
+<link>https://clic.xtec.cat/db/act_ca.jsp?id=4017</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/ep_mediv.png&quot;&gt;&lt;/div&gt;Projecte interdisciplinari a partir d&#39;un centre d&#39;interès: l&#39;edat mitjana. Es treballen diferents vessants com la societat feudal, les construccions o els animals més comuns. Està adreçat al cicle inicial de primària.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Nerea Nicolás Fernández&lt;br&gt;&lt;strong&gt;Àrea:&lt;/strong&gt; Ciències socials&lt;br&gt;&lt;strong&gt;Nivell:&lt;/strong&gt; Primària (6-12)&lt;br&gt;&lt;strong&gt;Data:&lt;/strong&gt; 28/03/17&lt;br&gt;&lt;strong&gt;Observacions:&lt;/strong&gt; nou&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; català&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-03-28T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_ca.jsp#4019">
+<title>Animals i animalets</title>
+<link>https://clic.xtec.cat/db/act_ca.jsp?id=4019</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/animals8.png&quot;&gt;&lt;/div&gt;Conjunt d&#39;activitats per aprendre vocabulari i conceptes sobre el món animal. Les activitats s&#39;han dividit en tres blocs, un per cada curs d&#39;infantil. Cada bloc està adaptat als continguts que es treballen a cada nivell, així com el nivell de dificultat. Trobareu tot tipus d&#39;activitats, des de puzles fins a activitats de text.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Esther Escribano García&lt;br&gt;&lt;strong&gt;Àrea:&lt;/strong&gt; Ciències experimentals&lt;br&gt;&lt;strong&gt;Nivell:&lt;/strong&gt; Infantil (3-6)&lt;br&gt;&lt;strong&gt;Data:&lt;/strong&gt; 28/03/17&lt;br&gt;&lt;strong&gt;Observacions:&lt;/strong&gt; nou&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; català&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-03-28T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_ca.jsp#4018">
+<title>Els éssers vius</title>
+<link>https://clic.xtec.cat/db/act_ca.jsp?id=4018</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/es_vius.png&quot;&gt;&lt;/div&gt;Paquet d&#39;activitats per treballar la classificació dels éssers vius i les seves característiques principals; des de la primera cèl·lula fins l&#39;actualitat.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Albiol Minguell Roquer&lt;br&gt;&lt;strong&gt;Àrea:&lt;/strong&gt; Ciències experimentals&lt;br&gt;&lt;strong&gt;Nivell:&lt;/strong&gt; Batxillerat (16-18)&lt;br&gt;&lt;strong&gt;Data:&lt;/strong&gt; 28/03/17&lt;br&gt;&lt;strong&gt;Observacions:&lt;/strong&gt; nou&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; català&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-03-28T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_ca.jsp#4016">
+<title>Poema "El cargol"</title>
+<link>https://clic.xtec.cat/db/act_ca.jsp?id=4016</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/cargol5.png&quot;&gt;&lt;/div&gt;Activitats de lectura i escriptura per treballar el poema &quot;El cargol&quot; de Josep Carner.&lt;p&gt;&lt;strong&gt;Autors:&lt;/strong&gt; Anna Parés Martínez, Eva Sáez i Paula Cardiel&lt;br&gt;&lt;strong&gt;Àrea:&lt;/strong&gt; Llengües&lt;br&gt;&lt;strong&gt;Nivell:&lt;/strong&gt; Infantil (3-6)&lt;br&gt;&lt;strong&gt;Data:&lt;/strong&gt; 28/03/17&lt;br&gt;&lt;strong&gt;Observacions:&lt;/strong&gt; nou&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; català&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-03-28T00:00:00+01:00</dc:date>
+</item>
+
+</rdf:RDF>

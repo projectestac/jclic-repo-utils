@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<rdf:RDF
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns="http://purl.org/rss/1.0/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:syn="http://purl.org/rss/1.0/modules/syndication/"
+ xmlns:admin="http://webns.net/mvcb/"
+ xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/"
+>
+<channel rdf:about="https://clic.xtec.cat">
+<title>zonaClic</title>
+<link>http://clic.xtec.cat/es/</link>
+<description>Información y recursos sobre Clic y JClic, y proyecto de cooperación en el desarrollo de aplicaciones educativas multimedia.</description>
+<dc:language>es</dc:language>
+<dc:date>2017-04-21T00:00:00+01:00</dc:date>
+<dc:creator>clic@xtec.cat</dc:creator>
+<items>
+ <rdf:Seq>
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_es.jsp#4031" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_es.jsp#4032" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_es.jsp#4030" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_es.jsp#4033" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_es.jsp#4034" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_es.jsp#4029" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_es.jsp#4028" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_es.jsp#4026" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_es.jsp#4027" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_es.jsp#4025" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_es.jsp#4024" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_es.jsp#4023" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_es.jsp#4022" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_es.jsp#4020" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_es.jsp#4014" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_es.jsp#4015" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_es.jsp#4017" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_es.jsp#4019" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_es.jsp#4018" />
+  <rdf:li rdf:resource="https://clic.xtec.cat/db/news_es.jsp#4016" />
+ </rdf:Seq>
+</items>
+<image rdf:resource="http://clic.xtec.cat/img/logo_zona.gif" />
+<textinput rdf:resource="https://clic.xtec.cates/cercar/index.htm" />
+</channel>
+
+<image rdf:about="http://clic.xtec.cat/img/logo_zona.gif">
+<title>zonaClic</title>
+<url>http://clic.xtec.cat/img/logo_zona.gif</url>
+<link>http://clic.xtec.cat/</link>
+</image>
+
+<item rdf:about="https://clic.xtec.cat/db/news_es.jsp#4031">
+<title>Parts of the plant</title>
+<link>https://clic.xtec.cat/db/act_es.jsp?id=4031</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/plant_en.png&quot;&gt;&lt;/div&gt;En esta actividad se trabaja el vocabulario en inglés relacionado con las partes de la planta. Encontraremos actividades para relacionar, ordenar y audio, para ejercitar el oído.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Jose A. Muñoz Romero&lt;br&gt;&lt;strong&gt;Área:&lt;/strong&gt; Ciencias experimentales&lt;br&gt;&lt;strong&gt;Nivel:&lt;/strong&gt; Primaria (6-12)&lt;br&gt;&lt;strong&gt;Fecha:&lt;/strong&gt; 21/04/17&lt;br&gt;&lt;strong&gt;Observaciones:&lt;/strong&gt; nuevo&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; inglés&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-04-21T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_es.jsp#4032">
+<title>Canvi d'unitats</title>
+<link>https://clic.xtec.cat/db/act_es.jsp?id=4032</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/unitats.png&quot;&gt;&lt;/div&gt;Paquete de actividades para trabajar el cambio de unidades y problemas de movimiento. Estas actividades están pensadas para el nivel de 2º de ESO.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Pedro Miguel Gómez&lt;br&gt;&lt;strong&gt;Área:&lt;/strong&gt; Matemáticas&lt;br&gt;&lt;strong&gt;Nivel:&lt;/strong&gt; Secundaria (12-16)&lt;br&gt;&lt;strong&gt;Fecha:&lt;/strong&gt; 21/04/17&lt;br&gt;&lt;strong&gt;Observaciones:&lt;/strong&gt; nuevo&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; catalán&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-04-21T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_es.jsp#4030">
+<title>Comandante Hussi</title>
+<link>https://clic.xtec.cat/db/act_es.jsp?id=4030</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/hussi.png&quot;&gt;&lt;/div&gt;El propósito de esta secuencia de actividades es la alfabetización literaria del 9º grado de escuela primaria (Brasil), a partir de la obra Comandante Hussi, Jorge Araújo. Se organiza a partir de la metodología para la lectura literaria propuesto por Rildo Cosson (2014), titulado &quot;Sequência didática expandida&quot;.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Ana Beatriz Albino&lt;br&gt;&lt;strong&gt;Área:&lt;/strong&gt; Lenguas&lt;br&gt;&lt;strong&gt;Nivel:&lt;/strong&gt; Secundaria (12-16)&lt;br&gt;&lt;strong&gt;Fecha:&lt;/strong&gt; 21/04/17&lt;br&gt;&lt;strong&gt;Observaciones:&lt;/strong&gt; nuevo&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; portugués&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-04-21T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_es.jsp#4033">
+<title>Verbes essentiels</title>
+<link>https://clic.xtec.cat/db/act_es.jsp?id=4033</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/essent.png&quot;&gt;&lt;/div&gt;Conjunto de actividades para repasar los verbos esenciales en francés, sus conjugaciones y tiempos verbales. En las actividades de traducción se dispone de audio que ayudarán a ejercitar el oído.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Paloma Garrido&lt;br&gt;&lt;strong&gt;Área:&lt;/strong&gt; Lenguas&lt;br&gt;&lt;strong&gt;Nivel:&lt;/strong&gt; Secundaria (12-16)&lt;br&gt;&lt;strong&gt;Fecha:&lt;/strong&gt; 21/04/17&lt;br&gt;&lt;strong&gt;Observaciones:&lt;/strong&gt; nuevo&lt;br&gt;&lt;strong&gt;Idiomas:&lt;/strong&gt; español, francés&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-04-21T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_es.jsp#4034">
+<title>La vaca</title>
+<link>https://clic.xtec.cat/db/act_es.jsp?id=4034</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/vaca.png&quot;&gt;&lt;/div&gt;Este proyecto muestra las características principales de la vaca: partes de la vaca, la familia de la vaca, lugares donde vive, el sonido y los productos que nos da.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Rita Massaguer&lt;br&gt;&lt;strong&gt;Área:&lt;/strong&gt; Ciencias experimentales&lt;br&gt;&lt;strong&gt;Nivel:&lt;/strong&gt; Infantil (3-6)&lt;br&gt;&lt;strong&gt;Fecha:&lt;/strong&gt; 21/04/17&lt;br&gt;&lt;strong&gt;Observaciones:&lt;/strong&gt; nuevo&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; catalán&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-04-21T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_es.jsp#4029">
+<title>Paisaje y relieve</title>
+<link>https://clic.xtec.cat/db/act_es.jsp?id=4029</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/paisaje.png&quot;&gt;&lt;/div&gt;A través de esta batería de actividades se pretende que los alumnos/as realicen un repaso de los contenidos pertenecientes al tema del paisaje. Dicha actividad trata por separado los tipos de paisaje y los de relieve. Se enfoca este trabajo intercalando actividades de repaso, identificación y otras de carácter lúdico.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Francisco José Mora Cruzado&lt;br&gt;&lt;strong&gt;Área:&lt;/strong&gt; Ciencias experimentales&lt;br&gt;&lt;strong&gt;Nivel:&lt;/strong&gt; Primaria (6-12)&lt;br&gt;&lt;strong&gt;Fecha:&lt;/strong&gt; 21/04/17&lt;br&gt;&lt;strong&gt;Observaciones:&lt;/strong&gt; nuevo&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; español&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-04-21T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_es.jsp#4028">
+<title>Comarca de Ordes</title>
+<link>https://clic.xtec.cat/db/act_es.jsp?id=4028</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/ordes.png&quot;&gt;&lt;/div&gt;Conjunto de actividades sobre la comarca de Ordes, provincia de La Coruña. Encontramos actividades sobre el relieve, la hidrografía, el clima, los municipios que la integran y la población. También hay actividades sobre el municipio de Ordes, donde está ubicado el CEIP Mesón do Vento.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Xan Ferreiro Boquete&lt;br&gt;&lt;strong&gt;Área:&lt;/strong&gt; Ciencias experimentales&lt;br&gt;&lt;strong&gt;Nivel:&lt;/strong&gt; Primaria (6-12)&lt;br&gt;&lt;strong&gt;Fecha:&lt;/strong&gt; 20/04/17&lt;br&gt;&lt;strong&gt;Observaciones:&lt;/strong&gt; nuevo&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; gallego&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-04-20T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_es.jsp#4026">
+<title>Juguemos con las letras</title>
+<link>https://clic.xtec.cat/db/act_es.jsp?id=4026</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/letras.png&quot;&gt;&lt;/div&gt;Es un paquete de actividades con el que las niñas y niños practicarán la lectura de palabras y frases compuestas por las cinco vocales y las consonantes d, j, l, m, n, ñ, p, s y t. Está dividido en cuatro bloques con actividades muy variadas y amenas para niños y niñas de 5, 6 y 7 años.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Anne Schuchardt&lt;br&gt;&lt;strong&gt;Área:&lt;/strong&gt; Lenguas&lt;br&gt;&lt;strong&gt;Niveles:&lt;/strong&gt; Infantil (3-6), Primaria (6-12)&lt;br&gt;&lt;strong&gt;Fecha:&lt;/strong&gt; 20/04/17&lt;br&gt;&lt;strong&gt;Observaciones:&lt;/strong&gt; nuevo&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; español&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-04-20T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_es.jsp#4027">
+<title>Materials</title>
+<link>https://clic.xtec.cat/db/act_es.jsp?id=4027</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/materia6.png&quot;&gt;&lt;/div&gt;Conjunto de actividades para trabajar los contenidos relacionados con el tema de los materiales: topología de los materiales, su origen, sus propiedades, los residuos que generan y el reciclaje.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Elena Jiménez Martín&lt;br&gt;&lt;strong&gt;Área:&lt;/strong&gt; Ciencias experimentales&lt;br&gt;&lt;strong&gt;Nivel:&lt;/strong&gt; Primaria (6-12)&lt;br&gt;&lt;strong&gt;Fecha:&lt;/strong&gt; 20/04/17&lt;br&gt;&lt;strong&gt;Observaciones:&lt;/strong&gt; nuevo&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; catalán&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-04-20T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_es.jsp#4025">
+<title>Ler é divertido</title>
+<link>https://clic.xtec.cat/db/act_es.jsp?id=4025</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/leolua.png&quot;&gt;&lt;/div&gt;Actividades de animación a la lectura basadas en los textos &quot;A que sabe a lúa&quot;, &quot;Os oficios de Xan&quot;, &quot;A cabana na árbore&quot; y &quot;Otto é un rinoceronte&quot;. Se trabajan los personajes y las historias según los capítulos del cuento.
+Nos encontramos con actividades de todo tipo, desde puzzles, asociaciones o sopas de letras, hasta actividades de texto.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Carmen Martínez López&lt;br&gt;&lt;strong&gt;Área:&lt;/strong&gt; Lenguas&lt;br&gt;&lt;strong&gt;Niveles:&lt;/strong&gt; Infantil (3-6), Primaria (6-12)&lt;br&gt;&lt;strong&gt;Fecha:&lt;/strong&gt; 18/04/17&lt;br&gt;&lt;strong&gt;Observaciones:&lt;/strong&gt; nuevo&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; gallego&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-04-18T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_es.jsp#4024">
+<title>La geografia del món</title>
+<link>https://clic.xtec.cat/db/act_es.jsp?id=4024</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/geo_mon.png&quot;&gt;&lt;/div&gt;Paquete de 8 actividades para practicar y conocer aspectos de la geografía del mundo, mediante unidades de relieve, de accidentes geográficos, de ríos i vertientes, de países y sus capitales y banderas, de monumentos naturales, paisajes y construcciones...&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Josep Mª Fortià&lt;br&gt;&lt;strong&gt;Área:&lt;/strong&gt; Ciencias experimentales&lt;br&gt;&lt;strong&gt;Niveles:&lt;/strong&gt; Primaria (6-12), Secundaria (12-16), Bachillerato (16-18)&lt;br&gt;&lt;strong&gt;Fecha:&lt;/strong&gt; 31/03/17&lt;br&gt;&lt;strong&gt;Observaciones:&lt;/strong&gt; nuevo&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; catalán&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-03-31T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_es.jsp#4023">
+<title>Animals everywhere</title>
+<link>https://clic.xtec.cat/db/act_es.jsp?id=4023</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/anim_en.png&quot;&gt;&lt;/div&gt;Conjunto de actividades que pretenden:
+&lt;ul&gt;
+&lt;li&gt;Identificar diferentes animales y las partes del cuerpo de los mismos.
+&lt;li&gt;Describir la apariencia de los animales.
+&lt;li&gt;Identificar los sonidos que emite cada animal.
+&lt;li&gt;Utilizar el verbo &quot;to have&quot;.
+&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Tina Merino&lt;br&gt;&lt;strong&gt;Área:&lt;/strong&gt; Lenguas&lt;br&gt;&lt;strong&gt;Nivel:&lt;/strong&gt; Primaria (6-12)&lt;br&gt;&lt;strong&gt;Fecha:&lt;/strong&gt; 30/03/17&lt;br&gt;&lt;strong&gt;Observaciones:&lt;/strong&gt; nuevo&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; inglés&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-03-30T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_es.jsp#4022">
+<title>Joan Miró - Colors i formes</title>
+<link>https://clic.xtec.cat/db/act_es.jsp?id=4022</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/jmiro2.png&quot;&gt;&lt;/div&gt;Actividades relacionadas con los colores y las formas que predominan en las obras más simbólicas del artista, que podemos encontrar en el museo Joan Miró de Barcelona. También incluye una actividad dirigida a la educación emocional.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Ainara Guil Carmona&lt;br&gt;&lt;strong&gt;Área:&lt;/strong&gt; Diversos&lt;br&gt;&lt;strong&gt;Nivel:&lt;/strong&gt; Infantil (3-6)&lt;br&gt;&lt;strong&gt;Fecha:&lt;/strong&gt; 30/03/17&lt;br&gt;&lt;strong&gt;Observaciones:&lt;/strong&gt; nuevo&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; catalán&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-03-30T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_es.jsp#4020">
+<title>España física</title>
+<link>https://clic.xtec.cat/db/act_es.jsp?id=4020</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/espfisi2.png&quot;&gt;&lt;/div&gt;Actividades sobre el relieve, climas y ríos de España, basados en el texto &quot;Conocimiento del Medio&quot;  - Proyecto Mundo Agua. Editorial Alhucemas-Edelvives de 6º nivel de Primaria&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Antonio González jiménez&lt;br&gt;&lt;strong&gt;Área:&lt;/strong&gt; Ciencias experimentales&lt;br&gt;&lt;strong&gt;Nivel:&lt;/strong&gt; Primaria (6-12)&lt;br&gt;&lt;strong&gt;Fecha:&lt;/strong&gt; 30/03/17&lt;br&gt;&lt;strong&gt;Observaciones:&lt;/strong&gt; nuevo&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; español&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-03-30T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_es.jsp#4014">
+<title>A biblioteca</title>
+<link>https://clic.xtec.cat/db/act_es.jsp?id=4014</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/bibliot.png&quot;&gt;&lt;/div&gt;Conjunto de actividades para comprender como están organizados los libros en una biblioteca según la CDU (Clasificación Decimal Universal).&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Emilio González Acuña&lt;br&gt;&lt;strong&gt;Área:&lt;/strong&gt; Diversos&lt;br&gt;&lt;strong&gt;Nivel:&lt;/strong&gt; Secundaria (12-16)&lt;br&gt;&lt;strong&gt;Fecha:&lt;/strong&gt; 28/03/17&lt;br&gt;&lt;strong&gt;Observaciones:&lt;/strong&gt; nuevo&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; gallego&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-03-28T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_es.jsp#4015">
+<title>Proves de càlcul mental</title>
+<link>https://clic.xtec.cat/db/act_es.jsp?id=4015</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/calc_men.png&quot;&gt;&lt;/div&gt;Es un paquete de actividades destinado a trabajar la rapidez en el cálculo mental de los algoritmos de la suma, la resta, la multiplicación y la división. Cada actividad consta de 60 operaciones que se tienen que realizar en un máximo de 2 minutos y medio. Las operaciones se han extraído y digitalizado de &quot;El Quinzet&quot;.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Jordi Santallúsia Plensa&lt;br&gt;&lt;strong&gt;Área:&lt;/strong&gt; Matemáticas&lt;br&gt;&lt;strong&gt;Nivel:&lt;/strong&gt; Primaria (6-12)&lt;br&gt;&lt;strong&gt;Fecha:&lt;/strong&gt; 28/03/17&lt;br&gt;&lt;strong&gt;Observaciones:&lt;/strong&gt; nuevo&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; catalán&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-03-28T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_es.jsp#4017">
+<title>L'època medieval</title>
+<link>https://clic.xtec.cat/db/act_es.jsp?id=4017</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/ep_mediv.png&quot;&gt;&lt;/div&gt;Proyecto interdisciplinario a partir de un centro de interés: la edad media. Se trabajan diferentes vertientes como la sociedad feudal, las construcciones o los animales más comunes. Está dirigido al ciclo inicial de primaria.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Nerea Nicolás Fernández&lt;br&gt;&lt;strong&gt;Área:&lt;/strong&gt; Ciencias sociales&lt;br&gt;&lt;strong&gt;Nivel:&lt;/strong&gt; Primaria (6-12)&lt;br&gt;&lt;strong&gt;Fecha:&lt;/strong&gt; 28/03/17&lt;br&gt;&lt;strong&gt;Observaciones:&lt;/strong&gt; nuevo&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; catalán&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-03-28T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_es.jsp#4019">
+<title>Animals i animalets</title>
+<link>https://clic.xtec.cat/db/act_es.jsp?id=4019</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/animals8.png&quot;&gt;&lt;/div&gt;Conjunto de actividades para aprender vocabulario y conceptos sobre el mundo animal. Las actividades se dividen en tres bloques, uno por cada curso de infantil. Cada bloque está adaptado a los contenidos que se trabajan en cada nivel, así como el nivel de dificultad. Encontraréis todo tipo de actividades, desde puzzles hasta actividades de texto.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Esther Escribano García&lt;br&gt;&lt;strong&gt;Área:&lt;/strong&gt; Ciencias experimentales&lt;br&gt;&lt;strong&gt;Nivel:&lt;/strong&gt; Infantil (3-6)&lt;br&gt;&lt;strong&gt;Fecha:&lt;/strong&gt; 28/03/17&lt;br&gt;&lt;strong&gt;Observaciones:&lt;/strong&gt; nuevo&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; catalán&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-03-28T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_es.jsp#4018">
+<title>Els éssers vius</title>
+<link>https://clic.xtec.cat/db/act_es.jsp?id=4018</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/es_vius.png&quot;&gt;&lt;/div&gt;Paquete de actividades para trabajar la clasificación de los seres vivos y sus características principales; desde la primera célula hasta la actualidad.&lt;p&gt;&lt;strong&gt;Autor/a:&lt;/strong&gt; Albiol Minguell Roquer&lt;br&gt;&lt;strong&gt;Área:&lt;/strong&gt; Ciencias experimentales&lt;br&gt;&lt;strong&gt;Nivel:&lt;/strong&gt; Bachillerato (16-18)&lt;br&gt;&lt;strong&gt;Fecha:&lt;/strong&gt; 28/03/17&lt;br&gt;&lt;strong&gt;Observaciones:&lt;/strong&gt; nuevo&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; catalán&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-03-28T00:00:00+01:00</dc:date>
+</item>
+
+<item rdf:about="https://clic.xtec.cat/db/news_es.jsp#4016">
+<title>Poema "El cargol"</title>
+<link>https://clic.xtec.cat/db/act_es.jsp?id=4016</link>
+<description>&lt;div id=&quot;thumb&quot;&gt;&lt;img src=&quot;https://clic.xtec.cat/thumbs/cargol5.png&quot;&gt;&lt;/div&gt;Actividades de lectura y escritura para trabajar el poema &quot;El cargol&quot; de Josep Carner.&lt;p&gt;&lt;strong&gt;Autores:&lt;/strong&gt; Anna Parés Martínez, Eva Sáez y Paula Cardiel&lt;br&gt;&lt;strong&gt;Área:&lt;/strong&gt; Lenguas&lt;br&gt;&lt;strong&gt;Nivel:&lt;/strong&gt; Infantil (3-6)&lt;br&gt;&lt;strong&gt;Fecha:&lt;/strong&gt; 28/03/17&lt;br&gt;&lt;strong&gt;Observaciones:&lt;/strong&gt; nuevo&lt;br&gt;&lt;strong&gt;Idioma:&lt;/strong&gt; catalán&lt;br&gt;&lt;/p&gt;</description>
+<dc:date>2017-03-28T00:00:00+01:00</dc:date>
+</item>
+
+</rdf:RDF>

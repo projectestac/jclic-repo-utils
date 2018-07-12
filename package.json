@@ -39,10 +39,12 @@
     "jszip-utils": "0.0.2",
     "mock-browser": "^0.92.14",
     "ncp": "^2.0.0",
+    "node-fetch": "^2.1.2",
     "promise": "^8.0.1",
     "recursive-readdir": "^2.2.2",
     "requirejs": "^2.3.5",
     "sorted-array": "^2.0.2",
+    "xml": "^1.0.1",
     "xml2js": "^0.4.19",
     "xmldom": "^0.1.27"
   },
