@@ -7,19 +7,100 @@
 
 const fetch = require('node-fetch');
 const xml = require('xml');
+const util = require('util');
 const fs = require('fs');
+const path = require('path');
+const { JSDOM } = require('jsdom');
+
+const stat = util.promisify(fs.stat);
+const readFile = util.promisify(fs.readFile);
 
 const langs = ['ca', 'es', 'en'];
-const projectsList = 'http://localhost:8080/projects/projects.json';
-//const projectsList = 'https://clic.xtec.cat/projects/projects.json';
-const repo = 'https://clic.xtec.cat/repo/index.html';
+const dict = {
+  ca: {
+    langName: 'català',
+    title: 'Activitats JClic',
+    subTitle: 'Biblioteca d\'activitats educatives obertes creades amb JClic',
+  },
+  es: {
+    langName: 'español',
+    title: 'Actividades JClic',
+    subTitle: 'Biblioteca de actividades educativas abiertas creadas con JClic',
+  },
+  en: {
+    langName: 'English',
+    title: 'JClic activities',
+    subTitle: 'Library of open educational activities created with JClic',
+  },
+};
+
+const projectsList = 'https://clic.xtec.cat/projects/projects.json';
+const projectsBasePath = '/dades/zonaClic/projects';
+const repoBase = 'https://clic.xtec.cat/repo';
 const xmlHeader = '<?xml version="1.0" encoding="UTF-8"?>';
 
-fetch(projectsList)
-  .then(res => res.json())
-  .then(projects => {
 
+
+/**
+ * Truncates the provided text to the specified `maxlength`, converting
+ * HTML to plain text and adding the ellipsis sign when needed.
+ * @param {string} text - The text to be processed
+ * @param {number=} maxLength - Max length of resulting expression
+ * @param {number=} minTruncLength - Minimum length when truncating
+ * @returns {string} - The truncated text
+ */
+const summarize = (text = '', maxLength = 1024, minTruncLength = 800) => {
+  if (text.indexOf('<') >= 0) {
+    // If the provided text has HTML content, reduce it to plain text.
+    text = /<\w*>/.test(text) ? text : text.replace(/\n/g, '<br>\n');
+    const dom = new JSDOM(`<!DOCTYPE html><body>${text}</body>`);
+    text = dom.window.document.querySelector('body').textContent;
+  }
+  text = text.replace(/[ ][ ][ ]*/g, ' ').replace(/[\n\r][ \n\r][ \n\r]*/g, '\n');
+  if (text.length > maxLength) {
+    text = text.substr(0, maxLength);
+    const p = Math.max(text.lastIndexOf(' '), text.lastIndexOf('.'), text.lastIndexOf(','), text.lastIndexOf('\n'));
+    if (p > minTruncLength)
+      text = `${text.substr(0, p).trim()} …`;
+  }
+  return text;
+}
+
+
+
+// Main process start here:
+console.log(`Loading projects`);
+(
+  projectsBasePath
+    ? readFile(path.join(projectsBasePath, 'projects.json')).then(text => JSON.parse(text))
+    : fetch(projectsList).then(res => res.json())
+)
+  .then(projects => {
+    // GET 'LAST MODIFIED' DATE OF EACH PROJECT
+    console.log('Getting projects data...');
+    return projectsBasePath ?
+      Promise.all(projects.map(prj => {
+        const prjPath = path.join(projectsBasePath, prj.path, 'project.json');
+        return stat(prjPath)
+          .then(stat => {
+            prj.lastModified = new Date(stat.mtime);
+          })
+          .then(() => readFile(prjPath))
+          .then(text => {
+            const fullPrj = JSON.parse(text);
+            prj.description = fullPrj.description || {};
+            return prj;
+          });
+      })) :
+      projects.map(prj => {
+        prj.lastModified = new Date();
+        prj.summary = '';
+        return prj;
+      });
+  })
+  .then(projects => {
     // SITEMAP
+    console.log('Building sitemaps');
     langs.forEach(lang => {
       // Build the data container with its xml schema headers
       let data = {
@@ -37,7 +118,7 @@ fetch(projectsList)
       // Main repo URL for current language
       data.urlset.push({
         url: [
-          { loc: `${repo}?lang=${lang}` },
+          { loc: `${repoBase}/index.html?lang=${lang}` },
           { changefreq: 'daily' },
           { priority: 1 },
         ]
@@ -47,7 +128,7 @@ fetch(projectsList)
         // Push each project data
         data.urlset.push({
           url: [
-            { loc: `${repo}?lang=${lang}&prj=${prj.path}` },
+            { loc: `${repoBase}/index.html?lang=${lang}&prj=${prj.path}` },
             { changefreq: 'monthly' },
             { priority: 0.5 },
           ],
@@ -68,7 +149,8 @@ fetch(projectsList)
     });
 
     // ATOM
-    const uuids = {
+    console.log('Building Atom RSS files');
+    const uuid = {
       ca: 'd38a6836-512d-4de7-871d-504075b84e8d',
       es: 'd26cef1d-dd91-4c89-8cac-d13e813913f0',
       en: 'a60170c8-a010-4cc8-ac36-75cc4786d24e',
@@ -78,12 +160,12 @@ fetch(projectsList)
       let data = {
         feed: [
           { _attr: { 'xmlns': 'http://www.w3.org/2005/Atom' } },
-          { title: `JClic activities (${lang})` },
-          { subtitle: `A subtitle...` },
-          { link: [{ _attr: { href: `https://clic.xtec.cat/repo/index.html?lang=${lang}.xml` } }] },
-          { link: [{ _attr: { href: `https://clic.xtec.cat/repo/feed_${lang}.xml`, rel: 'self' } }] },
-          { id: uuids[lang] },
-          {updated: new Date().toISOString()}
+          { title: dict[lang].title },
+          { subtitle: dict[lang].subTitle },
+          { link: [{ _attr: { href: `${repoBase}/index.html?lang=${lang}`, hreflang: lang } }] },
+          { link: [{ _attr: { href: `${repoBase}/feed_${lang}.xml`, rel: 'self', hreflang: lang } }] },
+          { id: uuid[lang] },
+          { updated: new Date().toISOString() },
         ]
       };
 
@@ -91,10 +173,12 @@ fetch(projectsList)
         // Push each project data
         data.feed.push({
           entry: [
-            // S'ha d'actualitzar!!
-            { loc: `${repo}?lang=${lang}&prj=${prj.path}` },
-            { changefreq: 'monthly' },
-            { priority: 0.5 },
+            { title: prj.title },
+            { link: [{ _attr: { href: `${repoBase}/index.html?lang=${lang}&prj=${prj.path}`, rel: 'alternate', hreflang: lang } }] },
+            { id: `${uuid[lang]}-${prj.path}` },
+            { updated: prj.lastModified.toISOString() },
+            { author: prj.author || '' },
+            { summary: summarize(prj.description[lang]) },
           ],
         });
       });
@@ -107,7 +191,7 @@ fetch(projectsList)
         err => {
           if (err)
             throw err;
-          console.log(`Fitxer "${fileName}" creat amb èxit!`);
+          console.log(`File "${fileName}" created.`);
         }
       );
     });

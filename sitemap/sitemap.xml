@@ -4,11 +4,19 @@
 	xsi:schemaLocation="http://www.google.com/schemas/sitemap/0.84
 	http://www.google.com/schemas/sitemap/0.84/siteindex.xsd">
    <sitemap>
-      <loc>http://clic.xtec.cat/sitemap_files.xml.gz</loc>
-      <lastmod>2015-02-09T16:48:58+00:00</lastmod>
+      <loc>https://clic.xtec.cat/sitemap_files.xml.gz</loc>
+      <lastmod>2018-07-13T12:00:00+00:00</lastmod>
    </sitemap>
    <sitemap>
-      <loc>http://clic.xtec.cat/sitemap_activities.xml.gz</loc>
-      <lastmod>2015-02-09T16:48:58+00:00</lastmod>
+      <loc>https://clic.xtec.cat/atom_activities_ca.xml.gz</loc>
+      <lastmod>2018-07-13T12:00:00+00:00</lastmod>
+   </sitemap>
+   <sitemap>
+      <loc>https://clic.xtec.cat/atom_activities_es.xml.gz</loc>
+      <lastmod>2018-07-13T12:00:00+00:00</lastmod>
+   </sitemap>
+   <sitemap>
+      <loc>https://clic.xtec.cat/atom_activities_en.xml.gz</loc>
+      <lastmod>2018-07-13T12:00:00+00:00</lastmod>
    </sitemap>
 </sitemapindex>
