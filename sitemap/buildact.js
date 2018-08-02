@@ -21,16 +21,19 @@ const dict = {
     langName: 'català',
     title: 'Activitats JClic',
     subTitle: 'Biblioteca d\'activitats educatives obertes creades amb JClic',
+    author: 'Projecte Clic - Xarxa Telemàtica Educativa de Catalunya (XTEC)',
   },
   es: {
     langName: 'español',
     title: 'Actividades JClic',
     subTitle: 'Biblioteca de actividades educativas abiertas creadas con JClic',
+    author: 'Proyecto Clic - Red Telemática Educativa de Cataluña (XTEC)',
   },
   en: {
     langName: 'English',
     title: 'JClic activities',
     subTitle: 'Library of open educational activities created with JClic',
+    author: 'Clic Project - Catalan Educational Telematic Network (XTEC)',
   },
 };
 
@@ -56,7 +59,11 @@ const summarize = (text = '', maxLength = 1024, minTruncLength = 800) => {
     const dom = new JSDOM(`<!DOCTYPE html><body>${text}</body>`);
     text = dom.window.document.querySelector('body').textContent;
   }
-  text = text.replace(/[ ][ ][ ]*/g, ' ').replace(/[\n\r][ \n\r][ \n\r]*/g, '\n');
+  text = text.replace(/&nbsp;/g, ' ')
+    .replace(/&lt;/, '<')
+    .replace(/&gt;/, '>')
+    .replace(/[ ][ ][ ]*/g, ' ')
+    .replace(/[\n\r][ \n\r][ \n\r]*/g, '\n');
   if (text.length > maxLength) {
     text = text.substr(0, maxLength);
     const p = Math.max(text.lastIndexOf(' '), text.lastIndexOf('.'), text.lastIndexOf(','), text.lastIndexOf('\n'));
@@ -68,7 +75,7 @@ const summarize = (text = '', maxLength = 1024, minTruncLength = 800) => {
 
 
 
-// Main process start here:
+// Main process starts here:
 console.log(`Loading projects`);
 (
   projectsBasePath
@@ -150,11 +157,7 @@ console.log(`Loading projects`);
 
     // ATOM
     console.log('Building Atom RSS files');
-    const uuid = {
-      ca: 'd38a6836-512d-4de7-871d-504075b84e8d',
-      es: 'd26cef1d-dd91-4c89-8cac-d13e813913f0',
-      en: 'a60170c8-a010-4cc8-ac36-75cc4786d24e',
-    }
+    const tagBase = 'tag:clic@xtec.cat,2018:projects';
     langs.forEach(lang => {
       // Build the data container with its xml schema headers
       let data = {
@@ -163,24 +166,32 @@ console.log(`Loading projects`);
           { title: dict[lang].title },
           { subtitle: dict[lang].subTitle },
           { link: [{ _attr: { href: `${repoBase}/index.html?lang=${lang}`, hreflang: lang } }] },
-          { link: [{ _attr: { href: `${repoBase}/feed_${lang}.xml`, rel: 'self', hreflang: lang } }] },
-          { id: uuid[lang] },
+          { link: [{ _attr: { href: `${repoBase}/atom_activities_${lang}.xml`, rel: 'self', hreflang: lang } }] },
+          {
+            author: [
+              { name: dict[lang].author },
+              { uri: 'https://clic.xtec.cat/' },
+              { email: 'clic@xtec.cat' },
+            ]
+          },
+          { id: `${tagBase}:${lang}` },
           { updated: new Date().toISOString() },
         ]
       };
 
       projects.forEach(prj => {
         // Push each project data
-        data.feed.push({
-          entry: [
-            { title: prj.title },
-            { link: [{ _attr: { href: `${repoBase}/index.html?lang=${lang}&prj=${prj.path}`, rel: 'alternate', hreflang: lang } }] },
-            { id: `${uuid[lang]}-${prj.path}` },
-            { updated: prj.lastModified.toISOString() },
-            { author: prj.author || '' },
-            { summary: summarize(prj.description[lang]) },
-          ],
-        });
+        const entry = [
+          { title: prj.title },
+          { link: [{ _attr: { href: `${repoBase}/index.html?lang=${lang}&prj=${prj.path}`, rel: 'alternate', hreflang: lang } }] },
+          { id: `${tagBase}:${lang}:${prj.path}` },
+          { updated: prj.lastModified.toISOString() },
+          { summary: summarize(prj.description[lang]) },
+        ];
+        if (prj.author && prj.author.trim())
+          entry.push({ author: [{ name: prj.author.trim() }] });
+
+        data.feed.push({ entry });
       });
 
       // Write the atom XML file for the current language
