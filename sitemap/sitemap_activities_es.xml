@@ -11,12 +11,127 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=horesjoana</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=horesmar</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=horespau</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=closa_ter</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=plasticos</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=setmes2</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=fonb_cat</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=estructures</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=estructuras</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=biodiversitat</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=biodiversidad</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=uni_vius</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=nadal_lsc</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=implicatpau</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=proportzioa</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=pitagorasen</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=sinfmix</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=seresvivos</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=paraules2</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=otra_division</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=multiplicaciones</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=emocion_3</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=domenys</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=brafolclore</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=aljebra</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

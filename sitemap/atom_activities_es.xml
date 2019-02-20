@@ -12,7 +12,7 @@
     <email>clic@xtec.cat</email>
   </author>
   <id>tag:clic@xtec.cat,2018:projects:es</id>
-  <updated>2018-08-02T08:41:26.077Z</updated>
+  <updated>2019-02-20T15:05:20.725Z</updated>
   <entry>
     <title>Art al circ</title>
     <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=artalcirc" rel="alternate" hreflang="es">
@@ -33,11 +33,31 @@ Todos los niveles se pueden realizar con acompañamiento. Recomendamos elegir an
     </author>
   </entry>
   <entry>
+    <title>El clic de les hores amb la Joana Nadal</title>
+    <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=horesjoana" rel="alternate" hreflang="es">
+    </link>
+    <id>tag:clic@xtec.cat,2018:projects:es:horesjoana</id>
+    <updated>2018-09-20T14:16:59.432Z</updated>
+    <summary>Joana Nadal nos conduce por clic mostrándonos cómo gestionamos las horas y el tiempo.
+Puedes elegir entre cinco opciones:
+1. &quot;Problemas&quot;: 6 paquetes de actividades
+2. &quot;Los relojes de ayer&quot;: 3 paquetes de actividades.
+3. &quot;Curiosidades&quot;: 4 paquetes de actividades.
+4. &quot;La hora en el mundo&quot;: 2 paquetes de actividades.
+5. &quot;Sumas y restas&quot;: 3 paquetes de actividades.
+Recomendamos no hacer todas las actividades de golpe y elegir las más adecuadas.
+Este clic es la tercera parte de &quot;El clic de las horas&quot;.
+&quot;El Clic de las horas con Pau Bosch&quot;, (1 parte) y &quot;El clic de las horas con el Mar Horta&quot; (2 parte).</summary>
+    <author>
+      <name>Imma Palahí (Idea, dibuixos i creació), Enric López (Assessorament i veu), Aram López (Música i vídeos (Sumes, restes i sistema sexagesimal), Adriana Beltrán del Río (Correcció), Joana Nadal (Veu)</name>
+    </author>
+  </entry>
+  <entry>
     <title>El clic de les hores amb la Mar Horta</title>
     <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=horesmar" rel="alternate" hreflang="es">
     </link>
     <id>tag:clic@xtec.cat,2018:projects:es:horesmar</id>
-    <updated>2018-05-24T11:18:01.632Z</updated>
+    <updated>2018-09-19T11:00:07.389Z</updated>
     <summary>Mar Horta nos conduce por clic mostrándonos cómo funciona un reloj. Puedes elegir dos opciones: &quot;trabajillos&quot; y &quot;juegos&quot;. Dentro de &quot;trabajillos&quot; encontrarás &quot;conocer&quot; y &quot;reconocer&quot;.
 &quot;Conocer&quot; contiene 12 paquetes de actividades. &quot;Reconocer&quot; contiene 9 paquetes de actividades. &quot;Juegos&quot; contiene 9 paquetes de actividades.
 Recomendado para ordenador y tablet.</summary>
@@ -50,11 +70,296 @@ Recomendado para ordenador y tablet.</summary>
     <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=horespau" rel="alternate" hreflang="es">
     </link>
     <id>tag:clic@xtec.cat,2018:projects:es:horespau</id>
-    <updated>2018-05-14T08:43:29.183Z</updated>
+    <updated>2018-09-19T10:59:38.705Z</updated>
     <summary>El Pau Bosch nos conduce por clic mostrándonos su horario y algunas nociones básicas del reloj y las horas.
 Recomendado para ordenador y tableta.</summary>
     <author>
       <name>Imma Palahí (idea, dibuixos i creació), Pau Bosch (veu), Enric López (creació), Aram López (música), Adriana Beltrán del Rio (correcció)</name>
+    </author>
+  </entry>
+  <entry>
+    <title>La Closa del Ter Vell</title>
+    <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=closa_ter" rel="alternate" hreflang="es">
+    </link>
+    <id>tag:clic@xtec.cat,2018:projects:es:closa_ter</id>
+    <updated>2019-02-06T12:43:54.108Z</updated>
+    <summary>Con estas actividades, pretendemos que los alumnos conozcan de manera amena y divertida este hábitat tan cercano y a la vez tan desconocido.</summary>
+    <author>
+      <name>Otger Fortià Bonvehí, Magda Bonvehí Soler, Hug Fortià Bonvehí</name>
+    </author>
+  </entry>
+  <entry>
+    <title>Plásticos</title>
+    <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=plasticos" rel="alternate" hreflang="es">
+    </link>
+    <id>tag:clic@xtec.cat,2018:projects:es:plasticos</id>
+    <updated>2019-02-06T12:56:15.873Z</updated>
+    <summary>Conjunto de actividades sobre el origen, las propiedades, los tipos, la conformación y el reciclaje de los materiales plásticos.</summary>
+    <author>
+      <name>José Miguel López Jurado (autor)</name>
+    </author>
+  </entry>
+  <entry>
+    <title>Dies de la setmana i mesos de l&apos;any (català - sense sons - lletra de pal)</title>
+    <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=setmes2" rel="alternate" hreflang="es">
+    </link>
+    <id>tag:clic@xtec.cat,2018:projects:es:setmes2</id>
+    <updated>2019-02-06T13:23:29.937Z</updated>
+    <summary>Actividades de educación compensatoria para trabajar los nombres de los días de la semana y los meses del año. Versión en catalán, sin sonidos y en letra de palo.</summary>
+    <author>
+      <name>Ester Castejón i Núria Vallduriola, Ricardo Romero (Editor - Lletra de pal)</name>
+    </author>
+  </entry>
+  <entry>
+    <title>Fonema /B/</title>
+    <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=fonb_cat" rel="alternate" hreflang="es">
+    </link>
+    <id>tag:clic@xtec.cat,2018:projects:es:fonb_cat</id>
+    <updated>2019-02-06T13:20:36.414Z</updated>
+    <summary>En este proyecto se realizan diferentes actividades para afianzar la articulación del fonema /b/ en catalán.</summary>
+    <author>
+      <name>Virginia Aragón Jiménez, Xavier Pujades Pi (Logopeda), Sergio Palao (arasaac.org) (dibuixos)</name>
+    </author>
+  </entry>
+  <entry>
+    <title>Estructures i esforços mecànics</title>
+    <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=estructures" rel="alternate" hreflang="es">
+    </link>
+    <id>tag:clic@xtec.cat,2018:projects:es:estructures</id>
+    <updated>2019-02-06T12:54:51.632Z</updated>
+    <summary>Este proyecto pretende consolidar los siguientes conceptos del área de Tecnología: estructuras, esfuerzos y propiedades de los materiales.</summary>
+    <author>
+      <name>Mª José Lora Romero</name>
+    </author>
+  </entry>
+  <entry>
+    <title>Estructuras</title>
+    <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=estructuras" rel="alternate" hreflang="es">
+    </link>
+    <id>tag:clic@xtec.cat,2018:projects:es:estructuras</id>
+    <updated>2019-02-06T12:44:21.500Z</updated>
+    <summary>Conjunto de actividades para trabajar las clases de estructuras y los diferentes tipos de esfuerzos presentes en ellas. Encontraremos actividades tipo sopa de letras, puzzle, asociación simple, asociación compleja, memoria e identificación de información.</summary>
+    <author>
+      <name>Liliana Jaimes Delgado (autora)</name>
+    </author>
+  </entry>
+  <entry>
+    <title>Biodiversitat</title>
+    <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=biodiversitat" rel="alternate" hreflang="es">
+    </link>
+    <id>tag:clic@xtec.cat,2018:projects:es:biodiversitat</id>
+    <updated>2019-02-06T13:18:48.669Z</updated>
+    <summary>Paquete de actividades complementarias a los recursos del CEEDCV, donde se trata de los conceptos básicos de clasificación y nomenclatura de los seres vivos. Dirigido a la formación básica de personas adultas.</summary>
+    <author>
+      <name>Pedro Miguel Gómez (autor)</name>
+    </author>
+  </entry>
+  <entry>
+    <title>Biodiversidad</title>
+    <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=biodiversidad" rel="alternate" hreflang="es">
+    </link>
+    <id>tag:clic@xtec.cat,2018:projects:es:biodiversidad</id>
+    <updated>2019-02-06T13:18:17.384Z</updated>
+    <summary>Paquete de actividades complementarias a los recursos del CEEDCV, donde se trabajan los conceptos básicos de clasificación y nomenclatura de los seres vivos. Dirigido a la Formación básica de personas Adultas.</summary>
+    <author>
+      <name>Pedro Miguel Gómez (autor)</name>
+    </author>
+  </entry>
+  <entry>
+    <title>Els éssers vius</title>
+    <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=uni_vius" rel="alternate" hreflang="es">
+    </link>
+    <id>tag:clic@xtec.cat,2018:projects:es:uni_vius</id>
+    <updated>2019-02-20T10:36:23.685Z</updated>
+    <summary>Proyecto dirigido a la formación de personas adultas en el graduado de secundaria.
+Trabaja los conceptos de ser vivo y estructura celular.</summary>
+    <author>
+      <name>Pedro Miguel Gómez (autor)</name>
+    </author>
+  </entry>
+  <entry>
+    <title>Nadal en llengua de signes LSC</title>
+    <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=nadal_lsc" rel="alternate" hreflang="es">
+    </link>
+    <id>tag:clic@xtec.cat,2018:projects:es:nadal_lsc</id>
+    <updated>2018-11-14T12:22:50.308Z</updated>
+    <summary>Juegos para conocer y trabajar el vocabulario de navidad con la Lengua de Símbolos Catalana (LSC)</summary>
+    <author>
+      <name>Jose Giménez, Mouad Laouni, Cristina Escolà, Sergio Palao (dibuixos)</name>
+    </author>
+  </entry>
+  <entry>
+    <title>IMPLICA&apos;T + amb la PAU</title>
+    <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=implicatpau" rel="alternate" hreflang="es">
+    </link>
+    <id>tag:clic@xtec.cat,2018:projects:es:implicatpau</id>
+    <updated>2018-11-12T14:57:04.061Z</updated>
+    <summary>Proyecto que desarrolla el Principio 4 de la Carta de la Tierra: DEMOCRACIA, NO-VIOLENCIA y PAZ. Con este proyecto queremos fomentar el conocimiento de estos conceptos mediante actividades alentadoras y funcionales.</summary>
+    <author>
+      <name>Noemí Munné Reig (autora), Montserrat Pons Balcells (autora)</name>
+    </author>
+  </entry>
+  <entry>
+    <title>Zenbakizko proportzionaltasuna eta ehunekoak</title>
+    <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=proportzioa" rel="alternate" hreflang="es">
+    </link>
+    <id>tag:clic@xtec.cat,2018:projects:es:proportzioa</id>
+    <updated>2018-11-14T11:56:19.065Z</updated>
+    <summary>En este proyecto encontraréis los siguientes contenidos:
+1.- Proporcionalidad numérica
+2.- Magnitudes directamente proporcionales (razón, proporción, magnitudes, magnitudes directamente proporcionales)
+3.- Magnitudes inversamente proporcionales
+4.- Porcentajes</summary>
+    <author>
+      <name>Enrique González Campo (egilea/autor), Karmele Olano Goti (euskara-aholkularia/correctora de euskera)</name>
+    </author>
+  </entry>
+  <entry>
+    <title>Pitagorasen Teorema</title>
+    <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=pitagorasen" rel="alternate" hreflang="es">
+    </link>
+    <id>tag:clic@xtec.cat,2018:projects:es:pitagorasen</id>
+    <updated>2018-11-13T15:43:28.445Z</updated>
+    <summary>En este proyecto encontrareis los siguientes contenidos:
+1.- Introducción a la raíz cuadrada
+2.- La raíz cuadrada
+3.- Introducción al teorema de Pitágoras.
+4.- Teorema de Pitágoras
+5.- Problemas</summary>
+    <author>
+      <name>Enrique González Campo (egilea/autor), Karmele Olano Goti (euskara-aholkularia/correctora de euskera)</name>
+    </author>
+  </entry>
+  <entry>
+    <title>Sinfones y sílabas mixtas</title>
+    <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=sinfmix" rel="alternate" hreflang="es">
+    </link>
+    <id>tag:clic@xtec.cat,2018:projects:es:sinfmix</id>
+    <updated>2018-11-14T12:07:59.091Z</updated>
+    <summary>En este proyecto trabajaremos de forma exhaustiva la discriminación de sinfones y sílabas mixtas de forma oral y escrita. Entre las actividades incluidas, destacan:
+- Ejercicios de clasificar entre sinfones /l/ y /r/, entre sílabas mixtas y entre
+sinfones y sílabas mixtas.
+- Puzzles que contienen imágenes con sinfones y sílabas mixtas.
+- Juegos de memoria.
+- Identificación de sinfones y sílabas mixtas.
+- Crucigramas con definiciones e imágenes para adivinar la palabra.
+- Localización de palabras escritas erróneamente en textos y posterior corrección.
+- Completar oraciones con las palabras más adecuadas.
+- Escritura de palabras a partir de imágenes.</summary>
+    <author>
+      <name>Virginia Aragón Jiménez (autora), Sergio Palao (pictogramas)</name>
+    </author>
+  </entry>
+  <entry>
+    <title>Los seres vivos</title>
+    <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=seresvivos" rel="alternate" hreflang="es">
+    </link>
+    <id>tag:clic@xtec.cat,2018:projects:es:seresvivos</id>
+    <updated>2019-02-20T10:37:10.150Z</updated>
+    <summary>Proyecto dirigido a la formación de personas adultas en el graduado de secundaria.
+Se trabaja el concepto de ser vivo y la estructura celular.</summary>
+    <author>
+      <name>Pedro Miguel Gómez (autor)</name>
+    </author>
+  </entry>
+  <entry>
+    <title>Busca la paraula 2</title>
+    <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=paraules2" rel="alternate" hreflang="es">
+    </link>
+    <id>tag:clic@xtec.cat,2018:projects:es:paraules2</id>
+    <updated>2018-11-13T15:25:59.829Z</updated>
+    <summary>Este paquete de actividades es la nueva versión de &quot;Busca la paraula&quot;.
+A partir de una imagen llena de palabras de diferentes colores, tipos de letra y orientación, el alumno tiene que encontrar una palabra en concreto.
+Son 189 palabras secuenciadas en grupos de 10, para facilitar el acceso. Excepto la última actividad que es un puzzle a resolver, con tres niveles de dificultad.</summary>
+    <author>
+      <name>Paco Martínez (Autor)</name>
+    </author>
+  </entry>
+  <entry>
+    <title>La otra división</title>
+    <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=otra_division" rel="alternate" hreflang="es">
+    </link>
+    <id>tag:clic@xtec.cat,2018:projects:es:otra_division</id>
+    <updated>2018-11-13T15:31:43.157Z</updated>
+    <summary>Actualización del grupo de actividades &quot;Divisiones&quot;. Esta actualización contiene actividades para la ejercitación o entrenamiento elemental del algoritmo de la división, y además se le han agregado algunos problemas. El nivel de dificultad está graduado por partes: con resta, sin resta, por un dígito, por dos dígitos...
+Los problemas han sido obtenidos del Programa de Liceo para todos, Nivelación restitutiva de Matemáticas del Ministerio de Educación de Chile.</summary>
+    <author>
+      <name>Héctor Arancibia (autor), Margarita Farias (autora)</name>
+    </author>
+  </entry>
+  <entry>
+    <title>Multiplica multiplicando</title>
+    <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=multiplicaciones" rel="alternate" hreflang="es">
+    </link>
+    <id>tag:clic@xtec.cat,2018:projects:es:multiplicaciones</id>
+    <updated>2018-11-12T15:27:23.585Z</updated>
+    <summary>Conjunto de actividades lúdicas, destinadas a desarrollar habilidades del pensamiento matemático.
+Entre las actividades se plantea la resolución de problemas con situaciones de la vida diaria para que los estudiantes vean en las matemáticas una herramienta necesaria en su quehacer.
+Además encontraréis muchas operaciones para resolver.
+Los problemas fueron extraídos del &quot;Programa Liceo Para Todos&quot; del Ministerio de Educación de Chile.
+Basado en la propuesta &quot;Nivelación restitutiva matemática&quot; del año 2003.
+</summary>
+    <author>
+      <name>Héctor Arancibia Troncoso</name>
+    </author>
+  </entry>
+  <entry>
+    <title>Les emocions i el control emocional</title>
+    <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=emocion_3" rel="alternate" hreflang="es">
+    </link>
+    <id>tag:clic@xtec.cat,2018:projects:es:emocion_3</id>
+    <updated>2018-11-12T13:25:38.254Z</updated>
+    <summary>Este conjunto de actividades está destinado a la educación emocional.
+Trabajaremos las emocionas básicas o primarias (miedo, tristeza, enfado y alegría) y las secundarias.
+Mediante situaciones hipotéticas, identificaremos qué emoción sentiríamos, trabajando así la empatía.
+También encontraremos actividades sobre el autocontrol para regular las emociones.
+Por último, descubriremos un conjunto de vídeos para relajarnos y meditar, para ayudar a calmarnos y tomar mejores decisiones.
+Recursos utilizados: Pixabay, Giphy, Youtube y Banco de sonidos del MEC.</summary>
+    <author>
+      <name>Núria Tortajada Viñes</name>
+    </author>
+  </entry>
+  <entry>
+    <title>Sant Jaume dels Domenys</title>
+    <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=domenys" rel="alternate" hreflang="es">
+    </link>
+    <id>tag:clic@xtec.cat,2018:projects:es:domenys</id>
+    <updated>2018-11-14T11:03:17.621Z</updated>
+    <summary>Este JClic pretende que los niños de segundo y tercer ciclo de primaria conozcan el pueblo de Sant Jaume dels Domenys trabajando la lectoescritura, las matemáticas, la orientación espacio-temporal, etc.
+Objetivos:
+- Conocer la ubicación del municipio en la comarca del Baix Penedès
+- Conocer las entidades y asociaciones del pueblo más significativas para los niños
+- Conocer los núcleos y urbanizaciones que forman el municipio de Sant Jaume dels Domenys
+- Conocer los servicios que ofrece el pueblo
+- Conocer la bandera y el escudo
+- Conocer los edificios históricos y los puntos de interés turístico de la población</summary>
+    <author>
+      <name>Marina Cañellas Turdiu</name>
+    </author>
+  </entry>
+  <entry>
+    <title>Personagens do folclore Brasileiro</title>
+    <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=brafolclore" rel="alternate" hreflang="es">
+    </link>
+    <id>tag:clic@xtec.cat,2018:projects:es:brafolclore</id>
+    <updated>2018-11-12T12:58:37.989Z</updated>
+    <summary>Actividades de lectura y escritura sobre temas y personajes del folklore brasileño.</summary>
+    <author>
+      <name>Patrícia Domiciano</name>
+    </author>
+  </entry>
+  <entry>
+    <title>Aljebra</title>
+    <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=aljebra" rel="alternate" hreflang="es">
+    </link>
+    <id>tag:clic@xtec.cat,2018:projects:es:aljebra</id>
+    <updated>2018-11-07T08:34:10.028Z</updated>
+    <summary>En este proyecto encontraréis actividades con el siguiente contenido:
+- Introducción al Álgebra
+- Expresiones algebraicas (valor numérico de una expresión algebraica, lenguaje algebraico)
+- Monomios (definición, elementos, monomios semejantes y opuestos, operaciones)</summary>
+    <author>
+      <name>Enrique González Campo (egilea/autor), Karmele Olano Goti (euskara-aholkularia/correctora de euskera)</name>
     </author>
   </entry>
   <entry>
@@ -161,7 +466,7 @@ Recomendado para ordenador y tableta.</summary>
     <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=benvinguts" rel="alternate" hreflang="es">
     </link>
     <id>tag:clic@xtec.cat,2018:projects:es:benvinguts</id>
-    <updated>2018-05-11T13:27:24.577Z</updated>
+    <updated>2018-09-20T14:29:43.209Z</updated>
     <summary>Proyecto para empezar a desarrollar el espíritu crítico de solidaridad, valores, respeto y cuidado en las niñas y niños, de P-5 y Ciclo Inicial de primária. 
 Actividades incluidas dentro del proyecto Implica&apos;t+ con la Carta de la Tierra (UNESCO).</summary>
     <author>
@@ -169,11 +474,11 @@ Actividades incluidas dentro del proyecto Implica&apos;t+ con la Carta de la Tie
     </author>
   </entry>
   <entry>
-    <title>Descriving people and animals</title>
+    <title>Describing people and animals</title>
     <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=desc_ang" rel="alternate" hreflang="es">
     </link>
     <id>tag:clic@xtec.cat,2018:projects:es:desc_ang</id>
-    <updated>2018-03-29T09:32:14.889Z</updated>
+    <updated>2018-10-30T11:07:38.229Z</updated>
     <summary>Este paquete de actividades permitirá al alumno describir en inglés, tanto físicamente como de carácter, personas y animales. También se ofrecen ejemplos de diferentes construcciones gramaticales, como la diferenciación de los pronombres &quot;he&quot;, &quot;she&quot;, &quot;it&quot; y el verbo &quot;to have got&quot; en tercera persona. Se trabaja contenido de medio a la vez que se introduce mucho vocabulario de manera visual. El alumno aprenderá a clasificar los animales entre:
 - mamíferos
 - reptiles
@@ -259,7 +564,7 @@ También encontraremos una explicación del proyecto para entender el funcionami
     <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=fruiver" rel="alternate" hreflang="es">
     </link>
     <id>tag:clic@xtec.cat,2018:projects:es:fruiver</id>
-    <updated>2018-03-29T13:30:26.706Z</updated>
+    <updated>2019-02-12T09:27:40.427Z</updated>
     <summary>En este proyecto encontramos actividades para trabajar el reconocimiento de las frutas y las verduras, mediante la memoria visual y la asociación auditiva.</summary>
     <author>
       <name>Júlia Jiménez Quer</name>
@@ -1116,7 +1421,7 @@ Juegos
     <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=fonb_log" rel="alternate" hreflang="es">
     </link>
     <id>tag:clic@xtec.cat,2018:projects:es:fonb_log</id>
-    <updated>2018-03-15T16:01:28.695Z</updated>
+    <updated>2019-02-06T13:21:18.647Z</updated>
     <summary>En este proyecto se realizan diferentes actividades para afianzar la articulación del fonema /b/.</summary>
     <author>
       <name>Virginia Aragón Jiménez - Dibuixos: Sergio Palao (ARASAAC.org)</name>
@@ -1149,7 +1454,7 @@ Juegos
     <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=verb_4" rel="alternate" hreflang="es">
     </link>
     <id>tag:clic@xtec.cat,2018:projects:es:verb_4</id>
-    <updated>2018-03-15T16:01:28.695Z</updated>
+    <updated>2018-09-20T15:02:31.380Z</updated>
     <summary>Actividades relacionadas con los tiempos verbales: 
 Simples y compuestos 
 Pretéritos, presentes y futuros 
@@ -1253,7 +1558,7 @@ Formas de los tiempos verbales
     <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=paraule5" rel="alternate" hreflang="es">
     </link>
     <id>tag:clic@xtec.cat,2018:projects:es:paraule5</id>
-    <updated>2018-03-15T16:01:28.695Z</updated>
+    <updated>2018-11-13T15:26:56.290Z</updated>
     <summary>A partir de una imagen llena de palabras escritas en diferentes colores, con orientación horizontal, vertical o inclinada y con diferentes tipos de Fuente, cada actividad se le pide que busque una palabra y haga clic sobre ella.
 Este paquete está pensado para alumnos que están en un nivel inicial de lectura y practican la lectura de una manera lúdica, ya que lo toman como un juego.
 Para alumnos que tienen una especial dificultad para mejorar la lectura o que están estancados, los motiva mucho estas actividades ya que leen con una finalidad práctica.
@@ -2800,7 +3105,7 @@ Deportes
     <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=xocol" rel="alternate" hreflang="es">
     </link>
     <id>tag:clic@xtec.cat,2018:projects:es:xocol</id>
-    <updated>2018-03-15T16:01:28.699Z</updated>
+    <updated>2018-09-20T15:08:43.775Z</updated>
     <summary>Este proyecto de actividades es un pequeño homenaje al &quot;plafón de la chocolatada&quot;, creado hace 300 años para decorar los jardines del palacio del Marqués de Alella. Este plafón cerámico, muy bien conservado, nos habla de las costumbres y la vida cotidiana del siglo XVIII. 
 El proyecto se organiza en dos grandes bloques: 
 La mirada 
@@ -6268,7 +6573,7 @@ Aparato excretor
     <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=p_nadal" rel="alternate" hreflang="es">
     </link>
     <id>tag:clic@xtec.cat,2018:projects:es:p_nadal</id>
-    <updated>2018-03-15T16:01:28.695Z</updated>
+    <updated>2018-09-20T14:44:55.034Z</updated>
     <summary>Proyecto de actividades JClic para conocer las flores y las plantas típicas de Navidad, trabajar el vocabulario y algunas de sus características: 
 acebo 
 abeto 
@@ -11191,7 +11496,7 @@ Tres dimensiones (cuerpos con volumen)
     <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=colorain" rel="alternate" hreflang="es">
     </link>
     <id>tag:clic@xtec.cat,2018:projects:es:colorain</id>
-    <updated>2018-03-15T16:01:28.695Z</updated>
+    <updated>2018-09-20T15:15:25.878Z</updated>
     <summary>Proyecto de actividades para educación infantil basado en un cuento de Gerran Hortigüela Bodi llamado 
 Coloraines de la Editorial La Galera. El cuento está dividido en dos partes, una primera parte para la lectura del cuento y la segunda par la realización de actividades relacionadas con la historia.</summary>
     <author>
@@ -12477,7 +12782,7 @@ En este proyecto se trabaja vocabulario sobre la clase: armario, silla, bolígra
     <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=pronunci" rel="alternate" hreflang="es">
     </link>
     <id>tag:clic@xtec.cat,2018:projects:es:pronunci</id>
-    <updated>2018-03-15T16:01:28.695Z</updated>
+    <updated>2018-09-20T15:10:27.425Z</updated>
     <summary>El proyecto PRONUNCIEM desarrolla una serie de actividades didácticas interactivas dirigidas a introducir al alumnado recién llegado de ESO en la pronunciación básica del catalán central. Las actividades interactivas trabajan tanto la identificación perceptiva de los sonidos como su producción por el hecho de otorgar la misma relevancia a los suprasegmentos del catalán (acento, entonación) como a los segmentos concretos (vocales, consonantes) para que el alumnado pueda identificar contextualmente los elementos que caracterizan la lengua catalana. 
 Las actividades se presentan en dos bloques diferenciados: 
 El primer bloque trabaja ELEMENTOS SUPRASEGMENTALES, como el acento y la entonación. 
@@ -13131,7 +13436,7 @@ A lo largo de las actividades se encuentran audiciones de unos 20 segundos de du
     <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=opera3" rel="alternate" hreflang="es">
     </link>
     <id>tag:clic@xtec.cat,2018:projects:es:opera3</id>
-    <updated>2018-03-15T16:01:28.695Z</updated>
+    <updated>2018-09-20T15:07:26.014Z</updated>
     <summary>Proyecto de actividades sobre la ópera. El proyecto consta de dos partes, una dedicada a la historia de la ópera y la otra a la realización de actividades. 
 A lo largo de las actividades se encuentran audiciones de unos 20 segundos de duración y se destacan básicamente cinco autores: Monteverdi, Mozart, Verdi, Wagner i Puccini.</summary>
     <author>
@@ -21605,7 +21910,7 @@ Medida: grado sexagesimal, minuto, segundo. Transportador de ángulos.
     <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=demo_pt" rel="alternate" hreflang="es">
     </link>
     <id>tag:clic@xtec.cat,2018:projects:es:demo_pt</id>
-    <updated>2018-03-15T16:01:28.695Z</updated>
+    <updated>2018-09-20T14:32:29.147Z</updated>
     <summary>El único objetivo de este proyecto es mostrar los diversos tipos de actividades y las principales funcionalidades de JClic.El proyecto está organizado en dos partes: en la primera hay una secuencia para cada uno de los tipos básicos de actividades (puzzles, asociaciones, sopas de letras, crucigramas y actividades de texto) y en la segunda se hace un repaso de las principales novedades de JClic respecto a la anterior versión, Clic 3.0.</summary>
     <author>
       <name>Rui Fernandes, Francesc Busquets</name>
@@ -21889,7 +22194,7 @@ De cada ciudad se trabaja un texto descriptivo y fotografías de los lugares, ed
     <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=divis2dv" rel="alternate" hreflang="es">
     </link>
     <id>tag:clic@xtec.cat,2018:projects:es:divis2dv</id>
-    <updated>2018-03-15T16:01:29.835Z</updated>
+    <updated>2018-11-13T15:32:41.054Z</updated>
     <summary>Conjunto de actividades para la ejercitación o entrenamiento elemental del algoritmo de la división (tal cual se hace en CHILE), el nivel de dificultad esta graduado en partes: con resta, sin resta, por un dígito, por dos dígitos...
 Adaptado para discapacidad visual baja visión.</summary>
     <author>
@@ -21901,7 +22206,7 @@ Adaptado para discapacidad visual baja visión.</summary>
     <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=divisio2" rel="alternate" hreflang="es">
     </link>
     <id>tag:clic@xtec.cat,2018:projects:es:divisio2</id>
-    <updated>2018-03-15T16:01:29.839Z</updated>
+    <updated>2018-11-13T15:32:04.558Z</updated>
     <summary>Conjunto de actividades para la ejercitación o entrenamiento elemental del algoritmo de la división (tal cual se hace en CHILE), el nivel de dificultad esta graduado en partes: con resta, sin resta, por un dígito, por dos dígitos...
 Adaptado para discapacidad visual baja visión.</summary>
     <author>
@@ -33666,7 +33971,7 @@ Hay dos versiones del paquete: una con sonidos, que permite escuchar todos los t
     <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=diame_cl" rel="alternate" hreflang="es">
     </link>
     <id>tag:clic@xtec.cat,2018:projects:es:diame_cl</id>
-    <updated>2018-03-15T16:01:28.755Z</updated>
+    <updated>2019-02-06T13:24:24.578Z</updated>
     <summary>Actividades de educación compensatoria para trabajar los nombres de los días de la semana y los meses del año.</summary>
     <author>
       <name>Ester Castejón i Núria Vallduriola</name>
@@ -33677,7 +33982,7 @@ Hay dos versiones del paquete: una con sonidos, que permite escuchar todos los t
     <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=diames" rel="alternate" hreflang="es">
     </link>
     <id>tag:clic@xtec.cat,2018:projects:es:diames</id>
-    <updated>2018-03-15T16:01:28.755Z</updated>
+    <updated>2019-02-06T13:23:56.145Z</updated>
     <summary>Actividades de educación compensatoria para trabajar los nombres de los días de la semana y los meses del año.</summary>
     <author>
       <name>Ester Castejón i Núria Vallduriola</name>
@@ -33688,7 +33993,7 @@ Hay dos versiones del paquete: una con sonidos, que permite escuchar todos los t
     <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=setmes" rel="alternate" hreflang="es">
     </link>
     <id>tag:clic@xtec.cat,2018:projects:es:setmes</id>
-    <updated>2018-03-15T16:01:29.455Z</updated>
+    <updated>2019-02-06T13:22:36.540Z</updated>
     <summary>Actividades de educación compensatoria para trabajar los nombres de los días de la semana y los meses del año.</summary>
     <author>
       <name>Ester Castejón i Núria Vallduriola</name>
@@ -33996,7 +34301,7 @@ La opción Actividades propone distintos ejercicios sobre las letras trabajadas.
     <link href="https://clic.xtec.cat/repo/index.html?lang=es&amp;prj=antonims" rel="alternate" hreflang="es">
     </link>
     <id>tag:clic@xtec.cat,2018:projects:es:antonims</id>
-    <updated>2018-03-15T16:01:29.835Z</updated>
+    <updated>2018-09-19T11:25:23.155Z</updated>
     <summary>Paquete de actividades de lengua divididas en seis niveles. Trabaja los antónimos y presenta, para cada nivel, las opciones: Conocerlos, Jugar (por palabras, por frases y letra a letra) y Escribir.</summary>
     <author>
       <name>Agustí Pàmies Freixas i M. Cinta Vilà Pàmies</name>
