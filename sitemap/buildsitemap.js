@@ -17,7 +17,7 @@ const langs = ['ca', 'es', 'en'];
 // Delete a folder and all its content, recursively
 const deleteFolder = folderPath => {
   if (fs.existsSync(folderPath)) {
-    fs.readdirSync(folderPath).forEach((file, index) => {
+    fs.readdirSync(folderPath).forEach((file) => {
       const curPath = path.resolve(folderPath, file);
       if (fs.lstatSync(curPath).isDirectory())
         deleteFolder(curPath);

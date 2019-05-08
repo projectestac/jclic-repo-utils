@@ -75,7 +75,7 @@ const summarize = (text = '', maxLength = 1024, minTruncLength = 800) => {
 
 
 
-// Main process starts here:
+// Main process start here:
 console.log(`Loading projects`);
 (
   projectsBasePath
@@ -157,7 +157,7 @@ console.log(`Loading projects`);
 
     // ATOM
     console.log('Building Atom RSS files');
-    const tagBase = 'tag:clic@xtec.cat,2018:projects';
+    const tagBase = 'tag:clic@xtec.cat,2019:projects';
     langs.forEach(lang => {
       // Build the data container with its xml schema headers
       let data = {

@@ -6,6 +6,51 @@
     <priority>1</priority>
   </url>
   <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=ca&amp;prj=escamates</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=ca&amp;prj=mulleres</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=ca&amp;prj=probable</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=ca&amp;prj=abelles</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=ca&amp;prj=mercat</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=ca&amp;prj=somriu</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=ca&amp;prj=leo_lee</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=ca&amp;prj=jocnum2</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=ca&amp;prj=ali_log_ca</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://clic.xtec.cat/repo/index.html?lang=ca&amp;prj=artalcirc</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -22,6 +67,11 @@
   </url>
   <url>
     <loc>https://clic.xtec.cat/repo/index.html?lang=ca&amp;prj=horespau</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=ca&amp;prj=tablas4</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
