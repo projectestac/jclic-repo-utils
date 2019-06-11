@@ -42,6 +42,7 @@
     "mock-browser": "^0.92.14",
     "ncp": "^2.0.0",
     "node-fetch": "^2.6.0",
+    "nwmatcher": "^1.4.4",
     "promise": "^8.0.3",
     "recursive-readdir": "^2.2.2",
     "requirejs": "^2.3.6",
