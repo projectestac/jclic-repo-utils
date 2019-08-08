@@ -6,6 +6,96 @@
     <priority>1</priority>
   </url>
   <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=en&amp;prj=manyopla</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=en&amp;prj=pconsonants</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=en&amp;prj=eviariaca</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=en&amp;prj=formbib</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=en&amp;prj=colors3</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=en&amp;prj=fonema_g</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=en&amp;prj=maschinen</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=en&amp;prj=sumaenteros</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=en&amp;prj=solarterr</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=en&amp;prj=propiper</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=en&amp;prj=femfrases</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=en&amp;prj=elmar</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=en&amp;prj=cern</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=en&amp;prj=alfabet3</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=en&amp;prj=artalcirc</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=en&amp;prj=horesjoana</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=en&amp;prj=horesmar</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://clic.xtec.cat/repo/index.html?lang=en&amp;prj=horespau</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://clic.xtec.cat/repo/index.html?lang=en&amp;prj=escamates</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -47,26 +137,6 @@
   </url>
   <url>
     <loc>https://clic.xtec.cat/repo/index.html?lang=en&amp;prj=ali_log_ca</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://clic.xtec.cat/repo/index.html?lang=en&amp;prj=artalcirc</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://clic.xtec.cat/repo/index.html?lang=en&amp;prj=horesjoana</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://clic.xtec.cat/repo/index.html?lang=en&amp;prj=horesmar</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://clic.xtec.cat/repo/index.html?lang=en&amp;prj=horespau</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
