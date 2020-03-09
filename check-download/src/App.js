@@ -36,7 +36,7 @@ function App() {
   const classes = useStyles();
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState(null);
-  const [path, setPath] = useState('artalcirc');
+  const [path, setPath] = useState('');
   const [project, setProject] = useState(null);
 
   const start = () => {
@@ -50,7 +50,7 @@ function App() {
         .then(checkFetchResponse)
         .then(response => response.json())
         .then(prj => setProject(prj))
-        .catch(err => setErr(err))
+        .catch(err => setErr(err.toString()))
         .finally(() => setLoading(false));
     }
 
@@ -62,17 +62,17 @@ function App() {
         Comprovació de la velocitat de descàrrega dels projectes de la zonaClic
         </Typography>
       <div className={classes.inputDiv}>
-        <TextField className={classes.textField} label="Path del projecte a descarregar" value={path} onChange={ev => setPath(ev.target.value)} />
-        <Button variant="contained" color="primary" onClick={start}>Inicia</Button>
+        <TextField className={classes.textField} label="Path del projecte a descarregar:" value={path} onChange={ev => setPath(ev.target.value)} disabled={loading || project !== null} />
+        <Button variant="contained" color="primary" onClick={start} disabled={loading || project !== null}>Inicia</Button>
       </div>
       {loading &&
         <CircularProgress size={40} />
       }
       {err &&
-        <Typography variant="body1" className={classes.error}>{`${err.name}: ${err.message}`}</Typography>
+        <Typography variant="body1" className={classes.error}>{`${err}`}</Typography>
       }
       {project &&
-        <ProjectInfo {...{ path, project }} />
+        <ProjectInfo {...{ base, path, project }} />
       }
     </Container>
   );
