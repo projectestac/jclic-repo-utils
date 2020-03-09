@@ -18,6 +18,7 @@ const useStyles = makeStyles(theme => ({
   },
   inputDiv: {
     display: 'flex',
+    alignItems: 'center',
     '& > *': {
       margin: theme.spacing(1),
     }
