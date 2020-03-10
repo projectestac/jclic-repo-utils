@@ -8,7 +8,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import filesize from 'filesize';
-import { checkFetchResponse } from './utils';
+import ThreadInfo from './ThreadInfo';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -55,6 +55,12 @@ const useStyles = makeStyles(theme => ({
       minWidth: '120px',
     },
   },
+  threadInfo: {
+    display: 'flex',
+    alignItems: 'center',
+    span: theme.spacing(1),
+    border: '1px solid gray',
+  }
 }));
 
 const numf = new Intl.NumberFormat().format;
@@ -64,71 +70,47 @@ function ProjectInfo({ base, path, project }) {
   const classes = useStyles();
   const { title, activities, totalSize, files } = project;
   const [status, setStatus] = useState('idle');
-  const [threads, setThreads] = useState(3);
-  const [fPending, setFPending] = useState(files);
-  let filesPending = files;
+  const [numThreads, setNumThreads] = useState(3);
+  const [threads, setThreads] = useState([]);
   let filesAvailable = [...files];
-  const [fLoaded, setFLoaded] = useState(0);
-  let filesLoaded = 0;
-  const [tSize, setTSize] = useState(0);
-  let totalFileSize = 0;
-  const [totalTime, setTotalTime] = useState(0);
+  let byteCount = [];
+  let startTime = 0;
+  let updateInfo = null;
   const [err, setErr] = useState(null);
-  let totalTimeCounter = null;
+
+  const [totalTime, setTotalTime] = useState(0);
+  const [totalBytes, setTotalBytes] = useState(0);
+  const [filesPending, setFilesPending] = useState(files.length);
 
   async function startDownloading() {
-    const start = Date.now();
+    startTime = Date.now();
     setErr(null);
-    setTotalTime(0);
-    setTSize(0);
-    setFLoaded(0);
-    setFPending(files);
     setStatus('downloading');
-    totalTimeCounter = window.setInterval(() => setTotalTime(Date.now() - start), 1000);
-
-    for (let n = 0; n < threads; n++)
-      downloadThread();
-
-  };
-
-  async function downloadThread() {
-    while (filesAvailable.length > 0)
-      await readFile(filesAvailable.shift());
-  }
-
-  async function readFile(file) {
-    const start = Date.now();
-    filesAvailable = filesAvailable.filter(f => f !== file);
-    try {
-      const response = await fetch(`${base}/${path}/${file}`);
-      checkFetchResponse(response);
-      const blob = await (response.blob());
-      const t = Date.now() - start;
-      console.log(`File ${file} (${blob.type}) successfully loaded in ${t} ms`);
-      filesPending = filesPending.filter(f => f !== file);
-      filesLoaded = filesLoaded + 1;
-      if (filesLoaded >= files.length) {
-        console.log('All files loaded!')
+    updateInfo = window.setInterval(() => {
+      setTotalTime(Date.now() - startTime);
+      setTotalBytes(byteCount.reduce((total, value) => total + value, 0));
+      setFilesPending(filesAvailable.length);
+      if (filesPending < 1) {
+        window.clearInterval(updateInfo);
+        updateInfo = null;
         setStatus('finished');
-        if (totalTimeCounter) {
-          window.clearTimeout(totalTimeCounter);
-          totalTimeCounter = null;
-        }
-        setTotalTime(t);
       }
-      totalFileSize = totalFileSize + blob.size;
-      console.log(filesLoaded, totalFileSize);
-      setFLoaded(filesLoaded);
-      setTSize(totalFileSize);
-      setFPending(filesPending);
-      return true;
-    } catch (err) {
-      const msg = `Error loading "${file}": ${err.toString()}`;
-      console.err(msg);
-      setErr(msg);
-      return false;
+    }, 1000);
+    const th = [];
+    const thRefs = [];
+    for (let n = 0; n < numThreads; n++) {
+      const ref = React.createRef();
+      const ti = <ThreadInfo ref={ref} {...{ base, path, filesAvailable, byteCount, setErr }} />;
+      thRefs.push(ref);
+      th.push(ti);
     }
-  }
+    setThreads(th);
+
+    // Start threads
+    window.setTimeout(
+      () => thRefs.forEach(ref => ref.current.startThread())
+      , 1000);
+  };
 
   return (
     <Paper className={classes.root}>
@@ -162,7 +144,7 @@ function ProjectInfo({ base, path, project }) {
       <div className={classes.startPanel}>
         <FormControl variant="outlined">
           <InputLabel>Connexions</InputLabel>
-          <Select value={threads} onChange={ev => setThreads(ev.target.value)} labelWidth={120} title="Nombre màxim de connexions simulànies">
+          <Select value={numThreads} onChange={ev => setNumThreads(ev.target.value)} labelWidth={120} title="Nombre màxim de connexions simulànies">
             {[1, 2, 3, 4, 5, 6].map(n => <MenuItem key={n} value={n}>{n}</MenuItem>)}
           </Select>
         </FormControl>
@@ -179,16 +161,25 @@ function ProjectInfo({ base, path, project }) {
             </tr>
             <tr>
               <td>Fitxers descarregats:</td>
-              <td>{numf(fLoaded)} / {numf(files.length)}</td>
+              <td>{numf(filesPending)} / {numf(files.length)}</td>
             </tr>
             <tr>
               <td>Total descarregat:</td>
-              <td>{filesize(tSize)}</td>
+              <td>{filesize(totalBytes)}</td>
             </tr>
             <tr>
               <td>Temps total:</td>
               <td>{numf(totalTime)} ms</td>
             </tr>
+            {status === 'downloading' &&
+              threads.map((thread, n) => (
+                <tr key={n}>
+                  <td>Fil {n}:</td>
+                  <td>{thread}</td>
+                </tr>
+              ))
+            }
+            {/*
             <tr>
               <td>Fitxers pendents:</td>
               <td>
@@ -197,6 +188,7 @@ function ProjectInfo({ base, path, project }) {
                 </ul>
               </td>
             </tr>
+            */}
           </tbody>
         </table>
         {err &&

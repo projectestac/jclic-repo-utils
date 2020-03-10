@@ -8,7 +8,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import ProjectInfo from './ProjectInfo';
 import { checkFetchResponse } from './utils';
 
-const base = 'https://clic.xtec.cat/projects';
+const DEFAULT_BASE = 'https://clic.xtec.cat/projects';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   textField: {
-    width: '30rem',
+    minWidth: '20rem',
   },
   error: {
     color: 'red',
@@ -35,6 +35,7 @@ const useStyles = makeStyles(theme => ({
 function App() {
 
   const classes = useStyles();
+  const [base, setBase] = useState(DEFAULT_BASE);
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState(null);
   const [path, setPath] = useState('');
@@ -63,6 +64,7 @@ function App() {
         Comprovació de la velocitat de descàrrega dels projectes de la zonaClic
         </Typography>
       <div className={classes.inputDiv}>
+        <TextField className={classes.textField} label="URL de base:" value={base} onChange={ev => setBase(ev.target.value.replace(/\/+$/, ''))} disabled={loading || project !== null} />
         <TextField className={classes.textField} label="Path del projecte a descarregar:" value={path} onChange={ev => setPath(ev.target.value)} disabled={loading || project !== null} />
         <Button variant="contained" color="primary" onClick={start} disabled={loading || project !== null}>Inicia</Button>
       </div>
