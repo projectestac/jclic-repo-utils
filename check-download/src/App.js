@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
@@ -10,31 +9,8 @@ import { checkFetchResponse } from './utils';
 
 const DEFAULT_BASE = 'https://clic.xtec.cat/projects';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(2),
-    },
-  },
-  inputDiv: {
-    display: 'flex',
-    alignItems: 'center',
-    '& > *': {
-      margin: theme.spacing(1),
-    }
-  },
-  textField: {
-    minWidth: '20rem',
-  },
-  error: {
-    color: 'red',
-  }
-
-}));
-
 function App() {
 
-  const classes = useStyles();
   const [base, setBase] = useState(DEFAULT_BASE);
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState(null);
@@ -59,20 +35,20 @@ function App() {
   }
 
   return (
-    <Container maxWidth="lg" className={classes.root}>
-      <Typography variant="h4" component="h1" gutterBottom>
+    <Container maxWidth="lg" className="root">
+      <Typography variant="h4" component="h1" gutterBottom className="title">
         Comprovació de la velocitat de descàrrega dels projectes de la zonaClic
-        </Typography>
-      <div className={classes.inputDiv}>
-        <TextField className={classes.textField} label="URL de base:" value={base} onChange={ev => setBase(ev.target.value.replace(/\/+$/, ''))} disabled={loading || project !== null} />
-        <TextField className={classes.textField} label="Path del projecte a descarregar:" value={path} onChange={ev => setPath(ev.target.value)} disabled={loading || project !== null} />
+      </Typography>
+      <div className="inputDiv">
+        <TextField className="textField" label="URL de base:" value={base} onChange={ev => setBase(ev.target.value.replace(/\/+$/, ''))} disabled={loading || project !== null} />
+        <TextField className="textField" label="Path del projecte a descarregar:" value={path} onChange={ev => setPath(ev.target.value)} disabled={loading || project !== null} />
         <Button variant="contained" color="primary" onClick={start} disabled={loading || project !== null}>Inicia</Button>
       </div>
       {loading &&
         <CircularProgress size={40} />
       }
       {err &&
-        <Typography variant="body1" className={classes.error}>{`${err}`}</Typography>
+        <Typography variant="body1" className="error">{`${err}`}</Typography>
       }
       {project &&
         <ProjectInfo {...{ base, path, project }} />

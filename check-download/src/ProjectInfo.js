@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useState, useEffect } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -10,112 +9,83 @@ import MenuItem from '@material-ui/core/MenuItem';
 import filesize from 'filesize';
 import ThreadInfo from './ThreadInfo';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    padding: theme.spacing(1),
-    '& > *': {
-      margin: theme.spacing(2),
-    },
-  },
-  dataCard: {
-    borderCollapse: 'collapse',
-    minWidth: '80%',
-    marginTop: '1.5rem',
-    marginBottom: '1.5rem',
-    "& td": {
-      border: 'none',
-      borderBottom: '1px solid lightgray',
-      borderTop: '1px solid lightgray',
-      paddingLeft: 0,
-    },
-    "& td:first-child": {
-      width: '12rem',
-      fontWeight: 'bold',
-      paddingRight: '4pt',
-      verticalAlign: 'top',
-    },
-  },
-  controlPanel: {
-  },
-  error: {
-    color: theme.palette.error.main,
-    fontWeight: 'bold',
-  },
-  fileList: {
-    fontFamily: 'mono',
-    fontSize: '0.75rem',
-    padding: 0,
-    listStyleType: 'none',
-  },
-  startPanel: {
-    display: 'flex',
-    alignItems: 'center',
-    "& > *": {
-      margin: theme.spacing(1),
-      minWidth: '120px',
-    },
-  },
-  threadInfo: {
-    display: 'flex',
-    alignItems: 'center',
-    span: theme.spacing(1),
-    border: '1px solid gray',
-  }
-}));
-
 const numf = new Intl.NumberFormat().format;
+
+const STATUS = {
+  idle: 'en espera',
+  downloading: 'descarregant',
+  success: 'finalitzat',
+  error: 'error',
+};
 
 function ProjectInfo({ base, path, project }) {
 
-  const classes = useStyles();
   const { title, activities, totalSize, files } = project;
-  const [status, setStatus] = useState('idle');
-  const [numThreads, setNumThreads] = useState(3);
-  const [threads, setThreads] = useState([]);
   let filesAvailable = [...files];
-  let byteCount = [];
-  let startTime = 0;
-  let updateInfo = null;
+  let totalDownloaded = 0;
+  let filesDone = 0;
+  let status = STATUS.idle;
+  const [statusText, setStatusText] = useState(status);
+  const [threadRefs, setThreadRefs] = useState([]);
+  const [threadObjs, setThreadObjs] = useState([]);
   const [err, setErr] = useState(null);
-
   const [totalTime, setTotalTime] = useState(0);
-  const [totalBytes, setTotalBytes] = useState(0);
-  const [filesPending, setFilesPending] = useState(files.length);
+  const [totalBytes, setTotalBytes] = useState(totalDownloaded);
+  const [filesDownloaded, setFilesDownloaded] = useState(0);
+
+  const setStatus = (text) => {
+    status = text;
+    setStatusText(status);
+  }
+
+  const setFilesDone = (num) => {
+    filesDone = num;
+    setFilesDownloaded(num);
+  }
 
   async function startDownloading() {
-    startTime = Date.now();
+    const startTime = Date.now();
     setErr(null);
-    setStatus('downloading');
-    updateInfo = window.setInterval(() => {
-      setTotalTime(Date.now() - startTime);
-      setTotalBytes(byteCount.reduce((total, value) => total + value, 0));
-      setFilesPending(filesAvailable.length);
-      if (filesPending < 1) {
-        window.clearInterval(updateInfo);
-        updateInfo = null;
-        setStatus('finished');
-      }
+    setStatus(STATUS.downloading);
+    setFilesDone(0);
+    let timeUpdater = window.setInterval(() => {
+      console.log(status)
+      if (status !== STATUS.downloading) {
+        window.clearInterval(timeUpdater);
+        timeUpdater = 0;
+      } else
+        setTotalTime(Date.now() - startTime);
     }, 1000);
-    const th = [];
-    const thRefs = [];
-    for (let n = 0; n < numThreads; n++) {
-      const ref = React.createRef();
-      const ti = <ThreadInfo ref={ref} {...{ base, path, filesAvailable, byteCount, setErr }} />;
-      thRefs.push(ref);
-      th.push(ti);
-    }
-    setThreads(th);
 
-    // Start threads
-    window.setTimeout(
-      () => thRefs.forEach(ref => ref.current.startThread())
-      , 1000);
+    threadRefs.forEach(ref => {
+      if (ref.current)
+        ref.current.startThread();
+    });
   };
 
+  const fileDownloaded = (bytesDownloaded) => {
+    totalDownloaded += bytesDownloaded;
+    setTotalBytes(totalDownloaded);
+    setFilesDone(++filesDone);
+    if (filesDone >= files.length)
+      setStatus(STATUS.success);
+  }
+
+  const setNumThreads = (n) => {
+    const tr = Array(n).fill().map((_, k) => threadRefs[k] || React.createRef());
+    setThreadRefs(tr);
+    setThreadObjs(Array(n).fill().map((_, k) => <ThreadInfo key={k} num={k} ref={tr[k]} {...{ base, path, filesAvailable, fileDownloaded, setErr }} />))
+  }
+
+  useEffect(() => {
+    if (threadRefs.length < 1)
+      setNumThreads(3);
+  });
+
   return (
-    <Paper className={classes.root}>
+    <Paper className="projectInfo">
       <Typography variant="h5" component="h2">Activitat "{title}"</Typography>
-      <table className={classes['dataCard']}>
+      <table className="dataCard">
         <tbody>
           <tr>
             <td>Path:</td>
@@ -141,58 +111,60 @@ function ProjectInfo({ base, path, project }) {
           }
         </tbody>
       </table>
-      <div className={classes.startPanel}>
-        <FormControl variant="outlined">
-          <InputLabel>Connexions</InputLabel>
-          <Select value={numThreads} onChange={ev => setNumThreads(ev.target.value)} labelWidth={120} title="Nombre màxim de connexions simulànies">
+      <div className="startPanel">
+        <FormControl margin="dense" variant="outlined">
+          <InputLabel>Connexions:</InputLabel>
+          <Select
+            value={threadRefs.length}
+            onChange={ev => setNumThreads(ev.target.value)}
+            labelWidth={120}
+            title="Nombre màxim de connexions simulànies"
+            disabled={statusText !== STATUS.idle}
+          >
             {[1, 2, 3, 4, 5, 6].map(n => <MenuItem key={n} value={n}>{n}</MenuItem>)}
           </Select>
         </FormControl>
-        <Button variant="contained" color="primary" onClick={startDownloading} disabled={status !== 'idle'}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={startDownloading}
+          disabled={statusText !== STATUS.idle}
+        >
           Inicia la descàrrega
       </Button>
       </div>
-      <div className={classes.controlPanel}>
-        <table className={classes['dataCard']}>
+      <div className="controlPanel">
+        <table className="dataCard">
           <tbody>
             <tr>
               <td>Estat:</td>
-              <td>{status}</td>
+              <td>{statusText}</td>
+              <td></td>
+              <td></td>
             </tr>
             <tr>
               <td>Fitxers descarregats:</td>
-              <td>{numf(filesPending)} / {numf(files.length)}</td>
+              <td>{numf(filesDownloaded)} / {numf(files.length)}</td>
+              <td></td>
+              <td></td>
             </tr>
             <tr>
               <td>Total descarregat:</td>
               <td>{filesize(totalBytes)}</td>
+              <td></td>
+              <td></td>
             </tr>
             <tr>
               <td>Temps total:</td>
               <td>{numf(totalTime)} ms</td>
+              <td></td>
+              <td></td>
             </tr>
-            {status === 'downloading' &&
-              threads.map((thread, n) => (
-                <tr key={n}>
-                  <td>Fil {n}:</td>
-                  <td>{thread}</td>
-                </tr>
-              ))
-            }
-            {/*
-            <tr>
-              <td>Fitxers pendents:</td>
-              <td>
-                <ul className={classes.fileList}>
-                  {fPending.map((f, n) => <li key={n}>{f}</li>)}
-                </ul>
-              </td>
-            </tr>
-            */}
+            {threadObjs}
           </tbody>
         </table>
         {err &&
-          <p className={classes.error}>{err}</p>
+          <p className="error">{err}</p>
         }
       </div>
     </Paper>
