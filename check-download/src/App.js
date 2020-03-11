@@ -18,8 +18,9 @@ function App() {
   const [project, setProject] = useState(null);
 
   const start = () => {
-    if (path.length < 1)
+    if (path.length < 1){
       setErr('Error: heu d\'indicar un path!');
+    }
     else {
       setErr(null);
       setProject(null);

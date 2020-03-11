@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -18,44 +19,57 @@ const STATUS = {
   error: 'error',
 };
 
+let status = STATUS.idle;
+let filesAvailable = [];
+let totalDownloaded = 0;
+let fileCount = 0;
+let startTime = Date.now();
+let data=[{ time: 0, files: 0, bytes: 0 }];
+
 function ProjectInfo({ base, path, project }) {
 
   const { title, activities, totalSize, files } = project;
-  let filesAvailable = [...files];
-  let totalDownloaded = 0;
-  let filesDone = 0;
-  let status = STATUS.idle;
+
   const [statusText, setStatusText] = useState(status);
   const [threadRefs, setThreadRefs] = useState([]);
   const [threadObjs, setThreadObjs] = useState([]);
   const [err, setErr] = useState(null);
   const [totalTime, setTotalTime] = useState(0);
   const [totalBytes, setTotalBytes] = useState(totalDownloaded);
-  const [filesDownloaded, setFilesDownloaded] = useState(0);
+  const [filesDone, setFilesDone] = useState(0);
+  const [chartData, setChartData] = useState(data);
+
+  if (!filesAvailable || !filesAvailable.length)
+    filesAvailable = [...files];
 
   const setStatus = (text) => {
     status = text;
     setStatusText(status);
   }
 
-  const setFilesDone = (num) => {
-    filesDone = num;
-    setFilesDownloaded(num);
+  const setError = err => {
+    if (err)
+      setStatus(STATUS.error);
+    setErr(err);
+  }
+
+  const updateFileCount = (num) => {
+    fileCount = num;
+    setFilesDone(num);
   }
 
   async function startDownloading() {
-    const startTime = Date.now();
-    setErr(null);
+    startTime = Date.now();
+    setError(null);
     setStatus(STATUS.downloading);
-    setFilesDone(0);
+    updateFileCount(0);
     let timeUpdater = window.setInterval(() => {
-      console.log(status)
       if (status !== STATUS.downloading) {
         window.clearInterval(timeUpdater);
         timeUpdater = 0;
       } else
         setTotalTime(Date.now() - startTime);
-    }, 1000);
+    }, 500);
 
     threadRefs.forEach(ref => {
       if (ref.current)
@@ -66,15 +80,17 @@ function ProjectInfo({ base, path, project }) {
   const fileDownloaded = (bytesDownloaded) => {
     totalDownloaded += bytesDownloaded;
     setTotalBytes(totalDownloaded);
-    setFilesDone(++filesDone);
-    if (filesDone >= files.length)
+    updateFileCount(++fileCount);
+    data = [...data, { time: Date.now() - startTime, bytes: totalDownloaded, files: fileCount }]
+    setChartData(data);
+    if (fileCount >= files.length)
       setStatus(STATUS.success);
   }
 
   const setNumThreads = (n) => {
     const tr = Array(n).fill().map((_, k) => threadRefs[k] || React.createRef());
     setThreadRefs(tr);
-    setThreadObjs(Array(n).fill().map((_, k) => <ThreadInfo key={k} num={k} ref={tr[k]} {...{ base, path, filesAvailable, fileDownloaded, setErr }} />))
+    setThreadObjs(Array(n).fill().map((_, k) => <ThreadInfo key={k} num={k} ref={tr[k]} {...{ base, path, filesAvailable, fileDownloaded, setError }} />))
   }
 
   useEffect(() => {
@@ -144,7 +160,7 @@ function ProjectInfo({ base, path, project }) {
             </tr>
             <tr>
               <td>Fitxers descarregats:</td>
-              <td>{numf(filesDownloaded)} / {numf(files.length)}</td>
+              <td>{numf(filesDone)} / {numf(files.length)}</td>
               <td></td>
               <td></td>
             </tr>
@@ -167,6 +183,19 @@ function ProjectInfo({ base, path, project }) {
           <p className="error">{err}</p>
         }
       </div>
+      <LineChart className="chart" width={400} height={200} data={chartData}>
+        <Line type="monotone" dataKey="bytes" stroke="#00ff00" />
+        <CartesianGrid stroke="#ccc" />
+        <XAxis dataKey="bytes" />
+        <YAxis />
+      </LineChart>
+      <LineChart className="chart" width={400} height={200} data={chartData}>
+        <Line type="monotone" dataKey="files" stroke="#0000ff" />
+        <CartesianGrid stroke="#ccc" />
+        <XAxis dataKey="files" />
+        <YAxis />
+      </LineChart>
+
     </Paper>
   );
 }

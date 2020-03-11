@@ -7,27 +7,31 @@ const numf = new Intl.NumberFormat().format;
 const WARN_DELAY = 3000;
 const ERR_DELAY = 6000;
 
+let fileList = null;
+
 class ThreadInfo extends React.Component {
 
   constructor(props) {
     super(props);
-    const { num, base, path, filesAvailable, fileDownloaded, setErr } = props;
+    const { num, base, path, filesAvailable, fileDownloaded, setError } = props;
     this.state = {
-      name: `Procés #${num + 1}`,
+      name: `Connexió #${num + 1}`,
       num,
       file: null,
       timeWaiting: 0,
       base,
       path,
-      filesAvailable,
       fileDownloaded,
       localByteCount: 0,
-      setErr,
+      setError,
     };
+
+    if (!fileList)
+      fileList = filesAvailable;
 
     this.readFile = async function (file) {
       const startTime = Date.now();
-      const { base, path, fileDownloaded, localByteCount, setErr } = this.state;
+      const { base, path, fileDownloaded, localByteCount, setError } = this.state;
       let result = false;
       try {
         const response = await fetch(`${base}/${path}/${file}`);
@@ -41,24 +45,23 @@ class ThreadInfo extends React.Component {
       } catch (err) {
         const msg = `Error loading "${file}": ${err.toString()}`;
         console.log(msg);
-        setErr(msg);
+        setError(msg);
       }
       return result;
     };
 
     this.startThread = async function () {
       let start = Date.now();
-      const { filesAvailable } = this.state;
 
       const timeUpdater = window.setInterval(() => {
         this.setState({ ...this.state, timeWaiting: Date.now() - start });
-      }, 1000);
+      }, 500);
 
-      while (filesAvailable.length > 0) {
+      while (fileList.length > 0) {
         start = Date.now();
-        const file = filesAvailable.shift();
+        const file = fileList.shift();
         this.setState({ ...this.state, file, timeWaiting: 0 });
-        console.log(`Loading ${file}`)
+        console.log(`Loading ${file} - ${fileList.length} files are still available`)
         await this.readFile(file);
       }
 
@@ -72,7 +75,7 @@ class ThreadInfo extends React.Component {
     const { name, num, file, timeWaiting, localByteCount } = this.state;
     return (
       <tr key={num}>
-        <td>{name}</td>
+        <td>{`${name}:`}</td>
         <td style={{ color: timeWaiting > ERR_DELAY ? 'red' : timeWaiting > WARN_DELAY ? 'orange' : 'green' }}>{file}</td>
         <td>{`${numf(timeWaiting)} ms`}</td>
         <td>{filesize(localByteCount)}</td>
