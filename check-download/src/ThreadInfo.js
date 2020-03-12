@@ -7,45 +7,42 @@ const numf = new Intl.NumberFormat().format;
 const WARN_DELAY = 3000;
 const ERR_DELAY = 6000;
 
-let fileList = null;
-
 class ThreadInfo extends React.Component {
 
   constructor(props) {
     super(props);
-    const { num, base, path, filesAvailable, fileDownloaded, setError } = props;
+    const { num, base, path, fileList, fileDownloaded, setError } = props;
     this.state = {
-      name: `Connexió #${num + 1}`,
-      num,
       file: null,
       timeWaiting: 0,
-      base,
-      path,
-      fileDownloaded,
       localByteCount: 0,
-      setError,
+      localFileCount: 0,
     };
 
-    if (!fileList)
-      fileList = filesAvailable;
+    this.fileList = fileList;
+    this.fileDownloaded = fileDownloaded;
+    this.setError = setError;
+    this.num = num;
+    this.base = base;
+    this.path = path;
 
     this.readFile = async function (file) {
       const startTime = Date.now();
-      const { base, path, fileDownloaded, localByteCount, setError } = this.state;
+      const { localByteCount, localFileCount } = this.state;
       let result = false;
       try {
-        const response = await fetch(`${base}/${path}/${file}`);
+        const response = await fetch(`${this.base}/${this.path}/${file}`);
         checkFetchResponse(response);
         const blob = await (response.blob());
         const t = Date.now() - startTime;
         console.log(`File ${file} (${blob.type}) successfully loaded in ${t} ms`);
-        fileDownloaded(blob.size || 0);
-        this.setState({ ...this.state, localByteCount: localByteCount + blob.size });
+        this.fileDownloaded(blob.size || 0);
+        this.setState({ ...this.state, localFileCount: localFileCount + 1, localByteCount: localByteCount + blob.size });
         result = true;
       } catch (err) {
         const msg = `Error loading "${file}": ${err.toString()}`;
         console.log(msg);
-        setError(msg);
+        this.setError(msg);
       }
       return result;
     };
@@ -57,11 +54,11 @@ class ThreadInfo extends React.Component {
         this.setState({ ...this.state, timeWaiting: Date.now() - start });
       }, 500);
 
-      while (fileList.length > 0) {
+      while (this.fileList.length > 0) {
         start = Date.now();
-        const file = fileList.shift();
+        const file = this.fileList.shift();
         this.setState({ ...this.state, file, timeWaiting: 0 });
-        console.log(`Loading ${file} - ${fileList.length} files are still available`)
+        console.log(`Loading ${file} - ${this.fileList.length} files are still available`)
         await this.readFile(file);
       }
 
@@ -72,13 +69,13 @@ class ThreadInfo extends React.Component {
   }
 
   render() {
-    const { name, num, file, timeWaiting, localByteCount } = this.state;
+    const { file, timeWaiting, localByteCount, localFileCount } = this.state;
     return (
-      <tr key={num}>
-        <td>{`${name}:`}</td>
+      <tr key={this.num}>
+        <td>{`Connexió #${this.num + 1}:`}</td>
         <td style={{ color: timeWaiting > ERR_DELAY ? 'red' : timeWaiting > WARN_DELAY ? 'orange' : 'green' }}>{file}</td>
-        <td>{`${numf(timeWaiting)} ms`}</td>
-        <td>{filesize(localByteCount)}</td>
+        <td>{(timeWaiting && `${numf(timeWaiting)} ms`) || (localFileCount && `${numf(localFileCount)} fitxers`) || ''}</td>
+        <td>{(localByteCount && filesize(localByteCount)) || ''}</td>
       </tr>
     );
   }

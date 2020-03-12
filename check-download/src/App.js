@@ -16,19 +16,24 @@ function App() {
   const [err, setErr] = useState(null);
   const [path, setPath] = useState('');
   const [project, setProject] = useState(null);
+  const [initialTime, setInitialTime] = useState(0);
 
   const start = () => {
-    if (path.length < 1){
+    if (path.length < 1) {
       setErr('Error: heu d\'indicar un path!');
     }
     else {
       setErr(null);
       setProject(null);
       setLoading(true);
+      const startTime = Date.now();
       fetch(`${base}/${path}/project.json`)
         .then(checkFetchResponse)
         .then(response => response.json())
-        .then(prj => setProject(prj))
+        .then(prj => {
+          setInitialTime(Date.now() - startTime);
+          setProject(prj);
+        })
         .catch(err => setErr(err.toString()))
         .finally(() => setLoading(false));
     }
@@ -52,7 +57,7 @@ function App() {
         <Typography variant="body1" className="error">{`${err}`}</Typography>
       }
       {project &&
-        <ProjectInfo {...{ base, path, project }} />
+        <ProjectInfo {...{ base, path, project, initialTime }} />
       }
     </Container>
   );

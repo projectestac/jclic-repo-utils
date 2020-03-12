@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
+import { LineChart, Line, Label, CartesianGrid, XAxis, YAxis, Legend } from 'recharts';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -20,13 +20,13 @@ const STATUS = {
 };
 
 let status = STATUS.idle;
-let filesAvailable = [];
+let fileList = [];
 let totalDownloaded = 0;
 let fileCount = 0;
 let startTime = Date.now();
-let data=[{ time: 0, files: 0, bytes: 0 }];
+let data = [{ time: 0, files: 0, bytes: 0 }];
 
-function ProjectInfo({ base, path, project }) {
+function ProjectInfo({ base, path, project, initialTime }) {
 
   const { title, activities, totalSize, files } = project;
 
@@ -39,8 +39,8 @@ function ProjectInfo({ base, path, project }) {
   const [filesDone, setFilesDone] = useState(0);
   const [chartData, setChartData] = useState(data);
 
-  if (!filesAvailable || !filesAvailable.length)
-    filesAvailable = [...files];
+  if (!fileList || !fileList.length)
+    fileList = [...files];
 
   const setStatus = (text) => {
     status = text;
@@ -81,7 +81,7 @@ function ProjectInfo({ base, path, project }) {
     totalDownloaded += bytesDownloaded;
     setTotalBytes(totalDownloaded);
     updateFileCount(++fileCount);
-    data = [...data, { time: Date.now() - startTime, bytes: totalDownloaded, files: fileCount }]
+    data = [...data, { time: Math.round((Date.now() - startTime) / 100) / 10, bytes: Math.round(totalDownloaded / 1024), files: fileCount }]
     setChartData(data);
     if (fileCount >= files.length)
       setStatus(STATUS.success);
@@ -90,7 +90,7 @@ function ProjectInfo({ base, path, project }) {
   const setNumThreads = (n) => {
     const tr = Array(n).fill().map((_, k) => threadRefs[k] || React.createRef());
     setThreadRefs(tr);
-    setThreadObjs(Array(n).fill().map((_, k) => <ThreadInfo key={k} num={k} ref={tr[k]} {...{ base, path, filesAvailable, fileDownloaded, setError }} />))
+    setThreadObjs(Array(n).fill().map((_, k) => <ThreadInfo key={k} num={k} ref={tr[k]} {...{ base, path, fileList, fileDownloaded, setError }} />))
   }
 
   useEffect(() => {
@@ -106,6 +106,10 @@ function ProjectInfo({ base, path, project }) {
           <tr>
             <td>Path:</td>
             <td>{path}</td>
+          </tr>
+          <tr>
+            <td>Temps de càrrega inicial:</td>
+            <td>{`${numf(initialTime)} ms`}</td>
           </tr>
           {activities &&
             <tr>
@@ -183,16 +187,22 @@ function ProjectInfo({ base, path, project }) {
           <p className="error">{err}</p>
         }
       </div>
-      <LineChart className="chart" width={400} height={200} data={chartData}>
-        <Line type="monotone" dataKey="bytes" stroke="#00ff00" />
+      <LineChart className="chart" width={500} height={200} data={chartData} margin={{ right: 80 }}>
+        <Legend verticalAlign="top" margin={{ bottom: 30 }} />
+        <Line name="KBytes" type="monotone" dataKey="bytes" stroke="#00ff00" dot={false} />
         <CartesianGrid stroke="#ccc" />
-        <XAxis dataKey="bytes" />
+        <XAxis dataKey="time">
+          <Label position="right" offset={20}>segons</Label>
+        </XAxis>
         <YAxis />
       </LineChart>
-      <LineChart className="chart" width={400} height={200} data={chartData}>
-        <Line type="monotone" dataKey="files" stroke="#0000ff" />
+      <LineChart className="chart" width={500} height={200} data={chartData} margin={{ right: 80 }}>
+        <Legend verticalAlign="top" margin={{ bottom: 30 }} />
+        <Line name="Fitxers" type="monotone" dataKey="files" stroke="#0000ff" dot={false} />
         <CartesianGrid stroke="#ccc" />
-        <XAxis dataKey="files" />
+        <XAxis dataKey="time" >
+          <Label position="right" offset={20}>segons</Label>
+        </XAxis>
         <YAxis />
       </LineChart>
 
