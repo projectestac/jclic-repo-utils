@@ -204,18 +204,18 @@ function ProjectInfo({ base, path, project, initialTime }) {
       </div>
       <LineChart className="chart" width={500} height={200} data={chartData} margin={{ right: 80 }}>
         <Legend verticalAlign="top" margin={{ bottom: 30 }} />
-        <Line name="KBytes" type="monotone" dataKey="bytes" stroke="#00ff00" dot={false} />
+        <Line name="KBytes" type="monotone" dataKey="bytes" stroke="#00ff00" dot={false} isAnimationActive={false} />
         <CartesianGrid stroke="#ccc" />
-        <XAxis dataKey="time">
+        <XAxis dataKey="time" type="number">
           <Label position="right" offset={20}>segons</Label>
         </XAxis>
         <YAxis />
       </LineChart>
       <LineChart className="chart" width={500} height={200} data={chartData} margin={{ right: 80 }}>
         <Legend verticalAlign="top" margin={{ bottom: 30 }} />
-        <Line name="Fitxers" type="monotone" dataKey="files" stroke="#0000ff" dot={false} />
+        <Line name="Fitxers" type="monotone" dataKey="files" stroke="#0000ff" dot={false} isAnimationActive={false} />
         <CartesianGrid stroke="#ccc" />
-        <XAxis dataKey="time" >
+        <XAxis dataKey="time" type="number">
           <Label position="right" offset={20}>segons</Label>
         </XAxis>
         <YAxis />
