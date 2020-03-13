@@ -1,6 +1,7 @@
 {
   "name": "check-download",
   "version": "0.1.0",
+  "homepage": "/utils/checkspeed",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.9.5",

@@ -7,7 +7,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import ProjectInfo from './ProjectInfo';
 import { checkFetchResponse } from './utils';
 
-const DEFAULT_BASE = 'https://clic.xtec.cat/projects';
+export const DEFAULT_BASE = 'https://clic.xtec.cat/projects';
 
 function App() {
 

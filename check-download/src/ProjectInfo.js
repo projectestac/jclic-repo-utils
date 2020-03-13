@@ -9,8 +9,9 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import filesize from 'filesize';
 import ThreadInfo from './ThreadInfo';
+import { DEFAULT_BASE } from './App';
 
-const numf = new Intl.NumberFormat().format;
+const DEFAULT_THREADS = 6;
 
 const STATUS = {
   idle: 'en espera',
@@ -18,6 +19,8 @@ const STATUS = {
   success: 'finalitzat',
   error: 'error',
 };
+
+const numf = new Intl.NumberFormat().format;
 
 let status = STATUS.idle;
 let fileList = [];
@@ -95,7 +98,7 @@ function ProjectInfo({ base, path, project, initialTime }) {
 
   useEffect(() => {
     if (threadRefs.length < 1)
-      setNumThreads(3);
+      setNumThreads(DEFAULT_THREADS);
   });
 
   return (
@@ -105,7 +108,13 @@ function ProjectInfo({ base, path, project, initialTime }) {
         <tbody>
           <tr>
             <td>Path:</td>
-            <td>{path}</td>
+            <td>
+              {
+                base === DEFAULT_BASE
+                  ? <a href={`https://clic.xtec.cat/repo/?prj=${path}`} target="_blank" rel="noopener noreferrer">{path}</a>
+                  : `${base}/${path}`
+              }
+            </td>
           </tr>
           <tr>
             <td>Temps de càrrega inicial:</td>
@@ -177,6 +186,12 @@ function ProjectInfo({ base, path, project, initialTime }) {
             <tr>
               <td>Temps total:</td>
               <td>{numf(totalTime)} ms</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Taxa de transferència:</td>
+              <td><strong>{totalTime > 0 ? `${filesize(totalBytes / (totalTime / 1000))}/s` : ''}</strong></td>
               <td></td>
               <td></td>
             </tr>

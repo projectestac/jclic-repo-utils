@@ -74,7 +74,7 @@ class ThreadInfo extends React.Component {
       <tr key={this.num}>
         <td>{`Connexió #${this.num + 1}:`}</td>
         <td style={{ color: timeWaiting > ERR_DELAY ? 'red' : timeWaiting > WARN_DELAY ? 'orange' : 'green' }}>{file}</td>
-        <td>{(timeWaiting && `${numf(timeWaiting)} ms`) || (localFileCount && `${numf(localFileCount)} fitxers`) || ''}</td>
+        <td>{(file && `${numf(timeWaiting)} ms`) || (localFileCount && `${numf(localFileCount)} fitxers`) || ''}</td>
         <td>{(localByteCount && filesize(localByteCount)) || ''}</td>
       </tr>
     );
