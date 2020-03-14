@@ -34,9 +34,9 @@ class ThreadInfo extends React.Component {
         const response = await fetch(`${this.base}/${this.path}/${file}`);
         checkFetchResponse(response);
         const blob = await (response.blob());
-        const t = Date.now() - startTime;
-        console.log(`File ${file} (${blob.type}) successfully loaded in ${t} ms`);
-        this.fileDownloaded(blob.size || 0);
+        const time = Date.now() - startTime;
+        console.log(`File ${file} (${blob.type}) successfully loaded in ${time} ms`);
+        this.fileDownloaded(file, blob.size || 0, time);
         this.setState({ ...this.state, localFileCount: localFileCount + 1, localByteCount: localByteCount + blob.size });
         result = true;
       } catch (err) {

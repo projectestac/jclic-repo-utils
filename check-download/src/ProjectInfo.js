@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { LineChart, Line, Label, CartesianGrid, XAxis, YAxis, Legend } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Legend } from 'recharts';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -11,7 +11,9 @@ import filesize from 'filesize';
 import ThreadInfo from './ThreadInfo';
 import { DEFAULT_BASE } from './App';
 
+const MAX_THREADS = 6;
 const DEFAULT_THREADS = 6;
+const STALLED_TIME = 20000;
 
 const STATUS = {
   idle: 'en espera',
@@ -26,6 +28,7 @@ let status = STATUS.idle;
 let fileList = [];
 let totalDownloaded = 0;
 let fileCount = 0;
+let stalledFiles = 0;
 let startTime = Date.now();
 let data = [{ time: 0, files: 0, bytes: 0 }];
 
@@ -40,6 +43,7 @@ function ProjectInfo({ base, path, project, initialTime }) {
   const [totalTime, setTotalTime] = useState(0);
   const [totalBytes, setTotalBytes] = useState(totalDownloaded);
   const [filesDone, setFilesDone] = useState(0);
+  const [filesStalled, setFilesStalled] = useState(0);
   const [chartData, setChartData] = useState(data);
 
   if (!fileList || !fileList.length)
@@ -80,11 +84,18 @@ function ProjectInfo({ base, path, project, initialTime }) {
     });
   };
 
-  const fileDownloaded = (bytesDownloaded) => {
+  const fileDownloaded = (file, bytesDownloaded, timeSpend) => {
     totalDownloaded += bytesDownloaded;
     setTotalBytes(totalDownloaded);
     updateFileCount(++fileCount);
-    data = [...data, { time: Math.round((Date.now() - startTime) / 100) / 10, bytes: Math.round(totalDownloaded / 1024), files: fileCount }]
+    const time = Math.round((Date.now() - startTime) / 100) / 10;
+    const kBytes = Math.round(totalDownloaded / 1024);
+    if (timeSpend >= STALLED_TIME) {
+      console.log(`Stalled file: ${file} (${timeSpend}")`);
+      stalledFiles++;
+      setFilesStalled(stalledFiles);
+    }
+    data = [...data, { time, kBytes, files: fileCount }]
     setChartData(data);
     if (fileCount >= files.length)
       setStatus(STATUS.success);
@@ -116,8 +127,8 @@ function ProjectInfo({ base, path, project, initialTime }) {
               }
             </td>
           </tr>
-          <tr>
-            <td>Temps de càrrega inicial:</td>
+          <tr className={initialTime >= STALLED_TIME ? 'red' : ''}>
+            <td>Càrrega inicial:</td>
             <td>{`${numf(initialTime)} ms`}</td>
           </tr>
           {activities &&
@@ -144,13 +155,13 @@ function ProjectInfo({ base, path, project, initialTime }) {
         <FormControl margin="dense" variant="outlined">
           <InputLabel>Connexions:</InputLabel>
           <Select
-            value={threadRefs.length}
+            value={threadRefs.length || DEFAULT_THREADS}
             onChange={ev => setNumThreads(ev.target.value)}
             labelWidth={120}
             title="Nombre màxim de connexions simulànies"
             disabled={statusText !== STATUS.idle}
           >
-            {[1, 2, 3, 4, 5, 6].map(n => <MenuItem key={n} value={n}>{n}</MenuItem>)}
+            {Array(MAX_THREADS).fill().map((_v, n) => <MenuItem key={n} value={n + 1}>{n + 1}</MenuItem>)}
           </Select>
         </FormControl>
         <Button
@@ -195,6 +206,12 @@ function ProjectInfo({ base, path, project, initialTime }) {
               <td></td>
               <td></td>
             </tr>
+            <tr className={filesStalled > 0 ? 'red' : ''}>
+              <td>{`Aturades > ${STALLED_TIME / 1000}":`}</td>
+              <td>{filesStalled}</td>
+              <td></td>
+              <td></td>
+            </tr>
             {threadObjs}
           </tbody>
         </table>
@@ -202,22 +219,18 @@ function ProjectInfo({ base, path, project, initialTime }) {
           <p className="error">{err}</p>
         }
       </div>
-      <LineChart className="chart" width={500} height={200} data={chartData} margin={{ right: 80 }}>
+      <LineChart className="chart" width={500} height={200} data={chartData} >
         <Legend verticalAlign="top" margin={{ bottom: 30 }} />
-        <Line name="KBytes" type="monotone" dataKey="bytes" stroke="#00ff00" dot={false} isAnimationActive={false} />
-        <CartesianGrid stroke="#ccc" />
-        <XAxis dataKey="time" type="number">
-          <Label position="right" offset={20}>segons</Label>
-        </XAxis>
+        <Line name="KBytes" type="monotone" dataKey="kBytes" stroke="#8884d8" strokeWidth={2} dot={false} isAnimationActive={false} />
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="time" type="number" unit="s" />
         <YAxis />
       </LineChart>
-      <LineChart className="chart" width={500} height={200} data={chartData} margin={{ right: 80 }}>
+      <LineChart className="chart" width={500} height={200} data={chartData} >
         <Legend verticalAlign="top" margin={{ bottom: 30 }} />
-        <Line name="Fitxers" type="monotone" dataKey="files" stroke="#0000ff" dot={false} isAnimationActive={false} />
-        <CartesianGrid stroke="#ccc" />
-        <XAxis dataKey="time" type="number">
-          <Label position="right" offset={20}>segons</Label>
-        </XAxis>
+        <Line name="Fitxers" type="monotone" dataKey="files" stroke="#82ca9d" strokeWidth={2} dot={false} isAnimationActive={false} />
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="time" type="number" unit="s" />
         <YAxis />
       </LineChart>
 
