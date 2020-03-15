@@ -1,6 +1,6 @@
 {
-  "name": "check-download",
-  "version": "0.1.0",
+  "name": "jclic-check-download",
+  "version": "0.1.1",
   "homepage": "/utils/checkspeed",
   "private": true,
   "dependencies": {
