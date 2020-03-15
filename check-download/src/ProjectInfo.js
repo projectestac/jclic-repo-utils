@@ -16,10 +16,10 @@ const DEFAULT_THREADS = 6;
 const STALLED_TIME = 20000;
 
 const STATUS = {
-  idle: 'en espera',
-  downloading: 'descarregant',
-  success: 'finalitzat',
-  error: 'error',
+  idle: 'EN ESPERA',
+  downloading: 'DESCARREGANT',
+  success: 'FINALITZAT',
+  error: 'ERROR',
 };
 
 const numf = new Intl.NumberFormat().format;
@@ -178,7 +178,7 @@ function ProjectInfo({ base, path, project, initialTime }) {
           <tbody>
             <tr>
               <td>Estat:</td>
-              <td>{statusText}</td>
+              <td style={{ color: statusText === STATUS.error ? 'red' : statusText === STATUS.success ? 'green' : 'inherit' }}>{statusText}</td>
               <td></td>
               <td></td>
             </tr>

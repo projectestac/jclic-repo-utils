@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import { createFilterOptions } from '@material-ui/lab/Autocomplete';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import ProjectInfo from './ProjectInfo';
 import { checkFetchResponse } from './utils';
+import projectsList from './projects.json';
 
 export const DEFAULT_BASE = 'https://clic.xtec.cat/projects';
 
@@ -17,6 +20,10 @@ function App() {
   const [path, setPath] = useState('');
   const [project, setProject] = useState(null);
   const [initialTime, setInitialTime] = useState(0);
+
+  const filterOptions = createFilterOptions({
+    limit: 100,
+  });
 
   const start = () => {
     if (path.length < 1) {
@@ -37,7 +44,6 @@ function App() {
         .catch(err => setErr(err.toString()))
         .finally(() => setLoading(false));
     }
-
   }
 
   return (
@@ -47,7 +53,16 @@ function App() {
       </Typography>
       <div className="inputDiv">
         <TextField className="textField" label="URL de base:" value={base} onChange={ev => setBase(ev.target.value.replace(/\/+$/, ''))} disabled={loading || project !== null} />
-        <TextField className="textField" label="Path del projecte a descarregar:" value={path} onChange={ev => setPath(ev.target.value)} disabled={loading || project !== null} />
+        <Autocomplete
+          className="textField"
+          options={projectsList}
+          value={path}
+          onChange={(_ev, newValue) => setPath(newValue)}
+          renderInput={params => <TextField {...params} label="Path del projecte a descarregar:" />}
+          disabled={loading || project !== null}
+          filterOptions={filterOptions}
+          disableOpenOnFocus
+        />
         <Button variant="contained" color="primary" onClick={start} disabled={loading || project !== null}>Inicia</Button>
       </div>
       {loading &&
