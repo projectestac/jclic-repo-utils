@@ -4,15 +4,15 @@
   "homepage": "/utils/checkspeed",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.9.5",
-    "@material-ui/lab": "^4.0.0-alpha.45",
-    "@testing-library/jest-dom": "^5.1.1",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^10.0.0",
+    "@material-ui/core": "^4.9.12",
+    "@material-ui/lab": "^4.0.0-alpha.51",
+    "@testing-library/jest-dom": "^5.5.0",
+    "@testing-library/react": "^10.0.4",
+    "@testing-library/user-event": "^10.1.0",
     "filesize": "^6.1.0",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
-    "react-scripts": "3.4.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1",
     "recharts": "^2.0.0-beta.2"
   },
   "scripts": {
