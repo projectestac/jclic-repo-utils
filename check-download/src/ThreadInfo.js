@@ -31,7 +31,11 @@ class ThreadInfo extends React.Component {
       const { localByteCount, localFileCount } = this.state;
       let result = false;
       try {
-        const response = await fetch(`${this.base}/${this.path}/${file}`);
+        const response = await fetch(`${this.base}/${this.path}/${file}`,
+          {
+            cache: 'no-store',
+            credentials: 'same-origin',
+          });
         checkFetchResponse(response);
         const blob = await (response.blob());
         const time = Date.now() - startTime;

@@ -110,3 +110,15 @@
   color: red;
   font-weight: bold;
 }
+
+.credits {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  font-size: .7rem;
+  color: darkgray;
+}
+
+.credits a {
+  color: inherit;
+  text-decoration: none;
+}

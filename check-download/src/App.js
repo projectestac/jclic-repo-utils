@@ -9,6 +9,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import ProjectInfo from './ProjectInfo';
 import { checkFetchResponse } from './utils';
 import projectsList from './projects.json';
+import { version } from '../package.json';
 
 export const DEFAULT_BASE = 'https://clic.xtec.cat/projects';
 
@@ -34,7 +35,11 @@ function App() {
       setProject(null);
       setLoading(true);
       const startTime = Date.now();
-      fetch(`${base}/${path}/project.json`)
+      fetch(`${base}/${path}/project.json`,
+        {
+          cache: 'no-store',
+          credentials: 'same-origin',
+        })
         .then(checkFetchResponse)
         .then(response => response.json())
         .then(prj => {
@@ -74,6 +79,14 @@ function App() {
       {project &&
         <ProjectInfo {...{ base, path, project, initialTime }} />
       }
+      <div className="credits">
+        <p>
+          check-download v{version}<br />
+          © 2020 Departament d'Educació de la Generalitat de Catalunya<br />
+          <a href="https://spdx.org/licenses/EUPL-1.2.html">Llicència Pública de la Unió Europea EUPL-1.2</a><br />
+          <a href="https://github.com/projectestac/jclic-repo-utils">https://github.com/projectestac/jclic-repo-utils</a><br />
+        </p>
+      </div>
     </Container>
   );
 }
