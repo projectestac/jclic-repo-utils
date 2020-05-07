@@ -1,9 +1,24 @@
-.root>* {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+html {
+  height: 100%;
 }
 
-.root .title {
+body {
+  min-height: 100%;
+}
+
+main {
+  min-height: 100vh;
+  padding-top: 1rem;
+  padding-bottom: 6rem;
+}
+
+footer {
+  margin-top: -6rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+main>* {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
@@ -112,8 +127,6 @@
 }
 
 .credits {
-  margin-top: 2rem;
-  padding-top: 1rem;
   font-size: .7rem;
   color: darkgray;
 }
@@ -121,4 +134,8 @@
 .credits a {
   color: inherit;
   text-decoration: none;
+}
+
+.credits a:hover {
+  text-decoration: underline;
 }

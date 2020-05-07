@@ -9,7 +9,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import ProjectInfo from './ProjectInfo';
 import { checkFetchResponse } from './utils';
 import projectsList from './projects.json';
-import { version } from '../package.json';
+import { version, name } from '../package.json';
 
 export const DEFAULT_BASE = 'https://clic.xtec.cat/projects';
 
@@ -53,40 +53,42 @@ function App() {
 
   return (
     <Container maxWidth="lg" className="root">
-      <Typography variant="h4" component="h1" gutterBottom className="title">
-        Comprovació de la velocitat de descàrrega dels projectes de la zonaClic
+      <main>
+        <Typography variant="h4" component="h1" gutterBottom className="title">
+          Comprovació de la velocitat de descàrrega dels projectes de la zonaClic
       </Typography>
-      <div className="inputDiv">
-        <TextField className="textField" label="URL de base:" value={base} onChange={ev => setBase(ev.target.value.replace(/\/+$/, ''))} disabled={loading || project !== null} />
-        <Autocomplete
-          className="textField"
-          options={projectsList}
-          value={path}
-          onChange={(_ev, newValue) => setPath(newValue)}
-          renderInput={params => <TextField {...params} label="Path del projecte a descarregar:" />}
-          disabled={loading || project !== null}
-          filterOptions={filterOptions}
-          disableOpenOnFocus
-        />
-        <Button variant="contained" color="primary" onClick={start} disabled={loading || project !== null}>Inicia</Button>
-      </div>
-      {loading &&
-        <CircularProgress size={40} />
-      }
-      {err &&
-        <Typography variant="body1" className="error">{`${err}`}</Typography>
-      }
-      {project &&
-        <ProjectInfo {...{ base, path, project, initialTime }} />
-      }
-      <div className="credits">
-        <p>
-          check-download v{version}<br />
+        <div className="inputDiv">
+          <TextField className="textField" label="URL de base:" value={base} onChange={ev => setBase(ev.target.value.replace(/\/+$/, ''))} disabled={loading || project !== null} />
+          <Autocomplete
+            className="textField"
+            options={projectsList}
+            value={path}
+            onChange={(_ev, newValue) => setPath(newValue)}
+            renderInput={params => <TextField {...params} label="Path del projecte a descarregar:" />}
+            disabled={loading || project !== null}
+            filterOptions={filterOptions}
+            disableOpenOnFocus
+          />
+          <Button variant="contained" color="primary" onClick={start} disabled={loading || project !== null}>Inicia</Button>
+        </div>
+        {loading &&
+          <CircularProgress size={40} />
+        }
+        {err &&
+          <Typography variant="body1" className="error">{`${err}`}</Typography>
+        }
+        {project &&
+          <ProjectInfo {...{ base, path, project, initialTime }} />
+        }
+      </main>
+      <footer>
+        <div className="credits">
+          <strong>{name} v{version}</strong><br />
           © 2020 Departament d'Educació de la Generalitat de Catalunya<br />
           <a href="https://spdx.org/licenses/EUPL-1.2.html">Llicència Pública de la Unió Europea EUPL-1.2</a><br />
           <a href="https://github.com/projectestac/jclic-repo-utils">https://github.com/projectestac/jclic-repo-utils</a><br />
-        </p>
-      </div>
+        </div>
+      </footer>
     </Container>
   );
 }
