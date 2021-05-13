@@ -16,10 +16,10 @@ if [ ! -f "$zipfile" ]; then
   exit -1
 fi
 
-# Extract zip file contents
+# Extract zip file contents (can have subdirectories)
 unzip -O UTF8 $zipfile
 
-# Normalize MP3 files
+# Normalize MP3 files (only in root directory)
 mkdir -p ~/JClic/backup-audio/$zipfile
 cp -a *.mp3 ~/JClic/backup-audio/$zipfile
 mkdir norm
@@ -32,8 +32,8 @@ sed -i "s/family=\"Dialog\"/family=\"Arial\"/g" *.jclic
 
 # Rebuild zip file
 rm $zipfile
-zip $zipfile *
+zip -r $zipfile *
 
-# delete all files but .jclic.zip
+# delete all files and subdirectories except .jclic.zip
 find . -type f ! -name '*.jclic.zip' -delete
-
+find . -type d ! -name '.' -delete
