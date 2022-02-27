@@ -9,7 +9,9 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import ProjectInfo from './ProjectInfo';
 import { checkFetchResponse } from './utils';
 import projectsList from './projects.json';
-import { version, name } from '../package.json';
+import pk from '../package.json';
+const { version, name } = pk;
+
 
 export const DEFAULT_BASE = 'https://clic.xtec.cat/projects';
 
@@ -56,7 +58,7 @@ function App() {
       <main>
         <Typography variant="h4" component="h1" gutterBottom className="title">
           Comprovació de la velocitat de descàrrega dels projectes de la zonaClic
-      </Typography>
+        </Typography>
         <div className="inputDiv">
           <TextField className="textField" label="URL de base:" value={base} onChange={ev => setBase(ev.target.value.replace(/\/+$/, ''))} disabled={loading || project !== null} />
           <Autocomplete
