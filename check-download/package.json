@@ -12,8 +12,13 @@
   },
   "license": "EUPL-1.2",
   "dependencies": {
+    "@emotion/react": "^11.8.1",
+    "@emotion/styled": "^11.8.1",
     "@material-ui/core": "^4.9.13",
     "@material-ui/lab": "^4.0.0-alpha.52",
+    "@mui/lab": "^5.0.0-alpha.70",
+    "@mui/material": "^5.4.3",
+    "@mui/styles": "^5.4.2",
     "@testing-library/jest-dom": "^5.5.0",
     "@testing-library/react": "^10.0.4",
     "@testing-library/user-event": "^10.1.0",

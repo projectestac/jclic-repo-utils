@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import { createFilterOptions } from '@material-ui/lab/Autocomplete';
-import Button from '@material-ui/core/Button';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
+import { createFilterOptions } from '@mui/material/Autocomplete';
+import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
 import ProjectInfo from './ProjectInfo';
 import { checkFetchResponse } from './utils';
 import projectsList from './projects.json';
