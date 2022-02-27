@@ -86,7 +86,7 @@ function App() {
       <footer>
         <div className="credits">
           <strong>{name} v{version}</strong><br />
-          © 2020 Departament d'Educació de la Generalitat de Catalunya<br />
+          © 2020-22 Departament d'Educació de la Generalitat de Catalunya<br />
           <a href="https://spdx.org/licenses/EUPL-1.2.html">Llicència Pública de la Unió Europea EUPL-1.2</a><br />
           <a href="https://github.com/projectestac/jclic-repo-utils">https://github.com/projectestac/jclic-repo-utils</a><br />
         </div>
