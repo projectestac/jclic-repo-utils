@@ -47,7 +47,7 @@ const iterateTree = (dir) => {
 
 const registerProject = (dir) => {
   const prj = JSON.parse(fs.readFileSync(path.resolve(basePath, dir, 'project.json')))
-  projects.push({
+  const prjdata = {
     path: dir,
     title: prj.title,
     author: prj.author,
@@ -59,7 +59,10 @@ const registerProject = (dir) => {
     cover: prj.cover,
     thumbnail: prj.thumbnail,
     id: prj.clicZoneId || prj.orderId || 0,
-  })
+  };
+  if (prj.coverWebp)
+    prjData.coverWebp = prj.coverWebp;
+  projects.push(prjData);
 }
 
 const checkProjectNames = (projects) => {
