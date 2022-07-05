@@ -10,14 +10,13 @@ import path from 'path';
 import { exec } from 'child_process';
 import ch from 'chalk';
 
-//const fs = require('fs');
-//const path = require('path');
-//const { exec } = require('child_process');
-//const chalk = require('chalk');
 const log = console.log;
 
 // Quality factor of the generated Webp files (0-100, default is 75)
 const WEPB_QUALITY = 75;
+
+// When 'true', a `project.json.bak` file will be preserved for each processed project
+const MAKE_BACKUPS = true;
 
 /**
  * Generates a cover webp file for a specific project, if not already created,
@@ -83,17 +82,36 @@ async function generateWebp(projectPath) {
                     }
                 }
                 project = obj;
-                fs.renameSync(projectFile, `${projectFile}.bak`);
+                if (MAKE_BACKUPS)
+                    fs.renameSync(projectFile, `${projectFile}.bak`);
+
+                // Write new project.json file
                 try {
                     fs.writeFileSync(projectFile, JSON.stringify(project, null, 2));
                 } catch (err) {
                     return reject(`Webp file created, but "project.json" can't be updated due to: ${err}`);
                 }
+                log(`${ch.bold.green('INFO:')} Webp file successfully created for project ${projectPath}`);
                 resolve(`${stderr} ${stdout}`);
             }
         });
     });
 }
+
+// Iterates a directory looking for 'project.json' files
+async function iterateTree(dir) {
+    const files = fs.readdirSync(dir);
+    for (const file of files) {
+        const fullPath = path.resolve(dir, file);
+        const stat = fs.statSync(fullPath);
+        if (stat && stat.isDirectory())
+            await iterateTree(fullPath);
+        else if (file === 'project.json')
+            await generateWebp(dir)
+                .catch(err => log(`${ch.bold.red('ERROR:')} "${err}" while processing ${dir}`));
+    }
+}
+
 
 /**
  * Main function 
@@ -119,24 +137,6 @@ async function main() {
     }
 
     if (!project) {
-        // Iterates a directory looking for 'project.json' files
-        const iterateTree = async function (dir) {
-            fs.readdirSync(dir).forEach(file => {
-                const fullPath = path.resolve(dir, file);
-                const stat = fs.statSync(fullPath);
-                if (stat && stat.isDirectory())
-                    return iterateTree(fullPath);
-                if (file === 'project.json') {
-                    return generateWebp(dir)
-                        .then(result => {
-                            log(`${ch.bold.green('INFO:')} Webp file successfully created for project ${dir}`);
-                        })
-                        .catch(err => {
-                            log(`${ch.bold.red('ERROR:')} "${err}" while processing ${dir}`);
-                        });
-                }
-            });
-        }
         return await iterateTree(basePath);
     } else {
         // Check if the project folder already exists
@@ -148,13 +148,9 @@ async function main() {
 
         // Perform conversion
         return await generateWebp(projectPath)
-            .then(result => {
-                log(`${ch.bold.green('INFO:')} Webp file successfully created!`);
-            })
-            .catch(err => {
-                log(`${ch.bold.red('ERROR:')} ${err}`);
-            });
+            .catch(err => log(`${ch.bold.red('ERROR:')} ${err}`));
     }
 }
 
+// Call main function
 main();
