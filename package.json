@@ -44,7 +44,7 @@
     "node-fetch": "^3.2.10",
     "nwmatcher": "^1.4.4",
     "promise": "^8.1.0",
-    "recursive-readdir": "^2.2.2",
+    "recursive-readdir": "^2.2.3",
     "requirejs": "^2.3.6",
     "sorted-array": "^2.0.4",
     "xml": "^1.0.1",
