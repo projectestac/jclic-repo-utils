@@ -7,7 +7,8 @@ const ncp = Promise.denodeify(require('ncp').ncp);
 const rename = Promise.denodeify(fs.rename);
 const readFile = Promise.denodeify(fs.readFile);
 const writeFile = Promise.denodeify(fs.writeFile);
-const glob = Promise.denodeify(require('glob'));
+// const glob = Promise.denodeify(require('glob'));
+const { glob } = require('glob');
 const parseXml = Promise.denodeify(require('xml2js').parseString);
 const Inspector = require('./inspector-jquery.js');
 
