@@ -47,7 +47,7 @@ const iterateTree = (dir) => {
 
 const registerProject = (dir) => {
   const prj = JSON.parse(fs.readFileSync(path.resolve(basePath, dir, 'project.json')))
-  const prjdata = {
+  const prjData = {
     path: dir,
     title: prj.title,
     author: prj.author,
