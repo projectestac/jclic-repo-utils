@@ -54,6 +54,8 @@ class Inspector {
       name: this.project.name,
       version: this.project.version,
       title: this.project.settings.title,
+      authors: this.project.settings.authors.reduce((result, author) => `${result}${result ? ',' : ''}${author.name}`, ''),
+      organizations: this.project.settings.organizations.reduce((result, org) => `${result}${result ? ',' : ''}${org.name}`, ''),
       description: this.project.settings.description,
       languages: this.project.settings.languages,
       skin: this.project.settings.skinFileName
@@ -105,6 +107,9 @@ class Inspector {
 
   getAllWords() {
     const texts = this.getAllActivityText()
+    const props = this.getProjectProperties()
+    texts.push(props.authors)
+    texts.push(props.organizations)
     const result = []
     texts.forEach(txArray => {
       txArray.forEach(txt => {
@@ -126,14 +131,14 @@ class Inspector {
       middleIndex = Math.floor((lastIndex + firstIndex) / 2)
     while (stopWords[middleIndex] != word && firstIndex < lastIndex) {
       if (word < stopWords[middleIndex])
-        lastIndex = middleIndex - 1    
+        lastIndex = middleIndex - 1
       else if (word > stopWords[middleIndex])
-        firstIndex = middleIndex + 1    
+        firstIndex = middleIndex + 1
       middleIndex = Math.floor((lastIndex + firstIndex) / 2)
     }
     return stopWords[middleIndex] === word
   }
-  
+
 }
 
 module.exports = Inspector

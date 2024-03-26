@@ -6,6 +6,7 @@
         "node": true
     },
     "parserOptions": {
+        "ecmaVersion": 14,
         "ecmaFeatures": {
             "jsx": true
         },

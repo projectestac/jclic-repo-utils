@@ -76,6 +76,8 @@ class Inspector {
       name: $doc.attr('name'),
       version: $doc.attr('version'),
       title: $settings.find('title').text(),
+      authors: $settings.find('author').toArray().reduce((result, author) => `${result}${result ? ',' : ''}${$(author).attr('name')}`, ''),
+      organizations: $settings.find('organization').toArray().reduce((result, org) => `${result}${result ? ',' : ''}${$(org).attr('name')}`, ''),
       description: $settings.find('description').text(),
     }
   }
@@ -89,7 +91,13 @@ class Inspector {
   }
 
   getAllWords() {
-    return this.getAllActivityText()
+    const base = [this.getAllActivityText()];
+    this.$docs.forEach($doc => {
+      const props = this.getProjectProperties($doc)
+      base.push(props.authors || '')
+      base.push(props.organizations || '')
+    });
+    return base.join(' ')
       .split(/[\s.…|;,_<>"“”«»'´’‘~+\-–—―=%¿?¡!:/\\()\[\]{}$£*0-9\u2022]/)
       .map(word => {
         word = word.trim().toLowerCase()
@@ -114,7 +122,7 @@ class Inspector {
   getAllMedia() {
     return this.$docs.reduce((n, $doc) => n + Inspector.getNumMedia($doc), 0)
   }
-  
+
 }
 
 module.exports = Inspector
