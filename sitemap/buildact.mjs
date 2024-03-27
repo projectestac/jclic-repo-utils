@@ -93,9 +93,6 @@ function main() {
         // XML schema headers
         {
           _attr: {
-            // 'xmlns': 'http://www.google.com/schemas/sitemap/0.84',
-            // 'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
-            // 'xsi:schemaLocation': 'http://www.google.com/schemas/sitemap/0.84 http://www.google.com/schemas/sitemap/0.84/sitemap.xsd',
             'xmlns': 'http://www.sitemaps.org/schemas/sitemap/0.9',
           }
         },
@@ -149,6 +146,7 @@ function main() {
             { link: [{ _attr: { href: `${newRepoBase}/${lang}/repo?prj=${prj.path}`, rel: 'alternate', hreflang: lang } }] },
             { id: `${tagBase}:${lang}:${prj.path}` },
             { updated: prj.lastModified },
+            // Currently removed due to problems with 'summarize' and some descriptions
             // { summary: summarize(prj.description[lang]) },
             { author: [{ name: prj?.author?.trim() || '' }] }
           ]
@@ -163,142 +161,4 @@ function main() {
   });
 };
 
-// Main process starts here:
 main();
-
-/*
-(
-  projectsBasePath
-    ? readFile(path.join(projectsBasePath, 'projects.json')).then(text => JSON.parse(text))
-    : fetch(projectsList).then(res => res.json())
-)
-  .then(projects => {
-    // GET 'LAST MODIFIED' DATE OF EACH PROJECT
-    console.log('Getting projects data...');
-    return projectsBasePath ?
-      Promise.all(projects.map(prj => {
-        const prjPath = path.join(projectsBasePath, prj.path, 'project.json');
-        return stat(prjPath)
-          .then(stat => {
-            prj.lastModified = new Date(stat.mtime);
-          })
-          .then(() => readFile(prjPath))
-          .then(text => {
-            const fullPrj = JSON.parse(text);
-            prj.description = fullPrj.description || {};
-            return prj;
-          });
-      })) :
-      projects.map(prj => {
-        prj.lastModified = new Date();
-        prj.summary = '';
-        return prj;
-      });
-  })
-  .then(projects => {
-    // BUILD SITEMAPS
-    console.log('Building sitemaps');
-    langs.forEach(lang => {
-      // Build the data container with its xml schema headers
-      let data = {
-        urlset: [
-          {
-            _attr: {
-              'xmlns': 'http://www.google.com/schemas/sitemap/0.84',
-              'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
-              'xsi:schemaLocation': 'http://www.google.com/schemas/sitemap/0.84 http://www.google.com/schemas/sitemap/0.84/sitemap.xsd',
-            }
-          }
-        ]
-      };
-
-      // Main repo URL for current language
-      data.urlset.push({
-        url: [
-          { loc: `${newRepoBase}/${lang}/repo` },
-          { changefreq: 'daily' },
-          { priority: 1 },
-        ]
-      });
-
-      projects.forEach(prj => {
-        // Push each project data
-        data.urlset.push({
-          url: [
-            { loc: `${newRepoBase}/${lang}/repo/?prj=${prj.path}` },
-            { changefreq: 'monthly' },
-            { priority: 0.5 },
-          ],
-        });
-      });
-
-      // Write the sitemap XML file for the current language
-      const fileName = `sitemap_activities_${lang}.xml`;
-      fs.writeFile(
-        fileName,
-        `${xmlHeader}\n${xml(data, { indent: '  ' })}`,
-        err => {
-          if (err)
-            throw err;
-          console.log(`Fitxer "${fileName}" creat amb èxit!`);
-        }
-      );
-    });
-
-    // ATOM
-    console.log('Building Atom RSS files');
-    const tagBase = 'tag:clic@xtec.cat,2024:projects';
-    langs.forEach(lang => {
-      // Build the data container with its xml schema headers
-      let data = {
-        feed: [
-          { _attr: { 'xmlns': 'http://www.w3.org/2005/Atom' } },
-          { title: dict[lang].title },
-          { subtitle: dict[lang].subTitle },
-          { link: [{ _attr: { href: `${newRepoBase}/${lang}/repo/`, hreflang: lang } }] },
-          { link: [{ _attr: { href: `${repoBase}/atom_activities_${lang}.xml`, rel: 'self', hreflang: lang } }] },
-          {
-            author: [
-              { name: dict[lang].author },
-              { uri: 'https://projectes.xtec.cat/clic/' },
-              { email: 'clic@xtec.cat' },
-            ]
-          },
-          { id: `${tagBase}:${lang}` },
-          { updated: new Date().toISOString() },
-        ]
-      };
-
-      projects.forEach(prj => {
-        // Push each project data
-        const entry = [
-          { title: prj.title },
-          { link: [{ _attr: { href: `${newRepoBase}/${lang}/repo?prj=${prj.path}`, rel: 'alternate', hreflang: lang } }] },
-          { id: `${tagBase}:${lang}:${prj.path}` },
-          { updated: prj.lastModified.toISOString() },
-          { summary: summarize(prj.description[lang]) },
-        ];
-        if (prj.author && prj.author.trim())
-          entry.push({ author: [{ name: prj.author.trim() }] });
-
-        data.feed.push({ entry });
-      });
-
-      // Write the atom XML file for the current language
-      const fileName = `atom_activities_${lang}.xml`;
-      fs.writeFile(
-        fileName,
-        `${xmlHeader}\n${xml(data, { indent: '  ' })}`,
-        err => {
-          if (err)
-            throw err;
-          console.log(`File "${fileName}" created.`);
-        }
-      );
-    });
-  })
-  .catch(err => {
-    console.log(`ERROR: ${err}`);
-  });
-*/
-
