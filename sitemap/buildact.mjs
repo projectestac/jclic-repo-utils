@@ -5,15 +5,15 @@
  * Builds an [XM sitemap](https://www.sitemaps.org/) with all the activities currently published on the ClicZone
  */
 
-const fetch = require('node-fetch');
-const xml = require('xml');
-const util = require('util');
-const fs = require('fs');
-const path = require('path');
-const { JSDOM } = require('jsdom');
+// import fetch from 'node-fetch';
+import fs from 'node:fs';
+import path from 'node:path';
+import { JSDOM } from 'jsdom';
+import xml from 'xml';
+// import util from 'node:util';
 
-const stat = util.promisify(fs.stat);
-const readFile = util.promisify(fs.readFile);
+// const stat = util.promisify(fs.stat);
+// const readFile = util.promisify(fs.readFile);
 
 const langs = ['ca', 'es', 'en'];
 const dict = {
@@ -37,12 +37,13 @@ const dict = {
   },
 };
 
-const projectsList = 'https://clic.xtec.cat/projects/projects.json';
-const projectsBasePath = '/dades/zonaClic/projects';
+// const projectsList = 'https://clic.xtec.cat/projects/projects.json';
+const projectsBasePath = '../../projects';
 const repoBase = 'https://clic.xtec.cat/repo';
+const newRepoBase = 'https://projectes.xtec.cat/clic';
 const xmlHeader = '<?xml version="1.0" encoding="UTF-8"?>';
 
-
+const today = (new Date()).toISOString().substring(0, 10);
 
 /**
  * Truncates the provided text to the specified `maxlength`, converting
@@ -52,7 +53,7 @@ const xmlHeader = '<?xml version="1.0" encoding="UTF-8"?>';
  * @param {number=} minTruncLength - Minimum length when truncating
  * @returns {string} - The truncated text
  */
-const summarize = (text = '', maxLength = 1024, minTruncLength = 800) => {
+function summarize(text = '', maxLength = 1024, minTruncLength = 800) {
   if (text.indexOf('<') >= 0) {
     // If the provided text has HTML content, reduce it to plain text.
     text = /<\w*>/.test(text) ? text : text.replace(/\n/g, '<br>\n');
@@ -65,18 +66,107 @@ const summarize = (text = '', maxLength = 1024, minTruncLength = 800) => {
     .replace(/[ ][ ][ ]*/g, ' ')
     .replace(/[\n\r][ \n\r][ \n\r]*/g, '\n');
   if (text.length > maxLength) {
-    text = text.substr(0, maxLength);
+    text = text.substring(0, maxLength);
     const p = Math.max(text.lastIndexOf(' '), text.lastIndexOf('.'), text.lastIndexOf(','), text.lastIndexOf('\n'));
     if (p > minTruncLength)
-      text = `${text.substr(0, p).trim()} …`;
+      text = `${text.substring(0, p).trim()} …`;
   }
   return text;
 }
 
+function main() {
+  console.log(`Loading projects`);
+  const projects = JSON.parse(fs.readFileSync(path.resolve(projectsBasePath, 'projects.json')));
+  projects.forEach(prj => {
+    const prjFile = path.resolve(projectsBasePath, prj.path, 'project.json');
+    const stat = fs.statSync(prjFile);
+    prj.lastModified = (new Date(stat.mtime)).toISOString().substring(0, 10);
+    const project = JSON.parse(fs.readFileSync(prjFile));
+    prj.description = project.description || {};
+  });
 
+  langs.forEach(lang => {
+    // SITEMAP
+    console.log(`Processing language: '${lang}'`);
+    let sitemapData = {
+      urlset: [
+        // XML schema headers
+        {
+          _attr: {
+            // 'xmlns': 'http://www.google.com/schemas/sitemap/0.84',
+            // 'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
+            // 'xsi:schemaLocation': 'http://www.google.com/schemas/sitemap/0.84 http://www.google.com/schemas/sitemap/0.84/sitemap.xsd',
+            'xmlns': 'http://www.sitemaps.org/schemas/sitemap/0.9',
+          }
+        },
+        // Main repo URL for current language
+        {
+          url: [
+            { loc: `${newRepoBase}/${lang}/repo` },
+            { changefreq: 'daily' },
+            { priority: 1 },
+            { lastmod: today },
+          ]
+        },
+        ...projects.map(prj => ({
+          url: [
+            { loc: `${newRepoBase}/${lang}/repo/?prj=${prj.path}` },
+            { changefreq: 'monthly' },
+            { priority: 0.5 },
+            { lastmod: prj.lastModified }
+          ]
+        })),
+      ],
+    };
 
-// Main process start here:
-console.log(`Loading projects`);
+    // Write the sitemap XML file
+    const sitemapFileName = `sitemap_activities_${lang}.xml`;
+    console.log(`Writting ${sitemapFileName}`);
+    fs.writeFileSync(sitemapFileName, `${xmlHeader}\n${xml(sitemapData, { indent: '  ' })}`);
+
+    // ATOM
+    const tagBase = 'tag:clic@xtec.cat,2019:projects';
+
+    let atomData = {
+      feed: [
+        { _attr: { 'xmlns': 'http://www.w3.org/2005/Atom' } },
+        { title: dict[lang].title },
+        { subtitle: dict[lang].subTitle },
+        { link: [{ _attr: { href: `${newRepoBase}/${lang}/repo/`, hreflang: lang } }] },
+        { link: [{ _attr: { href: `${repoBase}/atom_activities_${lang}.xml`, rel: 'self', hreflang: lang } }] },
+        {
+          author: [
+            { name: dict[lang].author },
+            { uri: 'https://projectes.xtec.cat/clic/' },
+            { email: 'clic@xtec.cat' },
+          ]
+        },
+        { id: `${tagBase}:${lang}` },
+        { updated: new Date().toISOString() },
+        ...projects.map(prj => ({
+          entry: [
+            { title: prj.title },
+            { link: [{ _attr: { href: `${newRepoBase}/${lang}/repo?prj=${prj.path}`, rel: 'alternate', hreflang: lang } }] },
+            { id: `${tagBase}:${lang}:${prj.path}` },
+            { updated: prj.lastModified },
+            // { summary: summarize(prj.description[lang]) },
+            { author: [{ name: prj?.author?.trim() || '' }] }
+          ]
+        })),
+      ]
+    };
+
+    // Write the Atom XML file for the current language
+    const atomFileName = `atom_activities_${lang}.xml`;
+    console.log(`Writting ${atomFileName}`);
+    fs.writeFileSync(atomFileName, `${xmlHeader}\n${xml(atomData, { indent: '  ' })}`);
+  });
+};
+
+// Main process starts here:
+main();
+
+/*
 (
   projectsBasePath
     ? readFile(path.join(projectsBasePath, 'projects.json')).then(text => JSON.parse(text))
@@ -106,7 +196,7 @@ console.log(`Loading projects`);
       });
   })
   .then(projects => {
-    // SITEMAP
+    // BUILD SITEMAPS
     console.log('Building sitemaps');
     langs.forEach(lang => {
       // Build the data container with its xml schema headers
@@ -125,7 +215,7 @@ console.log(`Loading projects`);
       // Main repo URL for current language
       data.urlset.push({
         url: [
-          { loc: `${repoBase}/index.html?lang=${lang}` },
+          { loc: `${newRepoBase}/${lang}/repo` },
           { changefreq: 'daily' },
           { priority: 1 },
         ]
@@ -135,7 +225,7 @@ console.log(`Loading projects`);
         // Push each project data
         data.urlset.push({
           url: [
-            { loc: `${repoBase}/index.html?lang=${lang}&prj=${prj.path}` },
+            { loc: `${newRepoBase}/${lang}/repo/?prj=${prj.path}` },
             { changefreq: 'monthly' },
             { priority: 0.5 },
           ],
@@ -157,7 +247,7 @@ console.log(`Loading projects`);
 
     // ATOM
     console.log('Building Atom RSS files');
-    const tagBase = 'tag:clic@xtec.cat,2019:projects';
+    const tagBase = 'tag:clic@xtec.cat,2024:projects';
     langs.forEach(lang => {
       // Build the data container with its xml schema headers
       let data = {
@@ -165,12 +255,12 @@ console.log(`Loading projects`);
           { _attr: { 'xmlns': 'http://www.w3.org/2005/Atom' } },
           { title: dict[lang].title },
           { subtitle: dict[lang].subTitle },
-          { link: [{ _attr: { href: `${repoBase}/index.html?lang=${lang}`, hreflang: lang } }] },
+          { link: [{ _attr: { href: `${newRepoBase}/${lang}/repo/`, hreflang: lang } }] },
           { link: [{ _attr: { href: `${repoBase}/atom_activities_${lang}.xml`, rel: 'self', hreflang: lang } }] },
           {
             author: [
               { name: dict[lang].author },
-              { uri: 'https://clic.xtec.cat/' },
+              { uri: 'https://projectes.xtec.cat/clic/' },
               { email: 'clic@xtec.cat' },
             ]
           },
@@ -183,7 +273,7 @@ console.log(`Loading projects`);
         // Push each project data
         const entry = [
           { title: prj.title },
-          { link: [{ _attr: { href: `${repoBase}/index.html?lang=${lang}&prj=${prj.path}`, rel: 'alternate', hreflang: lang } }] },
+          { link: [{ _attr: { href: `${newRepoBase}/${lang}/repo?prj=${prj.path}`, rel: 'alternate', hreflang: lang } }] },
           { id: `${tagBase}:${lang}:${prj.path}` },
           { updated: prj.lastModified.toISOString() },
           { summary: summarize(prj.description[lang]) },
@@ -210,3 +300,5 @@ console.log(`Loading projects`);
   .catch(err => {
     console.log(`ERROR: ${err}`);
   });
+*/
+
