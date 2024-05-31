@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
-    <loc>https://projectes.xtec.cat/clic/wp-content/uploads/usu2636/jclic_site_files.xml</loc>
-    <lastmod>2024-03-28T18:32:27.452Z</lastmod>
+    <loc>https://clic.xtec.cat/jclic_site_files.xml.gz</loc>
+    <lastmod>2024-05-31T11:56:44.728Z</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://projectes.xtec.cat/clic/wp-content/uploads/usu2636/sitemap_activities_ca.xml</loc>
-    <lastmod>2024-03-28T18:32:27.452Z</lastmod>
+    <loc>https://clic.xtec.cat/sitemap_activities_ca.xml.gz</loc>
+    <lastmod>2024-05-31T11:56:44.728Z</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://projectes.xtec.cat/clic/wp-content/uploads/usu2636/sitemap_activities_es.xml</loc>
-    <lastmod>2024-03-28T18:32:27.452Z</lastmod>
+    <loc>https://clic.xtec.cat/sitemap_activities_es.xml.gz</loc>
+    <lastmod>2024-05-31T11:56:44.728Z</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://projectes.xtec.cat/clic/wp-content/uploads/usu2636/sitemap_activities_en.xml</loc>
-    <lastmod>2024-03-28T18:32:27.452Z</lastmod>
+    <loc>https://clic.xtec.cat/sitemap_activities_en.xml.gz</loc>
+    <lastmod>2024-05-31T11:56:44.728Z</lastmod>
   </sitemap>
 </sitemapindex>

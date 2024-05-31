@@ -195,4 +195,34 @@
         <changefreq>monthly</changefreq>
         <lastmod>2024-03-02</lastmod>
     </url>
+    <url>
+        <loc>https://projectes.xtec.cat/clic/news-ca/els-projectes-de-limma-palahi/</loc>
+        <changefreq>monthly</changefreq>
+        <lastmod>2024-05-30</lastmod>
+    </url>
+    <url>
+        <loc>https://projectes.xtec.cat/clic/news-en/imma-palahis-projects/</loc>
+        <changefreq>monthly</changefreq>
+        <lastmod>2024-05-30</lastmod>
+    </url>
+    <url>
+        <loc>https://projectes.xtec.cat/clic/news-es/los-proyectos-de-imma-palahi/</loc>
+        <changefreq>monthly</changefreq>
+        <lastmod>2024-05-30</lastmod>
+    </url>
+    <url>
+        <loc>https://projectes.xtec.cat/clic/news-ca/coneixeu-el-gali/</loc>
+        <changefreq>monthly</changefreq>
+        <lastmod>2024-05-30</lastmod>
+    </url>
+    <url>
+        <loc>https://projectes.xtec.cat/clic/news-es/conoces-gali/</loc>
+        <changefreq>monthly</changefreq>
+        <lastmod>2024-05-30</lastmod>
+    </url>
+    <url>
+        <loc>https://projectes.xtec.cat/clic/news-en/do-you-know-gali/</loc>
+        <changefreq>monthly</changefreq>
+        <lastmod>2024-05-30</lastmod>
+    </url>
 </urlset>
