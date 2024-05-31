@@ -8,8 +8,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const usage = `Usage:\n
-addAuthorsToAllWords.mjs root_path [numProjects]\n
-Parses all 'project.json' adding authoring metadata to 'all-words.txt' files from a base 'projects.json'`
+updateDateFormats.mjs root_path [numProjects]\n
+Reverts the date format of all 'project.json' files to DD/MM/YY, from a base 'projects.json'`
 
 const args = process.argv;
 
@@ -53,18 +53,11 @@ for (let i = 0; i < maxProjects; i++) {
   const { 'path': projectPath, title } = projects[i];
   const pathAbs = path.resolve(rootPath, projectPath);
   const projectFile = path.resolve(pathAbs, 'project.json');
-  const allWordsFile = path.resolve(pathAbs, 'all-words.txt');
   const project = JSON.parse(fs.readFileSync(projectFile));
-  const allWords = fs.readFileSync(allWordsFile);
 
   console.log(`Processing "${title}" (${projectPath}) - ${normalizeDate(project.date)}`)
-  if (allWords.includes('|'))
-    console.log(`>> Project ${projectPath} has already been processed`);
-  else {
-    fs.writeFileSync(allWordsFile, `${allWords}${project.author ? ` | ${project.author}` : ''}${project.school ? ` | ${project.school}` : ''}`);
-    project.date = normalizeDate(project.date);
-    fs.writeFileSync(projectFile, JSON.stringify(project, null, 2));
-  }
+  project.date = normalizeDate(project.date);
+  fs.writeFileSync(projectFile, JSON.stringify(project, null, 2));
 }
 
 console.log('Done!');

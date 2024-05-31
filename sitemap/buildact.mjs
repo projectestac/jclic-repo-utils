@@ -61,8 +61,8 @@ function summarize(text = '', maxLength = 1024, minTruncLength = 800) {
     text = dom.window.document.querySelector('body').textContent;
   }
   text = text.replace(/&nbsp;/g, ' ')
-    .replace(/&lt;/, '<')
-    .replace(/&gt;/, '>')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
     .replace(/[ ][ ][ ]*/g, ' ')
     .replace(/[\n\r][ \n\r][ \n\r]*/g, '\n');
   if (text.length > maxLength) {
@@ -99,7 +99,7 @@ function main() {
         // Main repo URL for current language
         {
           url: [
-            { loc: `${newRepoBase}/${lang}/repo` },
+            { loc: `${newRepoBase}/${lang}/repo/` },
             { changefreq: 'daily' },
             { priority: 1 },
             { lastmod: today },
@@ -143,7 +143,7 @@ function main() {
         ...projects.map(prj => ({
           entry: [
             { title: prj.title },
-            { link: [{ _attr: { href: `${newRepoBase}/${lang}/repo?prj=${prj.path}`, rel: 'alternate', hreflang: lang } }] },
+            { link: [{ _attr: { href: `${newRepoBase}/${lang}/repo/?prj=${prj.path}`, rel: 'alternate', hreflang: lang } }] },
             { id: `${tagBase}:${lang}:${prj.path}` },
             { updated: prj.lastModified },
             // Currently removed due to problems with 'summarize' and some descriptions
