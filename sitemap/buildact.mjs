@@ -8,7 +8,7 @@
 // import fetch from 'node-fetch';
 import fs from 'node:fs';
 import path from 'node:path';
-import { JSDOM } from 'jsdom';
+import jsdom from 'jsdom';
 import xml from 'xml';
 // import util from 'node:util';
 
@@ -57,7 +57,8 @@ function summarize(text = '', maxLength = 1024, minTruncLength = 800) {
   if (text.indexOf('<') >= 0) {
     // If the provided text has HTML content, reduce it to plain text.
     text = /<\w*>/.test(text) ? text : text.replace(/\n/g, '<br>\n');
-    const dom = new JSDOM(`<!DOCTYPE html><body>${text}</body>`);
+    // const dom = new JSDOM(`<!DOCTYPE html><body>${text}</body>`);
+    const dom = new jsdom.JSDOM(`<!DOCTYPE html><head></head><body>${text}</body>`, { url: 'https://example.com' });
     text = dom.window.document.querySelector('body').textContent;
   }
   text = text.replace(/&nbsp;/g, ' ')

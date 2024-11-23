@@ -3,15 +3,14 @@
 const fs = require('fs')
 const recursive = require('recursive-readdir')
 const JSZip = require('jszip')
+const JClic = require('jclic')
 
 // Build the stop words list
 const SortedArray = require('sorted-array')
 const stopWords = new SortedArray(Object.values(require('./stopwords.json')).reduce((acc, val) => acc.concat(val), []))
 
-// Use `jsdom` for providing global 'document' and 'window' to jQuery
-const jsdom = require('jsdom')
-global.document = new jsdom.JSDOM()
-const $ = require('jquery')(global.document.window)
+// Use the jQuery object provided by JClic
+const { $ } = JClic;
 
 class Inspector {
 
@@ -66,7 +65,9 @@ class Inspector {
 
   addProjectFromString(xml) {
     // Parse string into a XMLDOM object
-    const parser = new global.document.window.DOMParser()
+    // const parser = new global.document.window.DOMParser()
+    /* global DOMParser */
+    const parser = new DOMParser()
     return this.addProject(parser.parseFromString(xml, 'text/xml'))
   }
 
