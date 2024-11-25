@@ -225,4 +225,19 @@
         <changefreq>monthly</changefreq>
         <lastmod>2024-05-30</lastmod>
     </url>
+    <url>
+        <loc>https://projectes.xtec.cat/clic/ca/users/publicacio-de-projectes/</loc>
+        <changefreq>monthly</changefreq>
+        <lastmod>2024-11-20</lastmod>
+    </url>
+    <url>
+        <loc>https://projectes.xtec.cat/clic/es/users/publicacion-de-proyectos-jclic/</loc>
+        <changefreq>monthly</changefreq>
+        <lastmod>2024-11-20</lastmod>
+    </url>
+    <url>
+        <loc>https://projectes.xtec.cat/clic/en/users/publishing-jclic-projects/</loc>
+        <changefreq>monthly</changefreq>
+        <lastmod>2024-11-20</lastmod>
+    </url>
 </urlset>
