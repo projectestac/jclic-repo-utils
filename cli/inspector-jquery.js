@@ -3,14 +3,12 @@
 const fs = require('fs')
 const recursive = require('recursive-readdir')
 const JSZip = require('jszip')
-const JClic = require('jclic')
+// Use the jQuery object provided by JClic
+const { $ } = require('jclic')
 
 // Build the stop words list
 const SortedArray = require('sorted-array')
 const stopWords = new SortedArray(Object.values(require('./stopwords.json')).reduce((acc, val) => acc.concat(val), []))
-
-// Use the jQuery object provided by JClic
-const { $ } = JClic;
 
 class Inspector {
 

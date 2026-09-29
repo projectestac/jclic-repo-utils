@@ -16,9 +16,9 @@ global.Audio = function () { }
 global.DOMParser = require('xmldom').DOMParser
 
 // amdefine allows to load AMD modules into node.js modules
-require('amdefine/intercept')
+// require('amdefine/intercept')
 
-const JClic = require('jclic')
+const {JClicProject, $} = require('jclic')
 
 
 class Inspector {
@@ -33,8 +33,8 @@ class Inspector {
     const doc = new DOMParser().parseFromString(xml)
 
     // Create a JClicProject and initialize it with the file contents
-    const project = new JClic.JClicProject()
-    project.setProperties(JClic.$(doc).find('JClicProject'), path, null, {})
+    const project = new JClicProject()
+    project.setProperties($(doc).find('JClicProject'), path, null, {})
     const result = new Inspector(project)
     result.path = path
     return result

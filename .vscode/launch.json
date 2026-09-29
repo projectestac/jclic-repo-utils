@@ -10,6 +10,14 @@
       "args": ["/dades/zonaClic/projects"]
     },
     {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch calcSizes",
+      "program": "${workspaceRoot}/cli/calcSizes.js",
+      "cwd": "${workspaceRoot}",
+      "args": ["/dades/zonaClic/trans"]
+    },
+    {
       "name": "Launch Chrome against localhost",
       "type": "chrome",
       "request": "launch",
